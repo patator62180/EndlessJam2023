@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d26idy78h2r88"]
+[gd_scene load_steps=6 format=3 uid="uid://d26idy78h2r88"]
 
 [ext_resource type="Script" path="res://scenes/frog/Frog.cs" id="1_rajx0"]
 [ext_resource type="Texture2D" uid="uid://wctqvdahsvfe" path="res://scenes/frog/frog_spine.png" id="2_dcpun"]
@@ -8,12 +8,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a145e"]
 size = Vector2(22.5713, 39.5018)
 
-[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("leftArm", "rightArm")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj5vk"]
+
+[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("leftArm", "rightArm", "hand", "wrist")]
 collision_layer = 2147483648
 collision_mask = 2147483648
 script = ExtResource("1_rajx0")
 leftArm = NodePath("LeftArm")
 rightArm = NodePath("RightArm")
+hand = NodePath("LeftArm/Hand")
+wrist = NodePath("LeftArm/Wrist")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_g1hpx")
@@ -79,7 +83,7 @@ offset = Vector2(-6.77, 137.055)
 region_enabled = true
 region_rect = Rect2(507.397, 121.428, 88.5781, 343.683)
 
-[node name="Hand" type="StaticBody2D" parent="LeftArm"]
+[node name="Hand" type="Area2D" parent="LeftArm"]
 position = Vector2(8.24213, 95.7761)
 rotation = -0.368264
 
@@ -87,3 +91,12 @@ rotation = -0.368264
 position = Vector2(-71.0059, 139.203)
 rotation = 0.277507
 shape = SubResource("RectangleShape2D_a145e")
+debug_color = Color(0.866667, 0.207843, 0.713726, 0.419608)
+
+[node name="Wrist" type="Area2D" parent="LeftArm"]
+position = Vector2(-10.8581, 211.508)
+rotation = -0.0925025
+scale = Vector2(1, 1.92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/Wrist"]
+shape = SubResource("RectangleShape2D_jj5vk")

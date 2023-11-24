@@ -9,10 +9,13 @@
 [node name="Main" type="Node2D"]
 
 [node name="BasicChunk" parent="." instance=ExtResource("1_5ifro")]
-position = Vector2(560, -572)
+position = Vector2(1271, -1283)
 
 [node name="BasicChunk2" parent="." instance=ExtResource("2_lrxs3")]
 position = Vector2(206, -219)
+
+[node name="BasicChunk4" parent="." instance=ExtResource("2_lrxs3")]
+position = Vector2(561, -575)
 
 [node name="BasicChunk3" parent="." instance=ExtResource("2_lrxs3")]
 position = Vector2(913, -925)
