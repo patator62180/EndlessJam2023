@@ -6,12 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a145e"]
 size = Vector2(22.5713, 39.5018)
 
-[node name="Frog" type="Node2D"]
+[node name="Frog" type="Node2D" node_paths=PackedStringArray("leftArm", "rightArm")]
 script = ExtResource("1_rajx0")
+leftArm = NodePath("LeftArm")
+rightArm = NodePath("RightArm")
 
 [node name="RightArm" type="Node2D" parent="."]
 position = Vector2(40, -110)
-rotation = -1.80118
+rotation = -2.21308
 
 [node name="Sprite2D" type="Sprite2D" parent="RightArm"]
 z_index = -10
@@ -21,13 +23,6 @@ texture = ExtResource("2_dcpun")
 offset = Vector2(-40, 110)
 region_enabled = true
 region_rect = Rect2(585.346, 119.657, 104.522, 370.256)
-
-[node name="RigidBody2D" type="StaticBody2D" parent="RightArm"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArm/RigidBody2D"]
-position = Vector2(-71.0059, 139.203)
-rotation = 0.277507
-shape = SubResource("RectangleShape2D_a145e")
 
 [node name="Body" type="Node2D" parent="."]
 
@@ -69,10 +64,20 @@ region_rect = Rect2(424.134, 328.701, 90.3497, 233.846)
 
 [node name="LeftArm" type="Node2D" parent="."]
 position = Vector2(-56, -115)
-rotation = -1.43292
+rotation = -1.98793
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftArm"]
 texture = ExtResource("2_dcpun")
 offset = Vector2(-6.77, 137.055)
 region_enabled = true
 region_rect = Rect2(507.397, 121.428, 88.5781, 343.683)
+
+[node name="RigidBody2D" type="StaticBody2D" parent="LeftArm"]
+position = Vector2(8.24213, 95.7761)
+rotation = -0.368264
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/RigidBody2D"]
+position = Vector2(-71.0059, 139.203)
+rotation = 0.277507
+shape = SubResource("RectangleShape2D_a145e")
