@@ -19,7 +19,10 @@ position = Vector2(910, -921)
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("frog")]
 position = Vector2(27, 457)
 offset = Vector2(800, -1225)
-zoom = Vector2(0.42, 0.42)
+enabled = false
+zoom = Vector2(0.4, 0.4)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 script = ExtResource("2_43nxb")
 frog = NodePath("../Frog")
 
@@ -28,3 +31,14 @@ position = Vector2(452, -741)
 
 [node name="Frog" parent="." instance=ExtResource("2_lq666")]
 position = Vector2(-13, -328)
+
+[node name="Camera2D" type="Camera2D" parent="Frog"]
+position = Vector2(1, 0)
+offset = Vector2(1000, 0)
+zoom = Vector2(0.4, 0.4)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_horizontal_offset = 1.0
+drag_vertical_offset = -1.0
+drag_right_margin = 0.5
