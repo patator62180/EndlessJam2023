@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class Frog : Node2D
+public partial class Frog : CharacterBody2D
 {
-    const float Velocity = 200f;
+    const float VelocityScale = 200f;
 
     [Export]
     Node2D leftArm;
@@ -32,7 +32,13 @@ public partial class Frog : Node2D
 
         if (Input.IsActionPressed("move_right"))
         {
-            Position = Position.Lerp(Position + new Vector2(Velocity * (float)delta, -Velocity * (float)delta), .5f);
+            Velocity = new Vector2(VelocityScale, -VelocityScale);
+            MoveAndSlide();
+            // Position = Position.Lerp(Position + new Vector2(VelocityScale * (float)delta, -VelocityScale * (float)delta), .5f);
+        }
+        else
+        {
+            Velocity = Vector2.Zero;
         }
     }
 }
