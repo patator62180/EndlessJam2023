@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://7pr6u7fg54w5"]
+
+[ext_resource type="Texture2D" uid="uid://skvxhgpmwuue" path="res://scenes/chunks/basic/basic_chunk.png" id="1_1vsbn"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a8wyp"]
+a = Vector2(0.581788, -28.6273)
+b = Vector2(-0.111768, 38.7243)
+
+[node name="BasicChunk" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1vsbn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -60.66)
+scale = Vector2(7.265, 7.265)
+skew = 0.776672
+shape = SubResource("SegmentShape2D_a8wyp")

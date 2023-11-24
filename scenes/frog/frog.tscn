@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://d26idy78h2r88"]
+
+[ext_resource type="Script" path="res://scenes/frog/Frog.cs" id="1_rajx0"]
+[ext_resource type="Texture2D" uid="uid://wctqvdahsvfe" path="res://scenes/frog/frog_spine.png" id="2_dcpun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a145e"]
+size = Vector2(22.5713, 39.5018)
+
+[node name="Frog" type="Node2D"]
+script = ExtResource("1_rajx0")
+
+[node name="RightArm" type="Node2D" parent="."]
+position = Vector2(40, -110)
+rotation = -1.80118
+
+[node name="Sprite2D" type="Sprite2D" parent="RightArm"]
+z_index = -10
+z_as_relative = false
+position = Vector2(55, 40)
+texture = ExtResource("2_dcpun")
+offset = Vector2(-40, 110)
+region_enabled = true
+region_rect = Rect2(585.346, 119.657, 104.522, 370.256)
+
+[node name="RigidBody2D" type="StaticBody2D" parent="RightArm"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArm/RigidBody2D"]
+position = Vector2(-71.0059, 139.203)
+rotation = 0.277507
+shape = SubResource("RectangleShape2D_a145e")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="ModelSprite" type="Sprite2D" parent="Body"]
+visible = false
+texture = ExtResource("2_dcpun")
+region_enabled = true
+region_rect = Rect2(11.3599, 9.81985, 175.385, 437.576)
+
+[node name="CoreSprite" type="Sprite2D" parent="Body"]
+position = Vector2(-9.19, -53.08)
+texture = ExtResource("2_dcpun")
+region_enabled = true
+region_rect = Rect2(208.482, 203.83, 131.096, 242.704)
+
+[node name="HeadSprite" type="Sprite2D" parent="Body"]
+texture = ExtResource("2_dcpun")
+offset = Vector2(2.2, -163.875)
+region_enabled = true
+region_rect = Rect2(349.728, 178.118, 166.527, 131.096)
+
+[node name="FaceSprite" type="Sprite2D" parent="Body"]
+texture = ExtResource("2_dcpun")
+offset = Vector2(9, -171.58)
+region_enabled = true
+region_rect = Rect2(353.271, 87.7686, 159.441, 95.6643)
+
+[node name="LeftLegSprite" type="Sprite2D" parent="Body"]
+texture = ExtResource("2_dcpun")
+offset = Vector2(-41.815, 113.7)
+region_enabled = true
+region_rect = Rect2(346.185, 316.3, 86.8065, 235.618)
+
+[node name="RightLegSprite" type="Sprite2D" parent="Body"]
+texture = ExtResource("2_dcpun")
+offset = Vector2(46.74, 125.245)
+region_enabled = true
+region_rect = Rect2(424.134, 328.701, 90.3497, 233.846)
+
+[node name="LeftArm" type="Node2D" parent="."]
+position = Vector2(-56, -115)
+rotation = -1.43292
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftArm"]
+texture = ExtResource("2_dcpun")
+offset = Vector2(-6.77, 137.055)
+region_enabled = true
+region_rect = Rect2(507.397, 121.428, 88.5781, 343.683)
