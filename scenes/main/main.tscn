@@ -1,20 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3m830ehdkgn4"]
+[gd_scene load_steps=6 format=3 uid="uid://b3m830ehdkgn4"]
 
-[ext_resource type="PackedScene" uid="uid://7pr6u7fg54w5" path="res://scenes/chunks/basic/basic_chunk.tscn" id="1_5ifro"]
+[ext_resource type="PackedScene" uid="uid://c2pwswca73ohy" path="res://scenes/chunks/basic_1/basic_chunk_1.tscn" id="1_5ifro"]
 [ext_resource type="Script" path="res://lib/Camera.cs" id="2_43nxb"]
 [ext_resource type="PackedScene" uid="uid://d26idy78h2r88" path="res://scenes/frog/frog.tscn" id="2_lq666"]
+[ext_resource type="PackedScene" uid="uid://bmlgsu813psrd" path="res://scenes/chunks/basic_2/basic_chunk_2.tscn" id="2_lrxs3"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
 
 [node name="Main" type="Node2D"]
 
 [node name="BasicChunk" parent="." instance=ExtResource("1_5ifro")]
-position = Vector2(210, -217)
-
-[node name="BasicChunk2" parent="." instance=ExtResource("1_5ifro")]
 position = Vector2(560, -572)
 
-[node name="BasicChunk3" parent="." instance=ExtResource("1_5ifro")]
-position = Vector2(910, -921)
+[node name="BasicChunk2" parent="." instance=ExtResource("2_lrxs3")]
+position = Vector2(206, -219)
+
+[node name="BasicChunk3" parent="." instance=ExtResource("2_lrxs3")]
+position = Vector2(913, -925)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("frog")]
 position = Vector2(27, 457)
@@ -27,7 +28,8 @@ script = ExtResource("2_43nxb")
 frog = NodePath("../Frog")
 
 [node name="Ball" parent="." instance=ExtResource("3_libtn")]
-position = Vector2(452, -741)
+position = Vector2(315, -568)
+mass = 57.89
 
 [node name="Frog" parent="." instance=ExtResource("2_lq666")]
 position = Vector2(-13, -328)

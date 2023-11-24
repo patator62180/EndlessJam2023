@@ -75,7 +75,6 @@ region_rect = Rect2(507.397, 121.428, 88.5781, 343.683)
 [node name="RigidBody2D" type="StaticBody2D" parent="LeftArm"]
 position = Vector2(8.24213, 95.7761)
 rotation = -0.368264
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArm/RigidBody2D"]
 position = Vector2(-71.0059, 139.203)
