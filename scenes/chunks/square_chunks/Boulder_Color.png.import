@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpimeq7x6ypqw"
-path="res://.godot/imported/Boulder_Color.png-b69f4bca98da25e0b9f16af9ef168740.ctex"
+path="res://.godot/imported/Boulder_Color.png-14e2303593c09963b2bf66f53883864a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/chunks/square_chunk_a/Boulder_Color.png"
-dest_files=["res://.godot/imported/Boulder_Color.png-b69f4bca98da25e0b9f16af9ef168740.ctex"]
+source_file="res://scenes/chunks/square_chunks/Boulder_Color.png"
+dest_files=["res://.godot/imported/Boulder_Color.png-14e2303593c09963b2bf66f53883864a.ctex"]
 
 [params]
 

@@ -37,7 +37,6 @@ public partial class MapGeneration : Node2D
 
         for (var index = 0; index < 50; ++index)
         {
-            var newChunk = AttachNewChunk(previousChunk, packedChunks[random.Next(0, packedChunks.Length)]);
             int chunkType;
 
             if (chunkTypes.Count() < 2 || (chunkTypes[chunkTypes.Count() - 2] != chunkTypes[chunkTypes.Count() - 1]) && chunkTypes[chunkTypes.Count() - 1] == ChunkTypeSquare)
