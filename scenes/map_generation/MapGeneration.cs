@@ -5,6 +5,9 @@ using Godot;
 
 public partial class MapGeneration : Node2D
 {
+    const int ChunkTypeSquare = 0;
+
+
     [Export]
     Chunk startChunk;
 
@@ -27,19 +30,32 @@ public partial class MapGeneration : Node2D
     {
         Random random = new Random();
         var previousChunk = startChunk;
+        var chunkTypes = new List<int>();
 
         chunks.Add(startChunk);
         points.Add(startChunk.Position + startChunk.Segment.A);
 
-        for (var index = 0; index < 10; ++index)
+        for (var index = 0; index < 50; ++index)
         {
             var newChunk = AttachNewChunk(previousChunk, packedChunks[random.Next(0, packedChunks.Length)]);
+            int chunkType;
 
+            if (chunkTypes.Count() < 2 || (chunkTypes[chunkTypes.Count() - 2] != chunkTypes[chunkTypes.Count() - 1]) && chunkTypes[chunkTypes.Count() - 1] == ChunkTypeSquare)
+            {
+                chunkType = ChunkTypeSquare;
+            }
+            else
+            {
+                chunkType = random.Next(0, 2);
+            }
+
+            var newChunk = AttachNewChunk(previousChunk, packedChunks[chunkType]);
             var newPoint = newChunk.Position + newChunk.Segment.A;
 
             RemoveExtraPoints(newPoint);
             points.Add(newPoint);
             chunks.Add(newChunk);
+            chunkTypes.Add(chunkType);
 
             previousChunk = newChunk;
         }
