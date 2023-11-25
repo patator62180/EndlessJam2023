@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://two7o0ypxlcy"]
 
 [ext_resource type="Texture2D" uid="uid://dmofmpnswmryl" path="res://scenes/ball/ball_background.png" id="1_7hoyy"]
-[ext_resource type="Script" path="res://scenes/ball/Ball.cs" id="1_cgihx"]
+[ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_wrdng"]
 [ext_resource type="Texture2D" uid="uid://444ka5otna1c" path="res://scenes/ball/ball_shadow.png" id="2_76c8o"]
 [ext_resource type="Texture2D" uid="uid://cko525jfor41d" path="res://scenes/ball/ball_border.png" id="2_idbim"]
 
@@ -12,7 +12,7 @@ collision_layer = 4
 collision_mask = 9
 mass = 500.0
 gravity_scale = 10.0
-script = ExtResource("1_cgihx")
+script = ExtResource("1_wrdng")
 shadow = NodePath("Shadow")
 
 [node name="Background" type="Sprite2D" parent="."]
