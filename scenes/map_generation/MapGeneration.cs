@@ -33,7 +33,7 @@ public partial class MapGeneration : Node2D
 
         for (var index = 0; index < 10; ++index)
         {
-            var newChunk = AttachNewChunk(previousChunk, packedChunks[random.Next(0, 2)]);
+            var newChunk = AttachNewChunk(previousChunk, packedChunks[random.Next(0, packedChunks.Length)]);
 
             var newPoint = newChunk.Position + newChunk.Segment.A;
 

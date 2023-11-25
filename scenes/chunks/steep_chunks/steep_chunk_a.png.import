@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8eees67e7kj3"
-path="res://.godot/imported/square_chunk_a.png-ff5ebdc00e0fa4682a56e75c1f7602d4.ctex"
+uid="uid://bmehfgws3rpd5"
+path="res://.godot/imported/steep_chunk_a.png-322ed8718c7a782500724249b3290f7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/chunks/square_chunk_a/square_chunk_a.png"
-dest_files=["res://.godot/imported/square_chunk_a.png-ff5ebdc00e0fa4682a56e75c1f7602d4.ctex"]
+source_file="res://scenes/chunks/steep_chunks/steep_chunk_a.png"
+dest_files=["res://.godot/imported/steep_chunk_a.png-322ed8718c7a782500724249b3290f7e.ctex"]
 
 [params]
 
