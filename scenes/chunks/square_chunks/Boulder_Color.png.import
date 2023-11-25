@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drd0furcysnkr"
-path="res://.godot/imported/Boulder_Shadow.png-18bf8a12fc31b55d4b79fb207c7e6995.ctex"
+uid="uid://dpimeq7x6ypqw"
+path="res://.godot/imported/Boulder_Color.png-14e2303593c09963b2bf66f53883864a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/chunks/square_chunk_a/Boulder_Shadow.png"
-dest_files=["res://.godot/imported/Boulder_Shadow.png-18bf8a12fc31b55d4b79fb207c7e6995.ctex"]
+source_file="res://scenes/chunks/square_chunks/Boulder_Color.png"
+dest_files=["res://.godot/imported/Boulder_Color.png-14e2303593c09963b2bf66f53883864a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://flflc4pb1pwe"
-path="res://.godot/imported/Boulder_Line.png-aedd2d358c1184a656c8b7bd821f43b9.ctex"
+uid="uid://bmehfgws3rpd5"
+path="res://.godot/imported/steep_chunk_a.png-322ed8718c7a782500724249b3290f7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/chunks/square_chunk_a/Boulder_Line.png"
-dest_files=["res://.godot/imported/Boulder_Line.png-aedd2d358c1184a656c8b7bd821f43b9.ctex"]
+source_file="res://scenes/chunks/steep_chunks/steep_chunk_a.png"
+dest_files=["res://.godot/imported/steep_chunk_a.png-322ed8718c7a782500724249b3290f7e.ctex"]
 
 [params]
 

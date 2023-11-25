@@ -1,14 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3m830ehdkgn4"]
 
-[ext_resource type="PackedScene" uid="uid://c4hkpr4g3pmpj" path="res://scenes/HUD/hud.tscn" id="1_senwl"]
 [ext_resource type="PackedScene" uid="uid://d26idy78h2r88" path="res://scenes/frog/frog.tscn" id="2_lq666"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
 [ext_resource type="PackedScene" uid="uid://cgtd7vgqbqbff" path="res://scenes/map_generation/map_generation.tscn" id="4_aqiom"]
+[ext_resource type="PackedScene" uid="uid://d33w2xvakpbih" path="res://scenes/UI/hud.tscn" id="5_fm6le"]
 [ext_resource type="PackedScene" uid="uid://cf5xkij4alusm" path="res://parallax/MainParallax.tscn" id="7_r6pn2"]
 
 [node name="Main" type="Node2D"]
-
-[node name="HUD" parent="." instance=ExtResource("1_senwl")]
 
 [node name="MapGeneration" parent="." instance=ExtResource("4_aqiom")]
 
@@ -22,3 +20,6 @@ position = Vector2(707, 78)
 position = Vector2(441, -2021)
 
 [node name="Parallax" parent="." instance=ExtResource("7_r6pn2")]
+
+[node name="HUD" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("5_fm6le")]
+frog = NodePath("../Frog")
