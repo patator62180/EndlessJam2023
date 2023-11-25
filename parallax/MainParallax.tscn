@@ -1,13 +1,26 @@
-[gd_scene load_steps=19 format=3 uid="uid://cf5xkij4alusm"]
+[gd_scene load_steps=32 format=3 uid="uid://cf5xkij4alusm"]
 
 [ext_resource type="Script" path="res://parallax/ParallaxBackground.cs" id="1_q6llp"]
 [ext_resource type="PackedScene" uid="uid://cb1dg8mbxkspp" path="res://parallax/bloc.tscn" id="2_tj6wb"]
-[ext_resource type="Texture2D" uid="uid://8eimfe4ch51x" path="res://parallax/clouds.png" id="3_m6gwc"]
+[ext_resource type="Texture2D" uid="uid://cqumlk8y24dsq" path="res://parallax/clouds/cloud0.png" id="3_a1dlw"]
 [ext_resource type="Texture2D" uid="uid://d1a5b47ko8myw" path="res://icon.svg" id="3_r51uw"]
+[ext_resource type="Texture2D" uid="uid://qptj327x3jbx" path="res://parallax/clouds/cloud1.png" id="4_k3ay7"]
 [ext_resource type="Texture2D" uid="uid://wr7cqfee0iem" path="res://parallax/trees.png" id="4_mn20d"]
+[ext_resource type="Texture2D" uid="uid://b6pclkw480kpj" path="res://parallax/clouds/cloud2.png" id="5_gxe3a"]
 [ext_resource type="Texture2D" uid="uid://ftl70sb6r1ir" path="res://parallax/flyingBird.png" id="5_xtaac"]
+[ext_resource type="Texture2D" uid="uid://cyu767eodwr24" path="res://parallax/clouds/cloud3.png" id="6_du2eb"]
 [ext_resource type="PackedScene" uid="uid://be0nnm4sahsg3" path="res://scenes/chunks/steep_chunk_a/steep_chunk_a.tscn" id="6_hv6w6"]
+[ext_resource type="Texture2D" uid="uid://cgushl8m73xdb" path="res://parallax/clouds/cloud4.png" id="7_euhrw"]
 [ext_resource type="Script" path="res://parallax/MockPlayer.gd" id="8_8ojb8"]
+[ext_resource type="Texture2D" uid="uid://bf8q0vo1utw5r" path="res://parallax/clouds/cloud5.png" id="8_t8w1a"]
+[ext_resource type="Texture2D" uid="uid://dcg1qucjiigxf" path="res://parallax/fossils/fossil0.png" id="14_dblif"]
+[ext_resource type="Texture2D" uid="uid://bb730g1ofge4y" path="res://parallax/fossils/fossil1.png" id="15_5cq76"]
+[ext_resource type="Texture2D" uid="uid://dtlsothwj5qu" path="res://parallax/fossils/fossil2.png" id="16_nw6pu"]
+[ext_resource type="Texture2D" uid="uid://cljjcrgdecnbn" path="res://parallax/fossils/fossil3.png" id="17_6xsx5"]
+[ext_resource type="Texture2D" uid="uid://cu0ohj0lajpt" path="res://parallax/fossils/fossil4.png" id="18_888ls"]
+[ext_resource type="Texture2D" uid="uid://cbc8attn7nalw" path="res://parallax/fossils/fossil5.png" id="19_ase6p"]
+[ext_resource type="Texture2D" uid="uid://c8irbevu0vr8g" path="res://parallax/fossils/fossil6.png" id="20_d386g"]
+[ext_resource type="Texture2D" uid="uid://dfodt6qtmfinm" path="res://parallax/fossils/fossil7.png" id="21_6ov30"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58xsm"]
 atlas = ExtResource("5_xtaac")
@@ -92,11 +105,38 @@ color = Color(0.552941, 0.811765, 0.827451, 1)
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1152, 648)
 
-[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("3_m6gwc")
-centered = false
+[node name="Cloud0" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-102, 125)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_a1dlw")
+
+[node name="Cloud1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(146, 290)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_k3ay7")
+
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(395, 77)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_gxe3a")
+
+[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(749, -82)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_du2eb")
+
+[node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-163, 484)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_euhrw")
+
+[node name="Cloud5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(134, -1.99997)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_t8w1a")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_mirroring = Vector2(1152, 648)
 
 [node name="Trees" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
@@ -104,6 +144,7 @@ texture = ExtResource("4_mn20d")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2(-1, -1)
 motion_mirroring = Vector2(1152, 648)
 
@@ -128,6 +169,42 @@ position = Vector2(328, -78)
 [node name="SteepChunkA4" parent="Chunks" instance=ExtResource("6_hv6w6")]
 position = Vector2(647, -280)
 
+[node name="SteepChunkA5" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(966, -478)
+
+[node name="SteepChunkA6" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(1287, -674)
+
+[node name="SteepChunkA7" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(1606, -870)
+
+[node name="SteepChunkA8" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(1925, -1072)
+
+[node name="SteepChunkA9" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(2245, -1269)
+
+[node name="SteepChunkA10" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(2566, -1465)
+
+[node name="SteepChunkA11" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(2885, -1661)
+
+[node name="SteepChunkA12" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(3204, -1863)
+
+[node name="SteepChunkA13" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(3523, -2061)
+
+[node name="SteepChunkA14" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(3844, -2257)
+
+[node name="SteepChunkA15" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(4163, -2453)
+
+[node name="SteepChunkA16" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(4482, -2655)
+
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(361, 358)
 rotation = -0.494385
@@ -135,3 +212,45 @@ texture = ExtResource("3_r51uw")
 script = ExtResource("8_8ojb8")
 
 [node name="Camera2D" type="Camera2D" parent="Icon"]
+
+[node name="Fossils" type="Node2D" parent="."]
+
+[node name="Fossil0" type="Sprite2D" parent="Fossils"]
+position = Vector2(969, 206)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("14_dblif")
+
+[node name="Fossil1" type="Sprite2D" parent="Fossils"]
+position = Vector2(1343, 117)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_5cq76")
+
+[node name="Fossil2" type="Sprite2D" parent="Fossils"]
+position = Vector2(830, 463)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("16_nw6pu")
+
+[node name="Fossil3" type="Sprite2D" parent="Fossils"]
+position = Vector2(1156, 50)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_6xsx5")
+
+[node name="Fossil4" type="Sprite2D" parent="Fossils"]
+position = Vector2(554, 432)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("18_888ls")
+
+[node name="Fossil5" type="Sprite2D" parent="Fossils"]
+position = Vector2(1377, -87)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_ase6p")
+
+[node name="Fossil6" type="Sprite2D" parent="Fossils"]
+position = Vector2(339, 560)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("20_d386g")
+
+[node name="Fossil7" type="Sprite2D" parent="Fossils"]
+position = Vector2(172, 713)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("21_6ov30")
