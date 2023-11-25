@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://cf5xkij4alusm"]
+[gd_scene load_steps=19 format=3 uid="uid://cf5xkij4alusm"]
 
 [ext_resource type="Script" path="res://parallax/ParallaxBackground.cs" id="1_q6llp"]
 [ext_resource type="PackedScene" uid="uid://cb1dg8mbxkspp" path="res://parallax/bloc.tscn" id="2_tj6wb"]
 [ext_resource type="Texture2D" uid="uid://8eimfe4ch51x" path="res://parallax/clouds.png" id="3_m6gwc"]
 [ext_resource type="Texture2D" uid="uid://d1a5b47ko8myw" path="res://icon.svg" id="3_r51uw"]
-[ext_resource type="PackedScene" uid="uid://oqammyojrhv5" path="res://parallax/slope.tscn" id="4_epxs0"]
 [ext_resource type="Texture2D" uid="uid://wr7cqfee0iem" path="res://parallax/trees.png" id="4_mn20d"]
 [ext_resource type="Texture2D" uid="uid://ftl70sb6r1ir" path="res://parallax/flyingBird.png" id="5_xtaac"]
+[ext_resource type="PackedScene" uid="uid://be0nnm4sahsg3" path="res://scenes/chunks/steep_chunk_a/steep_chunk_a.tscn" id="6_hv6w6"]
+[ext_resource type="Script" path="res://parallax/MockPlayer.gd" id="8_8ojb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58xsm"]
 atlas = ExtResource("5_xtaac")
@@ -112,9 +113,25 @@ scale = Vector2(0.171875, 0.171875)
 sprite_frames = SubResource("SpriteFrames_v313a")
 autoplay = "default"
 
+[node name="Chunks" type="Node2D" parent="."]
+position = Vector2(459, 493)
+
+[node name="SteepChunkA" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(-312, 314)
+
+[node name="SteepChunkA2" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(9, 118)
+
+[node name="SteepChunkA3" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(328, -78)
+
+[node name="SteepChunkA4" parent="Chunks" instance=ExtResource("6_hv6w6")]
+position = Vector2(647, -280)
+
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(544, 269)
+position = Vector2(361, 358)
 rotation = -0.494385
 texture = ExtResource("3_r51uw")
+script = ExtResource("8_8ojb8")
 
-[node name="Slope" parent="." instance=ExtResource("4_epxs0")]
+[node name="Camera2D" type="Camera2D" parent="Icon"]
