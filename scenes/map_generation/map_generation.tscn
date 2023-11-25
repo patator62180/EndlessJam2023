@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgtd7vgqbqbff"]
+
+[ext_resource type="PackedScene" uid="uid://b6llx83pnfkyk" path="res://scenes/chunks/start_chunk/start_chunk.tscn" id="1_nrl2y"]
+[ext_resource type="Script" path="res://scenes/map_generation/MapGeneration.cs" id="1_turyk"]
+[ext_resource type="PackedScene" uid="uid://cn1te11nr3yc8" path="res://scenes/chunks/square_chunk_a/square_chunk_a.tscn" id="2_gf4rr"]
+[ext_resource type="PackedScene" uid="uid://be0nnm4sahsg3" path="res://scenes/chunks/steep_chunk_a/steep_chunk_a.tscn" id="3_2mxbs"]
+
+[node name="MapGeneration" type="Node2D" node_paths=PackedStringArray("startChunk", "chunksRoot", "collisionPolygon")]
+script = ExtResource("1_turyk")
+startChunk = NodePath("StartChunk")
+packedChunks = Array[PackedScene]([ExtResource("2_gf4rr"), ExtResource("3_2mxbs")])
+chunksRoot = NodePath("Chunks")
+collisionPolygon = NodePath("StaticBody2D/CollisionPolygon2D")
+
+[node name="StartChunk" parent="." instance=ExtResource("1_nrl2y")]
+
+[node name="Chunks" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]

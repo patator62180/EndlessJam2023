@@ -88,27 +88,30 @@ public partial class Frog : CharacterBody2D
 
         var velocity = Velocity;
 
-        // velocity.Y += (float)delta * 200f;
+        velocity.Y += (float)delta * 200f;
 
         if (movingRight && !wristTouchingBall)
         {
-            Velocity = new Vector2(VelocityScale, 0);
-            MoveAndSlide();
+            velocity.X = VelocityScale;
         }
 
+        Velocity = velocity;
 
-        if (!movingRight && handTouchingBall)
-        {
-            ball.Sleeping = true;
-        }
-        else if (movingRight && handTouchingBall)
-        {
-            ball.Sleeping = false;
-            ball.LinearVelocity = new Vector2(VelocityScale * 2, 0);
-        }
-        else if (!handTouchingBall)
-        {
-            ball.Sleeping = false;
-        }
+        MoveAndSlide();
+
+
+        // if (!movingRight && handTouchingBall)
+        // {
+        //     ball.Sleeping = true;
+        // }
+        // else if (movingRight && handTouchingBall)
+        // {
+        //     ball.Sleeping = false;
+        //     ball.LinearVelocity = new Vector2(VelocityScale * 2, 0);
+        // }
+        // else if (!handTouchingBall)
+        // {
+        //     ball.Sleeping = false;
+        // }
     }
 }
