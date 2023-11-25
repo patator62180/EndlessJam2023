@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c8eees67e7kj3" path="res://scenes/chunks/square_chunk_a/square_chunk_a.png" id="1_shvdm"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ioa8w"]
-a = Vector2(-154, -159)
-b = Vector2(155, -162)
+a = Vector2(-162, -1307)
+b = Vector2(146, -1311)
 
 [node name="SquareChunkA" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
 collision_mask = 255

@@ -9,11 +9,11 @@
 [node name="MapGeneration" parent="." instance=ExtResource("1_1d3bu")]
 
 [node name="Frog" parent="." instance=ExtResource("2_wq4wd")]
-position = Vector2(-3, -414)
+position = Vector2(-11, -1550)
 
 [node name="Camera2D" type="Camera2D" parent="Frog"]
 position = Vector2(707, 78)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Ball" parent="." instance=ExtResource("3_hw53h")]
-position = Vector2(445, -856)
+position = Vector2(441, -2021)
