@@ -99,19 +99,18 @@ public partial class Frog : CharacterBody2D
 
         MoveAndSlide();
 
-
-        // if (!movingRight && handTouchingBall)
-        // {
-        //     ball.Sleeping = true;
-        // }
-        // else if (movingRight && handTouchingBall)
-        // {
-        //     ball.Sleeping = false;
-        //     ball.LinearVelocity = new Vector2(VelocityScale * 2, 0);
-        // }
-        // else if (!handTouchingBall)
-        // {
-        //     ball.Sleeping = false;
-        // }
+        if (!movingRight && handTouchingBall)
+        {
+            ball.Sleeping = true;
+        }
+        else if (movingRight && handTouchingBall)
+        {
+            ball.Sleeping = false;
+            ball.LinearVelocity = new Vector2(VelocityScale * 2, 0);
+        }
+        else if (!handTouchingBall)
+        {
+            ball.Sleeping = false;
+        }
     }
 }
