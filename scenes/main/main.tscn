@@ -1,24 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3m830ehdkgn4"]
 
-[ext_resource type="PackedScene" uid="uid://c2pwswca73ohy" path="res://scenes/chunks/basic_1/basic_chunk_1.tscn" id="1_5ifro"]
 [ext_resource type="Script" path="res://lib/Camera.cs" id="2_43nxb"]
 [ext_resource type="PackedScene" uid="uid://d26idy78h2r88" path="res://scenes/frog/frog.tscn" id="2_lq666"]
-[ext_resource type="PackedScene" uid="uid://bmlgsu813psrd" path="res://scenes/chunks/basic_2/basic_chunk_2.tscn" id="2_lrxs3"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
+[ext_resource type="PackedScene" uid="uid://be0nnm4sahsg3" path="res://scenes/chunks/steep_chunk_a/steep_chunk_a.tscn" id="4_mkhrq"]
+[ext_resource type="PackedScene" uid="uid://cn1te11nr3yc8" path="res://scenes/chunks/square_chunk_a/square_chunk_a.tscn" id="5_j436n"]
 
 [node name="Main" type="Node2D"]
-
-[node name="BasicChunk" parent="." instance=ExtResource("1_5ifro")]
-position = Vector2(1271, -1283)
-
-[node name="BasicChunk2" parent="." instance=ExtResource("2_lrxs3")]
-position = Vector2(206, -219)
-
-[node name="BasicChunk4" parent="." instance=ExtResource("2_lrxs3")]
-position = Vector2(561, -575)
-
-[node name="BasicChunk3" parent="." instance=ExtResource("2_lrxs3")]
-position = Vector2(913, -925)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("frog")]
 position = Vector2(27, 457)
@@ -31,11 +19,11 @@ script = ExtResource("2_43nxb")
 frog = NodePath("../Frog")
 
 [node name="Ball" parent="." instance=ExtResource("3_libtn")]
-position = Vector2(315, -568)
+position = Vector2(454, -480)
 mass = 57.89
 
 [node name="Frog" parent="." instance=ExtResource("2_lq666")]
-position = Vector2(-13, -328)
+position = Vector2(3, -327)
 
 [node name="Camera2D" type="Camera2D" parent="Frog"]
 position = Vector2(1, 0)
@@ -47,3 +35,24 @@ drag_horizontal_enabled = true
 drag_horizontal_offset = 1.0
 drag_vertical_offset = -1.0
 drag_right_margin = 0.5
+
+[node name="SteepChunkA" parent="." instance=ExtResource("4_mkhrq")]
+position = Vector2(45, 157)
+
+[node name="SteepChunkA2" parent="." instance=ExtResource("4_mkhrq")]
+position = Vector2(361, -38)
+
+[node name="SteepChunkA3" parent="." instance=ExtResource("4_mkhrq")]
+position = Vector2(677, -233)
+scale = Vector2(1, 0.99773)
+
+[node name="SteepChunkA4" parent="." instance=ExtResource("4_mkhrq")]
+position = Vector2(992, -428)
+
+[node name="SquareChunkA" parent="." instance=ExtResource("5_j436n")]
+position = Vector2(1321, -622)
+scale = Vector2(1.00421, 1.00619)
+
+[node name="SquareChunkA2" parent="." instance=ExtResource("5_j436n")]
+position = Vector2(1635, -625)
+scale = Vector2(1.00421, 1.00619)

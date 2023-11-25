@@ -86,15 +86,16 @@ public partial class Frog : CharacterBody2D
         leftArm.Rotation = leftArmRange.X + (leftArmRange.Y - leftArmRange.X) * mouseTarget;
         rightArm.Rotation = rightArmRange.X + (rightArmRange.Y - rightArmRange.X) * mouseTarget;
 
+        var velocity = Velocity;
+
+        // velocity.Y += (float)delta * 200f;
+
         if (movingRight && !wristTouchingBall)
         {
-            Velocity = new Vector2(VelocityScale, -VelocityScale);
+            Velocity = new Vector2(VelocityScale, 0);
             MoveAndSlide();
         }
-        else
-        {
-            Velocity = Vector2.Zero;
-        }
+
 
         if (!movingRight && handTouchingBall)
         {
@@ -103,7 +104,7 @@ public partial class Frog : CharacterBody2D
         else if (movingRight && handTouchingBall)
         {
             ball.Sleeping = false;
-            ball.LinearVelocity = new Vector2(VelocityScale, -VelocityScale);
+            ball.LinearVelocity = new Vector2(VelocityScale * 2, 0);
         }
         else if (!handTouchingBall)
         {
