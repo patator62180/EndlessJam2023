@@ -32,6 +32,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="MainMenu" type="Node2D"]
+scale = Vector2(3.335, 3.335)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
