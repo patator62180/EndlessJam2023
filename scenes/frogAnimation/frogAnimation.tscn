@@ -272,24 +272,24 @@ bone_angle = 0.0
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2(41, -47)
 rotation = -1.07574
-scale = Vector2(0.999997, 0.999997)
+scale = Vector2(0.999983, 0.999983)
 rest = Transform2D(1, 0, 0, 1, 41, -47)
 
 [node name="ForearmL" type="Bone2D" parent="Skeleton2D/Hip/Chest/ArmL"]
 position = Vector2(9, 84)
 rotation = -0.922997
-scale = Vector2(0.999996, 0.999996)
+scale = Vector2(0.999982, 0.999982)
 rest = Transform2D(1, 0, 0, 1, 9, 84)
 
 [node name="ForeForeArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest/ArmL/ForearmL"]
 position = Vector2(1.90735e-06, 84)
-scale = Vector2(0.999996, 0.999996)
+scale = Vector2(0.99998, 0.99998)
 rest = Transform2D(1, 0, 0, 1, 1.90735e-06, 84)
 
 [node name="HandL" type="Bone2D" parent="Skeleton2D/Hip/Chest/ArmL/ForearmL/ForeForeArmL"]
 position = Vector2(3, 57)
 rotation = 1.52416
-scale = Vector2(0.999993, 0.999993)
+scale = Vector2(0.99998, 0.99998)
 rest = Transform2D(0.0466228, 0.998909, -0.998909, 0.0466228, 3, 57)
 auto_calculate_length_and_angle = false
 length = 31.405
