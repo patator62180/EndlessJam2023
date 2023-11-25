@@ -1,6 +1,5 @@
-[gd_scene load_steps=32 format=3 uid="uid://cf5xkij4alusm"]
+[gd_scene load_steps=31 format=3 uid="uid://cf5xkij4alusm"]
 
-[ext_resource type="Script" path="res://parallax/ParallaxBackground.cs" id="1_q6llp"]
 [ext_resource type="PackedScene" uid="uid://cb1dg8mbxkspp" path="res://parallax/bloc.tscn" id="2_tj6wb"]
 [ext_resource type="Texture2D" uid="uid://cqumlk8y24dsq" path="res://parallax/clouds/cloud0.png" id="3_a1dlw"]
 [ext_resource type="Texture2D" uid="uid://d1a5b47ko8myw" path="res://icon.svg" id="3_r51uw"]
@@ -96,7 +95,6 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("1_q6llp")
 
 [node name="Bloc" parent="ParallaxBackground" instance=ExtResource("2_tj6wb")]
 color = Color(0.552941, 0.811765, 0.827451, 1)
@@ -181,30 +179,6 @@ position = Vector2(1606, -870)
 [node name="SteepChunkA8" parent="Chunks" instance=ExtResource("6_hv6w6")]
 position = Vector2(1925, -1072)
 
-[node name="SteepChunkA9" parent="Chunks" instance=ExtResource("6_hv6w6")]
-position = Vector2(2245, -1269)
-
-[node name="SteepChunkA10" parent="Chunks" instance=ExtResource("6_hv6w6")]
-position = Vector2(2566, -1465)
-
-[node name="SteepChunkA11" parent="Chunks" instance=ExtResource("6_hv6w6")]
-position = Vector2(2885, -1661)
-
-[node name="SteepChunkA12" parent="Chunks" instance=ExtResource("6_hv6w6")]
-position = Vector2(3204, -1863)
-
-[node name="SteepChunkA13" parent="Chunks" instance=ExtResource("6_hv6w6")]
-position = Vector2(3523, -2061)
-
-[node name="SteepChunkA14" parent="Chunks" instance=ExtResource("6_hv6w6")]
-position = Vector2(3844, -2257)
-
-[node name="SteepChunkA15" parent="Chunks" instance=ExtResource("6_hv6w6")]
-position = Vector2(4163, -2453)
-
-[node name="SteepChunkA16" parent="Chunks" instance=ExtResource("6_hv6w6")]
-position = Vector2(4482, -2655)
-
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(361, 358)
 rotation = -0.494385
@@ -215,42 +189,89 @@ script = ExtResource("8_8ojb8")
 
 [node name="Fossils" type="Node2D" parent="."]
 
-[node name="Fossil0" type="Sprite2D" parent="Fossils"]
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_mirroring = Vector2(2304, 1296)
+
+[node name="Fossil0" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 position = Vector2(969, 206)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("14_dblif")
 
-[node name="Fossil1" type="Sprite2D" parent="Fossils"]
+[node name="Fossil1" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 position = Vector2(1343, 117)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("15_5cq76")
 
-[node name="Fossil2" type="Sprite2D" parent="Fossils"]
+[node name="Fossil2" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 position = Vector2(830, 463)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("16_nw6pu")
 
-[node name="Fossil3" type="Sprite2D" parent="Fossils"]
+[node name="Fossil3" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 position = Vector2(1156, 50)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("17_6xsx5")
 
-[node name="Fossil4" type="Sprite2D" parent="Fossils"]
+[node name="Fossil4" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 position = Vector2(554, 432)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("18_888ls")
 
-[node name="Fossil5" type="Sprite2D" parent="Fossils"]
+[node name="Fossil5" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 position = Vector2(1377, -87)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("19_ase6p")
 
-[node name="Fossil6" type="Sprite2D" parent="Fossils"]
+[node name="Fossil6" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 position = Vector2(339, 560)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("20_d386g")
 
-[node name="Fossil7" type="Sprite2D" parent="Fossils"]
+[node name="Fossil7" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 position = Vector2(172, 713)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("21_6ov30")
+
+[node name="Fossil8" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2(1750, -140)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("14_dblif")
+
+[node name="Fossil9" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2(1887, -286)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_5cq76")
+
+[node name="Fossil10" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2(1782, -343)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("16_nw6pu")
+
+[node name="Fossil11" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2(2117, -302)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_6xsx5")
+
+[node name="Fossil12" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2(2152, -587)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("18_888ls")
+
+[node name="Fossil13" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2(1398, -36)
+rotation = 0.781907
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_ase6p")
+
+[node name="Fossil14" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2(2392, -465)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("20_d386g")
+
+[node name="Fossil15" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+position = Vector2(2084, -433)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_6ov30")
