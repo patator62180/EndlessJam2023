@@ -1,0 +1,25 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgtd7vgqbqbff"]
+
+[ext_resource type="Script" path="res://scenes/map_generation/MapGeneration.cs" id="1_turyk"]
+[ext_resource type="PackedScene" uid="uid://cn1te11nr3yc8" path="res://scenes/chunks/square_chunks/square_chunk_a.tscn" id="2_gf4rr"]
+[ext_resource type="PackedScene" uid="uid://be0nnm4sahsg3" path="res://scenes/chunks/steep_chunks/steep_chunk_a.tscn" id="3_y5xxs"]
+[ext_resource type="PackedScene" uid="uid://dqgp2hllxl85b" path="res://scenes/chunks/square_chunks/square_chunk_b.tscn" id="4_1hg5g"]
+[ext_resource type="PackedScene" uid="uid://84fkymkaf8bf" path="res://scenes/chunks/square_chunks/square_chunk_c.tscn" id="5_5h7y1"]
+[ext_resource type="PackedScene" uid="uid://bojfl2cvl4dvm" path="res://scenes/chunks/square_chunks/square_chunk_d.tscn" id="6_8fe2o"]
+[ext_resource type="PackedScene" uid="uid://dhkt6jci6fap3" path="res://scenes/chunks/square_chunks/square_chunk_e.tscn" id="7_k5jqf"]
+[ext_resource type="PackedScene" uid="uid://0om0c2i4ycj3" path="res://scenes/chunks/steep_chunks/steep_chunk_b.tscn" id="8_dawxu"]
+
+[node name="MapGeneration" type="Node2D" node_paths=PackedStringArray("startChunk", "chunksRoot", "collisionPolygon")]
+script = ExtResource("1_turyk")
+startChunk = NodePath("SquareChunkA")
+packedChunks = Array[PackedScene]([ExtResource("2_gf4rr"), ExtResource("3_y5xxs"), ExtResource("4_1hg5g"), ExtResource("5_5h7y1"), ExtResource("6_8fe2o"), ExtResource("7_k5jqf"), ExtResource("8_dawxu")])
+chunksRoot = NodePath("Chunks")
+collisionPolygon = NodePath("StaticBody2D/CollisionPolygon2D")
+
+[node name="SquareChunkA" parent="." instance=ExtResource("2_gf4rr")]
+
+[node name="Chunks" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]

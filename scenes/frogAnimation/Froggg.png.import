@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmehfgws3rpd5"
-path="res://.godot/imported/steep_chunk_a.png-02c60a232c804d470d33486327a948af.ctex"
+uid="uid://dk5vwhhglfb4y"
+path="res://.godot/imported/Froggg.png-952c66fa00a2d45c4ad3fbf0a2bdf502.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/chunks/steep_chunk_a/steep_chunk_a.png"
-dest_files=["res://.godot/imported/steep_chunk_a.png-02c60a232c804d470d33486327a948af.ctex"]
+source_file="res://scenes/frogAnimation/Froggg.png"
+dest_files=["res://.godot/imported/Froggg.png-952c66fa00a2d45c4ad3fbf0a2bdf502.ctex"]
 
 [params]
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://be0nnm4sahsg3"]
+
+[ext_resource type="Script" path="res://scenes/chunks/Chunk.cs" id="1_5hctf"]
+[ext_resource type="Texture2D" uid="uid://bmehfgws3rpd5" path="res://scenes/chunks/steep_chunks/steep_chunk_a.png" id="1_sbk51"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8ti30"]
+a = Vector2(-164, -1304)
+b = Vector2(152, -1498)
+
+[node name="SteepChunkA" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
+collision_mask = 255
+script = ExtResource("1_5hctf")
+collisionShape = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_sbk51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_8ti30")

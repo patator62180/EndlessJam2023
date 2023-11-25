@@ -1,54 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3m830ehdkgn4"]
+[gd_scene load_steps=6 format=3 uid="uid://b3m830ehdkgn4"]
 
-[ext_resource type="PackedScene" uid="uid://c2pwswca73ohy" path="res://scenes/chunks/basic_1/basic_chunk_1.tscn" id="1_5ifro"]
-[ext_resource type="Script" path="res://lib/Camera.cs" id="2_43nxb"]
+[ext_resource type="PackedScene" uid="uid://c4hkpr4g3pmpj" path="res://scenes/HUD/hud.tscn" id="1_senwl"]
 [ext_resource type="PackedScene" uid="uid://d26idy78h2r88" path="res://scenes/frog/frog.tscn" id="2_lq666"]
-[ext_resource type="PackedScene" uid="uid://bmlgsu813psrd" path="res://scenes/chunks/basic_2/basic_chunk_2.tscn" id="2_lrxs3"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
-[ext_resource type="PackedScene" uid="uid://d33w2xvakpbih" path="res://scenes/UI/hud.tscn" id="6_sk6sj"]
+[ext_resource type="PackedScene" uid="uid://cgtd7vgqbqbff" path="res://scenes/map_generation/map_generation.tscn" id="4_aqiom"]
+[ext_resource type="PackedScene" uid="uid://cf5xkij4alusm" path="res://parallax/MainParallax.tscn" id="7_r6pn2"]
 
 [node name="Main" type="Node2D"]
 
-[node name="BasicChunk" parent="." instance=ExtResource("1_5ifro")]
-position = Vector2(1271, -1283)
+[node name="HUD" parent="." instance=ExtResource("1_senwl")]
 
-[node name="BasicChunk2" parent="." instance=ExtResource("2_lrxs3")]
-position = Vector2(206, -219)
-
-[node name="BasicChunk4" parent="." instance=ExtResource("2_lrxs3")]
-position = Vector2(561, -575)
-
-[node name="BasicChunk3" parent="." instance=ExtResource("2_lrxs3")]
-position = Vector2(913, -925)
-
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("frog")]
-visible = false
-position = Vector2(27, 457)
-offset = Vector2(800, -1225)
-enabled = false
-zoom = Vector2(0.4, 0.4)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-script = ExtResource("2_43nxb")
-frog = NodePath("../Frog")
-
-[node name="Ball" parent="." instance=ExtResource("3_libtn")]
-position = Vector2(315, -568)
-mass = 57.89
+[node name="MapGeneration" parent="." instance=ExtResource("4_aqiom")]
 
 [node name="Frog" parent="." instance=ExtResource("2_lq666")]
-position = Vector2(-13, -328)
+position = Vector2(0, -1550)
 
 [node name="Camera2D" type="Camera2D" parent="Frog"]
-position = Vector2(2, 0)
-offset = Vector2(800, -300)
-zoom = Vector2(0.4, 0.4)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-drag_horizontal_enabled = true
-drag_horizontal_offset = 1.0
-drag_vertical_offset = -1.0
-drag_left_margin = 0.5
-drag_right_margin = 0.5
+position = Vector2(707, 78)
 
-[node name="HUD" parent="." instance=ExtResource("6_sk6sj")]
+[node name="Ball" parent="." instance=ExtResource("3_libtn")]
+position = Vector2(441, -2021)
+
+[node name="Parallax" parent="." instance=ExtResource("7_r6pn2")]

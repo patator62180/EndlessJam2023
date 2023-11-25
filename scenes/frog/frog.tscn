@@ -13,6 +13,9 @@ size = Vector2(22.5713, 39.5018)
 [node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("leftArm", "rightArm", "hand", "wrist")]
 collision_layer = 2147483650
 collision_mask = 2147483649
+up_direction = Vector2(0, 1)
+floor_constant_speed = true
+platform_floor_layers = 1
 script = ExtResource("1_rajx0")
 leftArm = NodePath("LeftArm")
 rightArm = NodePath("RightArm")
@@ -23,7 +26,6 @@ wrist = NodePath("LeftArm/Wrist")
 position = Vector2(4, 171)
 scale = Vector2(8.56, 6.04)
 shape = SubResource("CircleShape2D_biyxf")
-one_way_collision = true
 
 [node name="RightArm" type="Node2D" parent="."]
 position = Vector2(40, -110)
