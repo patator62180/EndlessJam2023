@@ -1,53 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3m830ehdkgn4"]
+[gd_scene load_steps=7 format=3 uid="uid://b3m830ehdkgn4"]
 
 [ext_resource type="PackedScene" uid="uid://c2pwswca73ohy" path="res://scenes/chunks/basic_1/basic_chunk_1.tscn" id="1_5ifro"]
 [ext_resource type="Script" path="res://lib/Camera.cs" id="2_43nxb"]
 [ext_resource type="PackedScene" uid="uid://d26idy78h2r88" path="res://scenes/frog/frog.tscn" id="2_lq666"]
 [ext_resource type="PackedScene" uid="uid://bmlgsu813psrd" path="res://scenes/chunks/basic_2/basic_chunk_2.tscn" id="2_lrxs3"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
-[ext_resource type="FontFile" uid="uid://24sqtlkpc22r" path="res://scenes/fonts/intuitive.ttf" id="6_0p7fk"]
-[ext_resource type="Script" path="res://scenes/main_menu/Quit.gd" id="7_3m22h"]
-[ext_resource type="Script" path="res://scenes/main/Back.gd" id="8_lylis"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sok0p"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgab2"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.686275)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kd1b"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.784314)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4miy"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kfgm"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.686275)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acuq7"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.784314)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[ext_resource type="PackedScene" uid="uid://d33w2xvakpbih" path="res://scenes/UI/hud.tscn" id="6_sk6sj"]
 
 [node name="Main" type="Node2D"]
 
@@ -93,61 +51,4 @@ drag_vertical_offset = -1.0
 drag_left_margin = 0.5
 drag_right_margin = 0.5
 
-[node name="HUD" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Quit" type="Button" parent="HUD"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -160.0
-offset_top = 8.0
-offset_right = -32.0
-offset_bottom = 84.0
-grow_horizontal = 0
-focus_mode = 0
-theme_override_fonts/font = ExtResource("6_0p7fk")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_sok0p")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jgab2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7kd1b")
-text = "X"
-script = ExtResource("7_3m22h")
-metadata/_edit_use_anchors_ = true
-
-[node name="Back" type="Button" parent="HUD"]
-anchors_preset = -1
-anchor_left = 0.764
-anchor_top = -0.012
-anchor_right = 0.764
-anchor_bottom = -0.012
-offset_left = -80.1281
-offset_top = 15.776
-offset_right = 82.8719
-offset_bottom = 91.776
-grow_horizontal = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("6_0p7fk")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_h4miy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4kfgm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_acuq7")
-text = "BACK"
-script = ExtResource("8_lylis")
-metadata/_edit_use_anchors_ = true
-
-[node name="ScoreLabel" type="Label" parent="HUD"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_right = 96.0
-offset_bottom = 120.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("6_0p7fk")
-theme_override_font_sizes/font_size = 100
-text = "000"
-horizontal_alignment = 1
-
-[connection signal="pressed" from="HUD/Quit" to="HUD/Quit" method="_on_pressed"]
-[connection signal="pressed" from="HUD/Back" to="HUD/Back" method="_on_pressed"]
+[node name="HUD" parent="." instance=ExtResource("6_sk6sj")]

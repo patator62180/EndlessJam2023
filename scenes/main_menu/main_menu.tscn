@@ -1,11 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bok2yqw2duxen"]
+[gd_scene load_steps=12 format=3 uid="uid://bok2yqw2duxen"]
 
 [ext_resource type="FontFile" uid="uid://24sqtlkpc22r" path="res://scenes/fonts/intuitive.ttf" id="1_dg6fh"]
+[ext_resource type="FontFile" uid="uid://cqcbgevv0jq6u" path="res://scenes/fonts/ThatNogoFontCasual.ttf" id="1_n60ro"]
 [ext_resource type="Script" path="res://scenes/main_menu/NewGame.gd" id="2_mmyad"]
 [ext_resource type="Script" path="res://scenes/main_menu/Quit.gd" id="3_178uf"]
-[ext_resource type="Texture2D" uid="uid://by2xpxq576oo6" path="res://scenes/ball/ball.png" id="4_xnukp"]
-[ext_resource type="Script" path="res://scenes/main/Ball.gd" id="5_2l81h"]
-[ext_resource type="Texture2D" uid="uid://skvxhgpmwuue" path="res://scenes/chunks/basic_chunk.png" id="6_fhkte"]
 [ext_resource type="Texture2D" uid="uid://blcldw0scircv" path="res://scenes/frog/speech_bubble_black.png" id="7_fb4ts"]
 [ext_resource type="Texture2D" uid="uid://dmefmqm3ksv0t" path="res://scenes/frog/frog_main.png" id="8_fydsm"]
 [ext_resource type="Texture2D" uid="uid://cfq1y87q2kaje" path="res://scenes/UI/left_right_arrows.png" id="9_fwk0y"]
@@ -13,23 +11,24 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21oxo"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
+corner_radius_top_left = 100
+corner_radius_top_right = 50
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovro8"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.686275)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 100
+corner_radius_top_right = 50
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_735b1"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.784314)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 100
+corner_radius_top_right = 50
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 50
 
 [node name="MainMenu" type="Node2D"]
 
@@ -53,9 +52,9 @@ theme_override_constants/separation = 0
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_dg6fh")
-theme_override_font_sizes/font_size = 200
-text = "FROCK"
+theme_override_fonts/font = ExtResource("1_n60ro")
+theme_override_font_sizes/font_size = 150
+text = "GRENOUILLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -68,54 +67,44 @@ theme_override_constants/separation = 25
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
 
 [node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("1_dg6fh")
+theme_override_fonts/font = ExtResource("1_n60ro")
 theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = SubResource("StyleBoxFlat_21oxo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ovro8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_735b1")
-text = "PUSH"
+text = "start"
 script = ExtResource("2_mmyad")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 300
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("1_dg6fh")
+theme_override_fonts/font = ExtResource("1_n60ro")
 theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = SubResource("StyleBoxFlat_21oxo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ovro8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_735b1")
-text = "GIVE UP"
+text = "quit"
 script = ExtResource("3_178uf")
-
-[node name="Ball" type="Sprite2D" parent="."]
-position = Vector2(928, 432)
-scale = Vector2(0.865297, 0.865297)
-texture = ExtResource("4_xnukp")
-script = ExtResource("5_2l81h")
-
-[node name="BasicChunk" type="Sprite2D" parent="."]
-position = Vector2(960, 568)
-rotation = 0.261799
-texture = ExtResource("6_fhkte")
 
 [node name="SpeechBubbleBlack" type="Sprite2D" parent="."]
 position = Vector2(184, 376)
 scale = Vector2(0.397222, 0.35)
 texture = ExtResource("7_fb4ts")
 
-[node name="Label2" type="Label" parent="."]
+[node name="Speechbubble" type="Label" parent="."]
 offset_left = 72.0
 offset_top = 275.0
 offset_right = 296.0
@@ -128,11 +117,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label3" type="Label" parent="."]
-offset_left = 952.0
-offset_top = 8.0
-offset_right = 1128.0
-offset_bottom = 136.0
+[node name="Controls" type="Label" parent="."]
+offset_left = 928.0
+offset_top = 324.0
+offset_right = 1104.0
+offset_bottom = 452.0
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_dg6fh")
@@ -143,17 +132,31 @@ Control arms "
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Credits" type="Label" parent="."]
+offset_left = 344.0
+offset_top = 560.0
+offset_right = 811.0
+offset_bottom = 647.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_dg6fh")
+theme_override_font_sizes/font_size = 20
+text = "Made by: David Corticchiato, Lucy Gradoz, Martin Briand, Omar Slimani & Samuel Terras-Viola"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="FrogMain" type="Sprite2D" parent="."]
 position = Vector2(168, 696)
 scale = Vector2(0.411133, 0.411133)
 texture = ExtResource("8_fydsm")
 
 [node name="LeftRightArrows" type="Sprite2D" parent="."]
-position = Vector2(928, 40)
+position = Vector2(904, 356)
 texture = ExtResource("9_fwk0y")
 
 [node name="MouseIcon" type="Sprite2D" parent="."]
-position = Vector2(928, 100)
+position = Vector2(904, 416)
 texture = ExtResource("10_537w3")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGame" to="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGame" method="_on_pressed"]
