@@ -4,7 +4,7 @@ using System.Linq;
 
 public partial class Frog : CharacterBody2D
 {
-    const float VelocityScale = 200f;
+    const float VelocityScale = 300f;
     const string BallGroup = "ball";
     const string MoveRightInput = "move_right";
 
@@ -88,16 +88,23 @@ public partial class Frog : CharacterBody2D
 
         var velocity = Velocity;
 
-        velocity.Y += (float)delta * 200f;
+        velocity.Y += (float)delta * 700f;
 
         if (movingRight && !wristTouchingBall)
         {
             velocity.X = VelocityScale;
         }
+        else
+        {
+            velocity.X = 0;
+        }
 
         Velocity = velocity;
 
+        UpDirection = new Vector2(0.5f, -0.5f);
+
         MoveAndSlide();
+
 
         if (!movingRight && handTouchingBall)
         {
