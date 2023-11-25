@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2pwswca73ohy"]
+
+[ext_resource type="Texture2D" uid="uid://skvxhgpmwuue" path="res://scenes/chunks/basic_chunk.png" id="1_2e5by"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a8wyp"]
+a = Vector2(0.581788, -28.6273)
+b = Vector2(-0.111768, 38.7243)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yi1d0"]
+
+[node name="BasicChunk2" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2e5by")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -60.66)
+scale = Vector2(7.265, 7.265)
+skew = 0.776672
+shape = SubResource("SegmentShape2D_a8wyp")
+
+[node name="Obstacle" type="StaticBody2D" parent="."]
+position = Vector2(-56, -52)
+rotation = -0.74002
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+texture = ExtResource("1_2e5by")
+region_enabled = true
+region_rect = Rect2(294, 111.5, 58, 56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+scale = Vector2(2.825, 2.825)
+shape = SubResource("RectangleShape2D_yi1d0")

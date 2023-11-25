@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://bok2yqw2duxen"]
+
+[ext_resource type="FontFile" uid="uid://24sqtlkpc22r" path="res://scenes/fonts/intuitive.ttf" id="1_0ebaj"]
+[ext_resource type="Texture2D" uid="uid://by2xpxq576oo6" path="res://scenes/ball/ball.png" id="2_icbv4"]
+[ext_resource type="Script" path="res://scenes/main/Ball.gd" id="3_2drt1"]
+[ext_resource type="Script" path="res://scenes/main/NewGame.gd" id="3_15flc"]
+[ext_resource type="Texture2D" uid="uid://skvxhgpmwuue" path="res://scenes/chunks/basic_chunk.png" id="4_bw0ar"]
+[ext_resource type="Script" path="res://scenes/main/Quit.gd" id="4_ipq1w"]
+[ext_resource type="Texture2D" uid="uid://dmefmqm3ksv0t" path="res://scenes/frog/frog_main.png" id="8_du2he"]
+[ext_resource type="Texture2D" uid="uid://blcldw0scircv" path="res://scenes/frog/speech_bubble_black.png" id="8_y85lw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21oxo"]
+bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovro8"]
+bg_color = Color(0.352941, 0.356863, 0.290196, 0.686275)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_735b1"]
+bg_color = Color(0.352941, 0.356863, 0.290196, 0.784314)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.4, 0.643137, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_0ebaj")
+theme_override_font_sizes/font_size = 200
+text = "FROCK"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_0ebaj")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxFlat_21oxo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ovro8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_735b1")
+text = "PUSH"
+script = ExtResource("3_15flc")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_0ebaj")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxFlat_21oxo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ovro8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_735b1")
+text = "GIVE UP"
+script = ExtResource("4_ipq1w")
+
+[node name="Ball" type="Sprite2D" parent="."]
+position = Vector2(928, 432)
+scale = Vector2(0.865297, 0.865297)
+texture = ExtResource("2_icbv4")
+script = ExtResource("3_2drt1")
+
+[node name="BasicChunk" type="Sprite2D" parent="."]
+position = Vector2(960, 568)
+rotation = 0.261799
+texture = ExtResource("4_bw0ar")
+
+[node name="SpeechBubbleBlack" type="Sprite2D" parent="."]
+position = Vector2(184, 376)
+scale = Vector2(0.397222, 0.35)
+texture = ExtResource("8_y85lw")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 275.0
+offset_right = 296.0
+offset_bottom = 478.0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_0ebaj")
+theme_override_font_sizes/font_size = 25
+text = "There is scarcely any passion without struggle."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FrogMain" type="Sprite2D" parent="."]
+position = Vector2(168, 696)
+scale = Vector2(0.411133, 0.411133)
+texture = ExtResource("8_du2he")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGame" to="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGame" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/Quit" to="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/Quit" method="_on_pressed"]
