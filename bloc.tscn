@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://8q08i13fsw0"]
+
+[node name="Bloc" type="Polygon2D"]
+color = Color(0.509804, 0.858824, 0.439216, 1)
+polygon = PackedVector2Array(0, 0, 1600, 0, 1600, 800, 0, 800)

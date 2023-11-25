@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="EndlessJam2023"
-config/features=PackedStringArray("4.1", "GL Compatibility")
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=800
 
 [dotnet]
 

@@ -1,0 +1,130 @@
+[gd_scene load_steps=18 format=3 uid="uid://kmag2kmjhtk0"]
+
+[ext_resource type="Script" path="res://ParallaxBackground.cs" id="1_jwka2"]
+[ext_resource type="PackedScene" uid="uid://8q08i13fsw0" path="res://bloc.tscn" id="2_b72il"]
+[ext_resource type="Texture2D" uid="uid://bcrdq81mmkgk4" path="res://clouds.png" id="2_fgyan"]
+[ext_resource type="Texture2D" uid="uid://cw1uno61o6jfn" path="res://trees.png" id="3_xxa0l"]
+[ext_resource type="PackedScene" uid="uid://cyq1tuwxttg8q" path="res://slope.tscn" id="4_7nmy0"]
+[ext_resource type="Texture2D" uid="uid://c0c2ylcdo75od" path="res://flyingBird.png" id="5_vrayf"]
+[ext_resource type="Texture2D" uid="uid://d1a5b47ko8myw" path="res://icon.svg" id="7_lo4h8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip32x"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68eqi"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4cmq"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84wle"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(0, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsfpg"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(640, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fss8w"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(1280, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o76d7"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(0, 1280, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u4ly"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(640, 1280, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4sf2"]
+atlas = ExtResource("5_vrayf")
+region = Rect2(1280, 1280, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fic5h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip32x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68eqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4cmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84wle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsfpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fss8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o76d7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u4ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4sf2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_jwka2")
+
+[node name="Bloc" parent="ParallaxBackground" instance=ExtResource("2_b72il")]
+color = Color(0.505882, 0.756863, 0.8, 1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1600, 800)
+
+[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_fgyan")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1600, 800)
+
+[node name="Trees" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_xxa0l")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(-1, -1)
+motion_mirroring = Vector2(1600, 800)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(105, 359)
+scale = Vector2(0.171875, 0.171875)
+sprite_frames = SubResource("SpriteFrames_fic5h")
+autoplay = "default"
+frame = 1
+frame_progress = 0.0879368
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.290196, 0.521569, 0.243137, 1)
+polygon = PackedVector2Array(0, 800, 1600, 0, 1650, 50, 50, 850)
+
+[node name="Slope" parent="." instance=ExtResource("4_7nmy0")]
+position = Vector2(0, -7200)
+scale = Vector2(10, 10)
+color = Color(0.321569, 0.568627, 0.270588, 1)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(672, 393)
+rotation = -0.494385
+texture = ExtResource("7_lo4h8")
