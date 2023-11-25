@@ -105,7 +105,6 @@ public partial class Frog : CharacterBody2D
 
         MoveAndSlide();
 
-
         if (!movingRight && handTouchingBall)
         {
             ball.Sleeping = true;
