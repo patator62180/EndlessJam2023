@@ -1,11 +1,14 @@
 extends CanvasLayer
 
 var score = 0
-var score_label
+@export var scorelabel:Label
+var initialposition:int
+@export var frog:Node2D
 
 func _ready():
-	score_label = get_parent().get_node("ScoreLabel")
-	score = 0
+    score = 0
+    initialposition = frog.global_position.y
 
 func _physics_process(delta):
-	var velocity = Vector2()
+    score = int(max(initialposition-frog.global_position.y,score))
+    scorelabel.text=str(score)

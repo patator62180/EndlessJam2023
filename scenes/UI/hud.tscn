@@ -1,72 +1,72 @@
-[gd_scene load_steps=14 format=3 uid="uid://d33w2xvakpbih"]
+[gd_scene load_steps=12 format=3 uid="uid://d33w2xvakpbih"]
 
 [ext_resource type="FontFile" uid="uid://24sqtlkpc22r" path="res://scenes/fonts/intuitive.ttf" id="1_3srf8"]
+[ext_resource type="Script" path="res://scenes/UI/hud.gd" id="1_erja8"]
 [ext_resource type="Script" path="res://scenes/main_menu/Quit.gd" id="2_wdltk"]
 [ext_resource type="Script" path="res://scenes/main/Back.gd" id="3_14as4"]
-[ext_resource type="Texture2D" uid="uid://d1a5b47ko8myw" path="res://icon.svg" id="5_1w1uq"]
-[ext_resource type="Script" path="res://scenes/UI/Player.gd" id="5_pgd54"]
-[ext_resource type="Script" path="res://scenes/UI/ScoreLabel.gd" id="5_ssflv"]
-[ext_resource type="Script" path="res://scenes/UI/Sprite2D.gd" id="7_i6v7c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sok0p"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
+corner_radius_top_left = 50
+corner_radius_top_right = 100
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgab2"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.686275)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 50
+corner_radius_top_right = 100
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kd1b"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.784314)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 50
+corner_radius_top_right = 100
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4miy"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
+corner_radius_top_left = 50
+corner_radius_top_right = 100
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kfgm"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.686275)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 50
+corner_radius_top_right = 100
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acuq7"]
+bg_color = Color(0.352941, 0.356863, 0.290196, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 100
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67s7i"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.784314)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 100
+corner_radius_top_right = 50
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 50
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("scorelabel")]
 layer = 2
+script = ExtResource("1_erja8")
+scorelabel = NodePath("ScoreLabel")
 
-[node name="Player" type="Node2D" parent="."]
-script = ExtResource("5_pgd54")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(176, 552)
-texture = ExtResource("5_1w1uq")
-script = ExtResource("7_i6v7c")
-
-[node name="Quit" type="Button" parent="Player"]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="Quit" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.995833
 anchor_right = 1.0
-offset_left = 992.0
-offset_top = 8.0
-offset_right = 1120.0
-offset_bottom = 84.0
+offset_left = -192.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = 140.0
 grow_horizontal = 0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_3srf8")
@@ -78,39 +78,56 @@ text = "X"
 script = ExtResource("2_wdltk")
 metadata/_edit_use_anchors_ = true
 
-[node name="Back" type="Button" parent="Player"]
+[node name="Retry" type="Button" parent="."]
 anchors_preset = -1
-anchor_left = 0.764
-anchor_top = -0.012
-anchor_right = 0.764
-anchor_bottom = -0.012
-offset_left = 800.0
-offset_top = 8.0
-offset_right = 963.0
-offset_bottom = 84.0
-grow_horizontal = 2
+anchor_left = 0.989583
+anchor_right = 1.0
+offset_left = -408.0
+offset_top = 64.0
+offset_right = -245.0
+offset_bottom = 140.0
+grow_horizontal = 0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_3srf8")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_h4miy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4kfgm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_acuq7")
-text = "BACK"
+text = "RETRY"
 script = ExtResource("3_14as4")
 metadata/_edit_use_anchors_ = true
 
-[node name="ScoreLabel" type="Label" parent="Player"]
+[node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_right = 1152.0
-offset_bottom = 120.0
+offset_left = -32.0
+offset_top = 72.0
+offset_right = 616.0
+offset_bottom = 192.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_3srf8")
 theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_67s7i")
 text = "0"
 horizontal_alignment = 1
-script = ExtResource("5_ssflv")
 
-[connection signal="pressed" from="Player/Quit" to="Player/Quit" method="_on_pressed"]
-[connection signal="pressed" from="Player/Back" to="Player/Back" method="_on_pressed"]
+[node name="Score" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -640.0
+offset_top = 88.0
+offset_right = -18.0
+offset_bottom = 191.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3srf8")
+theme_override_font_sizes/font_size = 100
+text = "max altitude"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[connection signal="pressed" from="Retry" to="Retry" method="_on_pressed"]
