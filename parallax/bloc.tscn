@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://8q08i13fsw0"]
+[gd_scene format=3 uid="uid://cb1dg8mbxkspp"]
 
 [node name="Bloc" type="Polygon2D"]
 color = Color(0.509804, 0.858824, 0.439216, 1)

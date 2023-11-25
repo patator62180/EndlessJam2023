@@ -11,6 +11,6 @@ public partial class ParallaxBackground : Godot.ParallaxBackground
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		ScrollOffset += new Vector2(-100, 50) * (float) delta;
+		ScrollOffset += new Vector2(-115.2f, 64.8f) * (float) delta;
 	}
 }

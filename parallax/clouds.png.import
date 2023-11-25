@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0c2ylcdo75od"
-path="res://.godot/imported/flyingBird.png-405642a9089dd5726a0d6852e2288d32.ctex"
+uid="uid://8eimfe4ch51x"
+path="res://.godot/imported/clouds.png-4f752c402d31d50a4906bca8d65e1382.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://flyingBird.png"
-dest_files=["res://.godot/imported/flyingBird.png-405642a9089dd5726a0d6852e2288d32.ctex"]
+source_file="res://parallax/clouds.png"
+dest_files=["res://.godot/imported/clouds.png-4f752c402d31d50a4906bca8d65e1382.ctex"]
 
 [params]
 
