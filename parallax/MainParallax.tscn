@@ -1,0 +1,120 @@
+[gd_scene load_steps=18 format=3 uid="uid://cf5xkij4alusm"]
+
+[ext_resource type="Script" path="res://parallax/ParallaxBackground.cs" id="1_q6llp"]
+[ext_resource type="PackedScene" uid="uid://cb1dg8mbxkspp" path="res://parallax/bloc.tscn" id="2_tj6wb"]
+[ext_resource type="Texture2D" uid="uid://8eimfe4ch51x" path="res://parallax/clouds.png" id="3_m6gwc"]
+[ext_resource type="Texture2D" uid="uid://d1a5b47ko8myw" path="res://icon.svg" id="3_r51uw"]
+[ext_resource type="PackedScene" uid="uid://oqammyojrhv5" path="res://parallax/slope.tscn" id="4_epxs0"]
+[ext_resource type="Texture2D" uid="uid://wr7cqfee0iem" path="res://parallax/trees.png" id="4_mn20d"]
+[ext_resource type="Texture2D" uid="uid://ftl70sb6r1ir" path="res://parallax/flyingBird.png" id="5_xtaac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58xsm"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sm16"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhscy"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amwt7"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(0, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f64u"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(640, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fnfs"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(1280, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2703i"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(0, 1280, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybhyr"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(640, 1280, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o13gu"]
+atlas = ExtResource("5_xtaac")
+region = Rect2(1280, 1280, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v313a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58xsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sm16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhscy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amwt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f64u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fnfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2703i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybhyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o13gu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_q6llp")
+
+[node name="Bloc" parent="ParallaxBackground" instance=ExtResource("2_tj6wb")]
+color = Color(0.552941, 0.811765, 0.827451, 1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("3_m6gwc")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Trees" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("4_mn20d")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(-1, -1)
+motion_mirroring = Vector2(1152, 648)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(105, 359)
+scale = Vector2(0.171875, 0.171875)
+sprite_frames = SubResource("SpriteFrames_v313a")
+autoplay = "default"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(544, 269)
+rotation = -0.494385
+texture = ExtResource("3_r51uw")
+
+[node name="Slope" parent="." instance=ExtResource("4_epxs0")]
