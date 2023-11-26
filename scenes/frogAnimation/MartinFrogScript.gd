@@ -62,8 +62,8 @@ func _ready():
     
     hips = $"Skeleton2D/Hip"
     
-    handLRest = $"Skeleton2D/Hip/HandLRest"
-    handRRest = $"Skeleton2D/Hip/HandRRest"
+    handLRest = $"Skeleton2D/Hip/HandLRestParent/HandLRest"
+    handRRest = $"Skeleton2D/Hip/HandRRestParent/HandRRest"
     
     bodyCollider.body_entered.connect(collision_start)
     bodyCollider.body_exited.connect(collision_end)
@@ -130,7 +130,6 @@ func raycastLegs():
     
     #if modifier == 0:
     #    return
-    
     
     #sbody.rotation = deg_to_rad(-modifier * 25)
     
@@ -214,8 +213,9 @@ func rayCastArms():
         targetL = lerp(armLTarget.get_global_position(), ball.targetL.get_global_position(), 0.1)
         targetR = lerp(armRTarget.get_global_position(), ball.targetR.get_global_position(), 0.1)
     else:
-        targetL = lerp(armLTarget.get_global_position(), handLRest.get_global_position(), 0.1)
-        targetR = lerp(armRTarget.get_global_position(), handRRest.get_global_position(), 0.1)
+        var lerpValue = 0.1 if !jumping else 0.5
+        targetL = lerp(armLTarget.get_global_position(), handLRest.get_global_position(), lerpValue)
+        targetR = lerp(armRTarget.get_global_position(), handRRest.get_global_position(), lerpValue)
         
     armLTarget.set_global_position(targetL)
     armRTarget.set_global_position(targetR)
@@ -233,8 +233,6 @@ func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 # interact with boulder
 # throwing
 # better jumping (looking & feeling)
-
-
 
 func _on_animation_player_animation_finished(anim_name):
     if anim_name == "Jump":

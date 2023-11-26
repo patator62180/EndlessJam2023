@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqdwncfyjmeo6"]
+[gd_scene load_steps=17 format=3 uid="uid://bqdwncfyjmeo6"]
 
 [ext_resource type="Script" path="res://scenes/frogAnimation/MartinFrogScript.gd" id="1_c7gqk"]
 [ext_resource type="Texture2D" uid="uid://dk5vwhhglfb4y" path="res://scenes/frogAnimation/Froggg.png" id="1_hfxak"]
 [ext_resource type="Texture2D" uid="uid://yguof4xbjr4c" path="res://scenes/frogAnimation/pixil-frame-0.png" id="2_v7esi"]
+[ext_resource type="Script" path="res://scenes/frogAnimation/Jiggle.gd" id="4_tv2qb"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_p1ea1"]
 target_nodepath = NodePath("../HandL")
@@ -102,7 +103,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 94), Vector2(1, 394), Vector2(1, 394), Vector2(1, 94)]
+"values": [Vector2(1, 94), Vector2(-7, 500), Vector2(1, 550), Vector2(1, 94)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Hip:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 0.8), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8lt3g"]
@@ -118,6 +131,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 94)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Hip:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4pbi7"]
@@ -221,10 +246,12 @@ modification_stack = SubResource("SkeletonModificationStack2D_878nt")
 
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(1, 94)
+scale = Vector2(1.2, 1)
 rest = Transform2D(1, 0, 0, 1, 1, 94)
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(-1, -140)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, -1, -140)
 
 [node name="Neck" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
@@ -337,11 +364,21 @@ target_position = Vector2(0, 1500)
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
-[node name="HandLRest" type="Node2D" parent="Skeleton2D/Hip"]
-position = Vector2(494, 527)
+[node name="HandLRestParent" type="Node2D" parent="Skeleton2D/Hip"]
+position = Vector2(565, 1022)
 
-[node name="HandRRest" type="Node2D" parent="Skeleton2D/Hip"]
-position = Vector2(-560, 568)
+[node name="HandLRest" type="Node2D" parent="Skeleton2D/Hip/HandLRestParent"]
+position = Vector2(811, 164)
+script = ExtResource("4_tv2qb")
+range = 500
+
+[node name="HandRRestParent" type="Node2D" parent="Skeleton2D/Hip"]
+position = Vector2(297, 896)
+
+[node name="HandRRest" type="Node2D" parent="Skeleton2D/Hip/HandRRestParent"]
+position = Vector2(-894, 195)
+script = ExtResource("4_tv2qb")
+range = 500
 
 [node name="HandL" type="Node2D" parent="."]
 position = Vector2(1341, -6)
@@ -396,7 +433,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_ibk7b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 2.0
+speed_scale = 1.5
 libraries = {
 "": SubResource("AnimationLibrary_4pbi7")
 }
