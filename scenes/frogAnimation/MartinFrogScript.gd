@@ -34,8 +34,16 @@ var safeRockArea
 var unsafeRockArea
 var touchingBall
 var blockedByBall
+var hips
 
 var ball: RigidBody2D
+
+var handRRest
+var handLRest
+
+var animator
+
+var jumping
 
 func _ready():
     legLTarget = $"FootL"
@@ -54,6 +62,10 @@ func _ready():
     body = $"Skeleton2D/Hip/Torso"
     safeRockArea = $"SafeRockArea"
     unsafeRockArea = $"UnsafeRockArea"
+    hips = $"Skeleton2D/Hip"
+    handLRest = $"Skeleton2D/Hip/HandLRest"
+    handRRest = $"Skeleton2D/Hip/HandRRest"
+    animator = $AnimationPlayer
 
     safeRockArea.body_entered.connect(body_entered_safe_rock_area)
     safeRockArea.body_exited.connect(body_exited_safe_rock_area)
@@ -84,8 +96,10 @@ func _physics_process(delta):
         velocity.y += gravity * delta
 
     # Handle Jump.
-    if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-        velocity.y = JUMP_VELOCITY
+    if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !jumping:
+        #velocity.y = JUMP_VELOCITY
+        animator.play("Jump");
+        jumping = true
 
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
@@ -106,8 +120,8 @@ func _physics_process(delta):
 
         move_and_slide()
         apply_floor_snap()
-        raycastLegs()
 
+    raycastLegs()
     rayCastArms()
 
     if touchingBall and not ball == null:
@@ -131,12 +145,25 @@ func raycastLegs():
     var moving = right || left
     var modifier = 1 if right else -1 if left else 0
     
-    body.rotation = deg_to_rad(-modifier * 25)
+    #if modifier == 0:
+    #    return
+    
+    
+    #sbody.rotation = deg_to_rad(-modifier * 25)
+    
+    if is_on_floor():
+        hips.rotation = lerp(hips.rotation, -get_floor_angle(), 0.1) 
+    else:
+        hips.rotation = lerp(hips.rotation, deg_to_rad(0), 0.1) 
+        
+    body.rotation = lerp(body.rotation, deg_to_rad(-modifier * 25), 0.1)         
     
     var justStopped = wasMoving && !moving
     var footSpeedModifier = 1 if ! touchingBall else 0.5
     
-    raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
+    var footAngleModifier = 40
+    #raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
+    raycastLegL2.rotation = deg_to_rad(modifier * -footAngleModifier)
     var rayCastL = raycastLegL if !moving || !is_on_floor() else raycastLegL2
     
     var colliderL = rayCastL.get_collider()
@@ -165,7 +192,8 @@ func raycastLegs():
     else:
         currentTargetL = null
 
-    raycastLegR2.position = raycastLegR.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
+    #raycastLegR2.position = raycastLegR.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
+    raycastLegR2.rotation = deg_to_rad(modifier * -footAngleModifier)
     var rayCastR = raycastLegR if !moving || !is_on_floor() else raycastLegR2
     
     var colliderR = rayCastR.get_collider()
@@ -196,9 +224,19 @@ func raycastLegs():
     wasMoving = moving
       
 func rayCastArms():
+    var targetL
+    var targetR
+    
     if touchingBall:
-        armLTarget.set_global_position(ball.targetL.get_global_position())
-        armRTarget.set_global_position(ball.targetR.get_global_position())
+        targetL = lerp(armLTarget.get_global_position(), ball.targetL.get_global_position(), 0.1)
+        targetR = lerp(armRTarget.get_global_position(), ball.targetR.get_global_position(), 0.1)
+    else:
+        targetL = lerp(armLTarget.get_global_position(), handLRest.get_global_position(), 0.1)
+        targetR = lerp(armRTarget.get_global_position(), handRRest.get_global_position(), 0.1)
+        
+    armLTarget.set_global_position(targetL)
+    armRTarget.set_global_position(targetR)
+    
   
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
     var q0 = p0.lerp(p1, t)
@@ -213,3 +251,10 @@ func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 # throwing
 # better jumping (looking & feeling)
 
+
+
+func _on_animation_player_animation_finished(anim_name):
+    if anim_name == "Jump":
+        velocity.y = JUMP_VELOCITY
+        jumping = false;
+        

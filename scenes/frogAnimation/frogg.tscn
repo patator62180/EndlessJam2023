@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqdwncfyjmeo6"]
+[gd_scene load_steps=15 format=3 uid="uid://bqdwncfyjmeo6"]
 
 [ext_resource type="Script" path="res://scenes/frogAnimation/MartinFrogScript.gd" id="1_c7gqk"]
 [ext_resource type="Texture2D" uid="uid://dk5vwhhglfb4y" path="res://scenes/frogAnimation/Froggg.png" id="1_hfxak"]
@@ -80,14 +80,54 @@ modifications/3 = SubResource("SkeletonModification2DFABRIK_teh5y")
 radius = 294.0
 height = 1362.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_te20w"]
+[sub_resource type="Animation" id="Animation_0b7oj"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_8fgor"]
+resource_name = "Jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 94), Vector2(1, 394), Vector2(1, 394), Vector2(1, 94)]
+}
+
+[sub_resource type="Animation" id="Animation_8lt3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 94)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4pbi7"]
+_data = {
+"Idle": SubResource("Animation_0b7oj"),
+"Jump": SubResource("Animation_8fgor"),
+"RESET": SubResource("Animation_8lt3g")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7bf2k"]
 radius = 929.69
 
 [node name="FROGG" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 5
 floor_max_angle = 1.0472
 floor_snap_length = 10.0
-platform_floor_layers = 255
 script = ExtResource("1_c7gqk")
 
 [node name="Polygons" type="Node2D" parent="."]
@@ -191,14 +231,17 @@ rest = Transform2D(1, 0, 0, 1, 1, -83)
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
 position = Vector2(145, -75)
 rest = Transform2D(1, 0, 0, 1, 145, -75)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeArmL" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmL"]
 position = Vector2(-5, 283)
 rest = Transform2D(1, 0, 0, 1, -5, 283)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeForeArmL" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmL/ForeArmL"]
 position = Vector2(-4, 232)
 rest = Transform2D(1, 0, 0, 1, -4, 232)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HandL" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmL/ForeArmL/ForeForeArmL"]
 position = Vector2(2, 223)
@@ -206,18 +249,22 @@ rest = Transform2D(1, 0, 0, 1, 2, 223)
 auto_calculate_length_and_angle = false
 length = 91.22
 bone_angle = 81.11
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
 position = Vector2(-179, -54)
 rest = Transform2D(1, 0, 0, 1, -179, -54)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeArmR" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmR"]
 position = Vector2(-5, 283)
 rest = Transform2D(1, 0, 0, 1, -5, 283)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeForeArmR" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmR/ForeArmR"]
 position = Vector2(-4, 232)
 rest = Transform2D(1, 0, 0, 1, -4, 232)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HandR" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmR/ForeArmR/ForeForeArmR"]
 position = Vector2(2, 223)
@@ -225,18 +272,22 @@ rest = Transform2D(1, 0, 0, 1, 2, 223)
 auto_calculate_length_and_angle = false
 length = 91.22
 bone_angle = 81.11
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegL" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(172, -51)
 rest = Transform2D(1, 0, 0, 1, 172, -51)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeLegL" type="Bone2D" parent="Skeleton2D/Hip/LegL"]
 position = Vector2(-10, 254)
 rest = Transform2D(1, 0, 0, 1, -10, 254)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeForeLegL" type="Bone2D" parent="Skeleton2D/Hip/LegL/ForeLegL"]
 position = Vector2(-5, 301)
 rest = Transform2D(1, 0, 0, 1, -5, 301)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FootL" type="Bone2D" parent="Skeleton2D/Hip/LegL/ForeLegL/ForeForeLegL"]
 position = Vector2(3, 260)
@@ -244,18 +295,22 @@ rest = Transform2D(1, 0, 0, 1, 3, 260)
 auto_calculate_length_and_angle = false
 length = 74.11
 bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegR" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(-175, -52)
 rest = Transform2D(1, 0, 0, 1, -175, -52)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeLegR" type="Bone2D" parent="Skeleton2D/Hip/LegR"]
 position = Vector2(-10, 254)
 rest = Transform2D(1, 0, 0, 1, -10, 254)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeForeLegR" type="Bone2D" parent="Skeleton2D/Hip/LegR/ForeLegR"]
 position = Vector2(-5, 301)
 rest = Transform2D(1, 0, 0, 1, -5, 301)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Hip/LegR/ForeLegR/ForeForeLegR"]
 position = Vector2(3, 260)
@@ -263,6 +318,7 @@ rest = Transform2D(1, 0, 0, 1, 3, 260)
 auto_calculate_length_and_angle = false
 length = 74.11
 bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RaycastLegL" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(172, -51)
@@ -271,8 +327,9 @@ target_position = Vector2(0, 1000)
 
 [node name="RaycastLegL2" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(172, -51)
+rotation = -0.349066
 scale = Vector2(0.999991, 0.999991)
-target_position = Vector2(0, 1000)
+target_position = Vector2(0, 1500)
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Hip/RaycastLegL2"]
 texture = ExtResource("2_v7esi")
@@ -285,12 +342,19 @@ target_position = Vector2(0, 1000)
 
 [node name="RaycastLegR2" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(-176, -51)
+rotation = 0.349066
 scale = Vector2(0.999991, 0.999991)
-target_position = Vector2(0, 1000)
+target_position = Vector2(0, 1500)
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Hip/RaycastLegR2"]
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
+
+[node name="HandLRest" type="Node2D" parent="Skeleton2D/Hip"]
+position = Vector2(494, 527)
+
+[node name="HandRRest" type="Node2D" parent="Skeleton2D/Hip"]
+position = Vector2(-560, 568)
 
 [node name="HandL" type="Node2D" parent="."]
 position = Vector2(1341, -6)
@@ -326,13 +390,19 @@ metadata/_edit_lock_ = true
 position = Vector2(-35, 72)
 shape = SubResource("CapsuleShape2D_034wm")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_4pbi7")
+}
+
 [node name="SafeRockArea" type="Area2D" parent="."]
 scale = Vector2(0.85, 0.85)
 collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeRockArea"]
-shape = SubResource("CircleShape2D_te20w")
+shape = SubResource("CircleShape2D_7bf2k")
 
 [node name="UnsafeRockArea" type="Area2D" parent="."]
 collision_layer = 8
@@ -340,5 +410,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UnsafeRockArea"]
 scale = Vector2(0.58, 0.58)
-shape = SubResource("CircleShape2D_te20w")
+shape = SubResource("CircleShape2D_7bf2k")
 debug_color = Color(0.898039, 0.2, 0.607843, 0.419608)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
