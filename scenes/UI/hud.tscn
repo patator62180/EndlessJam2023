@@ -1,30 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://d33w2xvakpbih"]
+[gd_scene load_steps=25 format=3 uid="uid://d33w2xvakpbih"]
 
 [ext_resource type="FontFile" uid="uid://24sqtlkpc22r" path="res://scenes/fonts/intuitive.ttf" id="1_3srf8"]
 [ext_resource type="Script" path="res://scenes/UI/hud.gd" id="1_erja8"]
-[ext_resource type="Script" path="res://scenes/main_menu/Quit.gd" id="2_wdltk"]
 [ext_resource type="Script" path="res://scenes/main/Back.gd" id="3_14as4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sok0p"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
-corner_radius_top_left = 50
-corner_radius_top_right = 100
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 100
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgab2"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.686275)
-corner_radius_top_left = 50
-corner_radius_top_right = 100
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 100
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kd1b"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.784314)
-corner_radius_top_left = 50
-corner_radius_top_right = 100
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 100
+[ext_resource type="Texture2D" uid="uid://debryfp36b8ua" path="res://scenes/UI/Bulle_Texte-3.png" id="5_35o8m"]
+[ext_resource type="Script" path="res://scenes/UI/FrogQuote.gd" id="5_lhv7t"]
+[ext_resource type="Texture2D" uid="uid://dxj2kipednot7" path="res://scenes/UI/Bulle_Texte-1.png" id="5_ueij0"]
+[ext_resource type="Texture2D" uid="uid://b73mmdk2gxf85" path="res://scenes/UI/Blink_01.png" id="6_1ykut"]
+[ext_resource type="Texture2D" uid="uid://dxn4o6vgpas36" path="res://scenes/UI/Bulle_Texte-2.png" id="6_uueqw"]
+[ext_resource type="Texture2D" uid="uid://cpuwjsf40643w" path="res://scenes/UI/Blink_02.png" id="7_qhlgx"]
+[ext_resource type="Texture2D" uid="uid://bioyvpficbfpw" path="res://scenes/UI/Blink_03.png" id="8_qy0uk"]
+[ext_resource type="Texture2D" uid="uid://bfc56ylry6uv2" path="res://scenes/UI/Blink_04.png" id="9_pi4fc"]
+[ext_resource type="Texture2D" uid="uid://djqmvx8086n87" path="res://scenes/UI/Blink_05.png" id="10_ckmo0"]
+[ext_resource type="Texture2D" uid="uid://c0w7ygnxt4mug" path="res://scenes/UI/Blink_06.png" id="11_ey8ld"]
+[ext_resource type="Texture2D" uid="uid://5aahbyyy8g63" path="res://scenes/UI/Grenouille_Blabla_-5.png" id="12_0xkbq"]
+[ext_resource type="Texture2D" uid="uid://dgdbjsmvq6omb" path="res://scenes/UI/Grenouille_Blabla_-4.png" id="13_ravw4"]
+[ext_resource type="Texture2D" uid="uid://3l2s6tlormtb" path="res://scenes/UI/Grenouille_Blabla_-3.png" id="14_w84g5"]
+[ext_resource type="Texture2D" uid="uid://d1r4cnynwnms3" path="res://scenes/UI/Grenouille_Blabla_-2.png" id="15_6p7ea"]
+[ext_resource type="Texture2D" uid="uid://cvo7dbim06qdi" path="res://scenes/UI/Grenouille_Blabla_-1.png" id="16_pkj2h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4miy"]
 bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
@@ -54,37 +47,90 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 50
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2o41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ueij0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uueqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_35o8m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uttl5"]
+animations = [{
+"frames": [{
+"duration": 48.0,
+"texture": ExtResource("6_1ykut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qhlgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qy0uk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pi4fc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ckmo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ey8ld")
+}],
+"loop": true,
+"name": &"Frog blink",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0xkbq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ravw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_w84g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6p7ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pkj2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6p7ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_w84g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ravw4")
+}],
+"loop": true,
+"name": &"Frog talk",
+"speed": 24.0
+}]
+
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("scorelabel")]
 layer = 2
 script = ExtResource("1_erja8")
 scorelabel = NodePath("ScoreLabel")
 
-[node name="Quit" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.995833
-anchor_right = 1.0
-offset_left = -192.0
-offset_top = 64.0
-offset_right = -64.0
-offset_bottom = 140.0
-grow_horizontal = 0
-focus_mode = 0
-theme_override_fonts/font = ExtResource("1_3srf8")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_sok0p")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jgab2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7kd1b")
-text = "X"
-script = ExtResource("2_wdltk")
-metadata/_edit_use_anchors_ = true
-
 [node name="Retry" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.989583
 anchor_right = 1.0
-offset_left = -408.0
+offset_left = -287.999
 offset_top = 64.0
-offset_right = -245.0
+offset_right = -124.999
 offset_bottom = 140.0
 grow_horizontal = 0
 focus_mode = 0
@@ -129,5 +175,59 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[node name="FrogQuote" type="Node2D" parent="." node_paths=PackedStringArray("bubble")]
+script = ExtResource("5_lhv7t")
+bubble = NodePath("SpeechBubble")
+
+[node name="SpeechBubble" type="AnimatedSprite2D" parent="FrogQuote"]
+position = Vector2(687.382, 236.25)
+scale = Vector2(0.628667, 0.628667)
+sprite_frames = SubResource("SpriteFrames_h2o41")
+autoplay = "default"
+frame_progress = 0.742706
+
+[node name="MarginContainer" type="MarginContainer" parent="FrogQuote/SpeechBubble"]
+offset_left = -432.0
+offset_top = -210.0
+offset_right = 485.0
+offset_bottom = 222.0
+
+[node name="Quote" type="Label" parent="FrogQuote/SpeechBubble/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_3srf8")
+theme_override_font_sizes/font_size = 75
+text = "This is very special to me. I can describe it, but I cannot explain it."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TimerTalk" type="Timer" parent="FrogQuote"]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
+[node name="TimerWait" type="Timer" parent="FrogQuote"]
+process_callback = 0
+wait_time = 10.0
+one_shot = true
+
+[node name="FrogTalk" type="AnimatedSprite2D" parent="FrogQuote"]
+position = Vector2(161.667, 422)
+scale = Vector2(0.393333, 0.393333)
+sprite_frames = SubResource("SpriteFrames_uttl5")
+animation = &"Frog talk"
+autoplay = "Frog talk"
+frame_progress = 0.669501
+
+[node name="FrogBlink" type="AnimatedSprite2D" parent="FrogQuote"]
+position = Vector2(161.667, 422)
+scale = Vector2(0.393333, 0.393333)
+sprite_frames = SubResource("SpriteFrames_uttl5")
+animation = &"Frog blink"
+autoplay = "Frog blink"
+frame_progress = 0.108531
+
 [connection signal="pressed" from="Retry" to="Retry" method="_on_pressed"]
+[connection signal="timeout" from="FrogQuote/TimerTalk" to="FrogQuote" method="_on_timer_timeouttalk"]
+[connection signal="timeout" from="FrogQuote/TimerWait" to="FrogQuote" method="_on_timer_timeoutwait"]

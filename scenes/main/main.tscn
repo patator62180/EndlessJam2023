@@ -16,10 +16,6 @@ scale = Vector2(0.348753, 0.348753)
 script = ExtResource("1_a0ijr")
 frog = NodePath("../FROGG")
 
-[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_pj581")]
-position = Vector2(0, 1)
-volume_db = 15.0
-
 [node name="MapGeneration" parent="." instance=ExtResource("4_aqiom")]
 
 [node name="Ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("3_libtn")]
@@ -34,3 +30,8 @@ frog = NodePath("../FROGG")
 [node name="FROGG" parent="." instance=ExtResource("8_vg3mi")]
 position = Vector2(5.00001, -1544)
 scale = Vector2(0.227, 0.227)
+
+[node name="AudioStreamPlayer2D" parent="FROGG" instance=ExtResource("6_pj581")]
+position = Vector2(-22.0265, 6806.17)
+scale = Vector2(4.40529, 4.40529)
+volume_db = 15.0

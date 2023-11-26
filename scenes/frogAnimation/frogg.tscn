@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqdwncfyjmeo6"]
+[gd_scene load_steps=16 format=3 uid="uid://bqdwncfyjmeo6"]
 
 [ext_resource type="Script" path="res://scenes/frogAnimation/MartinFrogScript.gd" id="1_c7gqk"]
 [ext_resource type="Texture2D" uid="uid://dk5vwhhglfb4y" path="res://scenes/frogAnimation/Froggg.png" id="1_hfxak"]
 [ext_resource type="Texture2D" uid="uid://yguof4xbjr4c" path="res://scenes/frogAnimation/pixil-frame-0.png" id="2_v7esi"]
+[ext_resource type="Script" path="res://scenes/frogAnimation/Jiggle.gd" id="4_tv2qb"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_p1ea1"]
 target_nodepath = NodePath("../HandL")
@@ -80,11 +81,49 @@ modifications/3 = SubResource("SkeletonModification2DFABRIK_teh5y")
 radius = 294.0
 height = 1362.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0pthi"]
-radius = 592.655
+[sub_resource type="Animation" id="Animation_0b7oj"]
+resource_name = "Idle"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ibk7b"]
-radius = 786.943
+[sub_resource type="Animation" id="Animation_8fgor"]
+resource_name = "Jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 94), Vector2(-7, 500), Vector2(1, 550), Vector2(1, 94)]
+}
+
+[sub_resource type="Animation" id="Animation_8lt3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 94)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4pbi7"]
+_data = {
+"Idle": SubResource("Animation_0b7oj"),
+"Jump": SubResource("Animation_8fgor"),
+"RESET": SubResource("Animation_8lt3g")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7bf2k"]
+radius = 929.69
 
 [node name="FROGG" type="CharacterBody2D"]
 collision_layer = 5
@@ -282,11 +321,6 @@ length = 74.11
 bone_angle = 0.0
 metadata/_local_pose_override_enabled_ = true
 
-[node name="RaycastLegL" type="RayCast2D" parent="Skeleton2D/Hip"]
-position = Vector2(172, -51)
-scale = Vector2(0.999991, 0.999991)
-target_position = Vector2(0, 1000)
-
 [node name="RaycastLegL2" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(172, -51)
 rotation = -0.349066
@@ -297,11 +331,6 @@ target_position = Vector2(0, 1500)
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
-[node name="RaycastLegR" type="RayCast2D" parent="Skeleton2D/Hip"]
-position = Vector2(-176, -51)
-scale = Vector2(0.999991, 0.999991)
-target_position = Vector2(0, 1000)
-
 [node name="RaycastLegR2" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(-176, -51)
 rotation = 0.349066
@@ -311,6 +340,32 @@ target_position = Vector2(0, 1500)
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Hip/RaycastLegR2"]
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
+
+[node name="HandLRestParent" type="Node2D" parent="Skeleton2D/Hip"]
+position = Vector2(565, 1022)
+
+[node name="HandLRest" type="Node2D" parent="Skeleton2D/Hip/HandLRestParent"]
+position = Vector2(811, 164)
+script = ExtResource("4_tv2qb")
+range = 500
+
+[node name="HandRRestParent" type="Node2D" parent="Skeleton2D/Hip"]
+position = Vector2(297, 896)
+
+[node name="HandRRest" type="Node2D" parent="Skeleton2D/Hip/HandRRestParent"]
+position = Vector2(-894, 195)
+script = ExtResource("4_tv2qb")
+range = 500
+
+[node name="RaycastLegL" type="RayCast2D" parent="Skeleton2D"]
+position = Vector2(173, 43)
+scale = Vector2(0.999991, 0.999991)
+target_position = Vector2(0, 1000)
+
+[node name="RaycastLegR" type="RayCast2D" parent="Skeleton2D"]
+position = Vector2(-175, 43)
+scale = Vector2(0.999991, 0.999991)
+target_position = Vector2(0, 1000)
 
 [node name="HandL" type="Node2D" parent="."]
 position = Vector2(1341, -6)
@@ -346,20 +401,27 @@ metadata/_edit_lock_ = true
 position = Vector2(-35, 72)
 shape = SubResource("CapsuleShape2D_034wm")
 
-[node name="CollisionRockOnly" type="StaticBody2D" parent="."]
-position = Vector2(-35, 72)
-scale = Vector2(1.00234, 0.988801)
-collision_layer = 12
-collision_mask = 0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.5
+libraries = {
+"": SubResource("AnimationLibrary_4pbi7")
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionRockOnly"]
-position = Vector2(-9, 0)
-shape = SubResource("CircleShape2D_0pthi")
-
-[node name="IsTouchingRock" type="Area2D" parent="."]
-position = Vector2(-35, 72)
+[node name="SafeRockArea" type="Area2D" parent="."]
+scale = Vector2(0.85, 0.85)
 collision_layer = 8
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="IsTouchingRock"]
-shape = SubResource("CircleShape2D_ibk7b")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeRockArea"]
+shape = SubResource("CircleShape2D_7bf2k")
+
+[node name="UnsafeRockArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnsafeRockArea"]
+scale = Vector2(0.58, 0.58)
+shape = SubResource("CircleShape2D_7bf2k")
+debug_color = Color(0.898039, 0.2, 0.607843, 0.419608)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

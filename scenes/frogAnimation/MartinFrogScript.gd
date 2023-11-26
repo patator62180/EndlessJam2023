@@ -30,20 +30,28 @@ var armRTarget
 var scaleScalar
 
 var body
-var bodyCollider
+var safeRockArea
+var unsafeRockArea
 var touchingBall
+var blockedByBall
 var hips
 
-var ball
+var ball: RigidBody2D
 
+var handRRest
+var handLRest
+
+var animator
+
+var jumping
 
 func _ready():
     legLTarget = $"FootL"
-    raycastLegL = $"Skeleton2D/Hip/RaycastLegL"
+    raycastLegL = $"Skeleton2D/RaycastLegL"
     raycastLegL2 = $"Skeleton2D/Hip/RaycastLegL2"    
     
     legRTarget = $"FootR"
-    raycastLegR = $"Skeleton2D/Hip/RaycastLegR"
+    raycastLegR = $"Skeleton2D/RaycastLegR"
     raycastLegR2 = $"Skeleton2D/Hip/RaycastLegR2"
     
     armLTarget = $"HandL"
@@ -52,21 +60,36 @@ func _ready():
     scaleScalar = scale.x
     
     body = $"Skeleton2D/Hip/Torso"
-    bodyCollider = $"IsTouchingRock"
-    
+    safeRockArea = $"SafeRockArea"
+    unsafeRockArea = $"UnsafeRockArea"
     hips = $"Skeleton2D/Hip"
+    handLRest = $"Skeleton2D/Hip/HandLRestParent/HandLRest"
+    handRRest = $"Skeleton2D/Hip/HandRRestParent/HandRRest"
+
+    animator = $AnimationPlayer
+
+    safeRockArea.body_entered.connect(body_entered_safe_rock_area)
+    safeRockArea.body_exited.connect(body_exited_safe_rock_area)
+    unsafeRockArea.body_entered.connect(body_entered_unsafe_rock_area)
+    unsafeRockArea.body_exited.connect(body_exited_unsafe_rock_area)
+
     
-    bodyCollider.body_entered.connect(collision_start)
-    bodyCollider.body_exited.connect(collision_end)
-    
-func collision_start(body: Node2D):
+func body_entered_safe_rock_area(body: Node2D):
     if body.is_in_group(BALL_GROUP):
         touchingBall = true
-        ball = body
+        ball = body as RigidBody2D
 
-func collision_end(body: Node2D):
+func body_exited_safe_rock_area(body: Node2D):
     if body.is_in_group(BALL_GROUP):
         touchingBall = false
+
+func body_entered_unsafe_rock_area(body: Node2D):
+    if body.is_in_group(BALL_GROUP):
+        blockedByBall = true
+
+func body_exited_unsafe_rock_area(body: Node2D):
+    if body.is_in_group(BALL_GROUP):
+        blockedByBall = false
 
 func _physics_process(delta):
     # Add the gravity.
@@ -74,28 +97,36 @@ func _physics_process(delta):
         velocity.y += gravity * delta
 
     # Handle Jump.
-    if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-        velocity.y = JUMP_VELOCITY
+    if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !jumping:
+        #velocity.y = JUMP_VELOCITY
+        animator.play("Jump");
+        jumping = true
 
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
     var adjustedSpeed = SPEED if !touchingBall else SPEED / 2
     
     var direction = Input.get_axis("move_left", "move_right")
-    if direction:
-        #if is_on_floor():
-        #   velocity = Vector2(direction, 0).rotated(deg_to_rad(get_floor_angle())) * SPEED
-        #else:
-        velocity.x = direction * adjustedSpeed
-    else:
-        velocity.x = move_toward(velocity.x, 0, adjustedSpeed)
-        
-    move_and_slide()
-    
-    apply_floor_snap()
-    
+    var ballDirection = sign(ball.position.x - position.x) if ball != null else 0
+    var moving = false
+
+    if not blockedByBall or ballDirection != direction:
+        if direction:
+            #if is_on_floor():
+            #   velocity = Vector2(direction, 0).rotated(deg_to_rad(get_floor_angle())) * SPEED
+            #else:
+            velocity.x = direction * adjustedSpeed
+        else:
+            velocity.x = move_toward(velocity.x, 0, adjustedSpeed)
+
+        move_and_slide()
+        apply_floor_snap()
+
     raycastLegs()
     rayCastArms()
+
+    if touchingBall and not ball == null:
+        ball.linear_velocity = velocity
     
 var timerL = 1
 var oldTargetL
@@ -117,7 +148,6 @@ func raycastLegs():
     
     #if modifier == 0:
     #    return
-    
     
     #sbody.rotation = deg_to_rad(-modifier * 25)
     
@@ -194,9 +224,20 @@ func raycastLegs():
     wasMoving = moving
       
 func rayCastArms():
+    var targetL
+    var targetR
+    
     if touchingBall:
-        armLTarget.set_global_position(ball.targetL.get_global_position())
-        armRTarget.set_global_position(ball.targetR.get_global_position())
+        targetL = lerp(armLTarget.get_global_position(), ball.targetL.get_global_position(), 0.1)
+        targetR = lerp(armRTarget.get_global_position(), ball.targetR.get_global_position(), 0.1)
+    else:
+        var lerpValue = 0.1 if !jumping else 0.5
+        targetL = lerp(armLTarget.get_global_position(), handLRest.get_global_position(), lerpValue)
+        targetR = lerp(armRTarget.get_global_position(), handRRest.get_global_position(), lerpValue)
+        
+    armLTarget.set_global_position(targetL)
+    armRTarget.set_global_position(targetR)
+    
   
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
     var q0 = p0.lerp(p1, t)
@@ -211,3 +252,8 @@ func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 # throwing
 # better jumping (looking & feeling)
 
+func _on_animation_player_animation_finished(anim_name):
+    if anim_name == "Jump":
+        velocity.y = JUMP_VELOCITY
+        jumping = false;
+        

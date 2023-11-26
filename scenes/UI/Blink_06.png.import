@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vqcgywgx1h6q"
-path="res://.godot/imported/close_button.png-be574eaedf2a6bcb51b74fa89f8cddb3.ctex"
+uid="uid://c0w7ygnxt4mug"
+path="res://.godot/imported/Blink_06.png-90a43032baaab03e1b2d63328b8ee81d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/UI/close_button.png"
-dest_files=["res://.godot/imported/close_button.png-be574eaedf2a6bcb51b74fa89f8cddb3.ctex"]
+source_file="res://scenes/UI/Blink_06.png"
+dest_files=["res://.godot/imported/Blink_06.png-90a43032baaab03e1b2d63328b8ee81d.ctex"]
 
 [params]
 
