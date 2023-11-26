@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3m830ehdkgn4"]
+[gd_scene load_steps=7 format=3 uid="uid://b3m830ehdkgn4"]
 
 [ext_resource type="PackedScene" uid="uid://d26idy78h2r88" path="res://scenes/frog/frog.tscn" id="2_lq666"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
 [ext_resource type="PackedScene" uid="uid://cgtd7vgqbqbff" path="res://scenes/map_generation/map_generation.tscn" id="4_aqiom"]
-[ext_resource type="PackedScene" uid="uid://mc3motghlfuj" path="res://parallax/pigeon/pigeon.tscn" id="4_qy21y"]
 [ext_resource type="PackedScene" uid="uid://bgpj1wv1a252f" path="res://scenes/Audio/audio_stream_player_2d.tscn" id="6_pj581"]
 [ext_resource type="PackedScene" uid="uid://cf5xkij4alusm" path="res://parallax/MainParallax.tscn" id="7_r6pn2"]
 [ext_resource type="PackedScene" path="res://scenes/UI/hud.tscn" id="7_ylbo0"]
@@ -25,8 +24,6 @@ position = Vector2(707, 78)
 position = Vector2(441, -2021)
 
 [node name="Parallax" parent="." instance=ExtResource("7_r6pn2")]
-
-[node name="Pigeon" parent="." instance=ExtResource("4_qy21y")]
 
 [node name="HUD" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("7_ylbo0")]
 frog = NodePath("../Frog")
