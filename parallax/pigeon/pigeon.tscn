@@ -93,7 +93,8 @@ _data = {
 curve = SubResource("Curve2D_pd1g8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-rotation = 0.103792
+position = Vector2(-1079, -1511)
+rotation = -0.418224
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="PathFollow2D"]
 scale = Vector2(0.5, 0.5)
