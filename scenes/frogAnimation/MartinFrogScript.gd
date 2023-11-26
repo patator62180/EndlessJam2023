@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 500
+const SPEED = 700
 const JUMP_VELOCITY = -900.0
 
 const FOOT_DISTANCE = 150
@@ -30,10 +30,12 @@ var armRTarget
 var scaleScalar
 
 var body
-var bodyCollider
+var safeRockArea
+var unsafeRockArea
 var touchingBall
+var blockedByBall
 
-var ball
+var ball: RigidBody2D
 
 func _ready():
     legLTarget = $"FootL"
@@ -50,19 +52,31 @@ func _ready():
     scaleScalar = scale.x
     
     body = $"Skeleton2D/Hip/Torso"
-    bodyCollider = $"IsTouchingRock"
+    safeRockArea = $"SafeRockArea"
+    unsafeRockArea = $"UnsafeRockArea"
+
+    safeRockArea.body_entered.connect(body_entered_safe_rock_area)
+    safeRockArea.body_exited.connect(body_exited_safe_rock_area)
+    unsafeRockArea.body_entered.connect(body_entered_unsafe_rock_area)
+    unsafeRockArea.body_exited.connect(body_exited_unsafe_rock_area)
+
     
-    bodyCollider.body_entered.connect(collision_start)
-    bodyCollider.body_exited.connect(collision_end)
-    
-func collision_start(body: Node2D):
+func body_entered_safe_rock_area(body: Node2D):
     if body.is_in_group(BALL_GROUP):
         touchingBall = true
-        ball = body
+        ball = body as RigidBody2D
 
-func collision_end(body: Node2D):
+func body_exited_safe_rock_area(body: Node2D):
     if body.is_in_group(BALL_GROUP):
         touchingBall = false
+
+func body_entered_unsafe_rock_area(body: Node2D):
+    if body.is_in_group(BALL_GROUP):
+        blockedByBall = true
+
+func body_exited_unsafe_rock_area(body: Node2D):
+    if body.is_in_group(BALL_GROUP):
+        blockedByBall = false
 
 func _physics_process(delta):
     # Add the gravity.
@@ -77,21 +91,27 @@ func _physics_process(delta):
     # As good practice, you should replace UI actions with custom gameplay actions.
     var adjustedSpeed = SPEED if !touchingBall else SPEED / 2
     
-    var direction = Input.get_axis("ui_left", "ui_right")
-    if direction:
-        #if is_on_floor():
-        #   velocity = Vector2(direction, 0).rotated(deg_to_rad(get_floor_angle())) * SPEED
-        #else:
-        velocity.x = direction * adjustedSpeed
-    else:
-        velocity.x = move_toward(velocity.x, 0, adjustedSpeed)
-        
-    move_and_slide()
-    
-    apply_floor_snap()
-    
-    raycastLegs()
+    var direction = Input.get_axis("move_left", "move_right")
+    var ballDirection = sign(ball.position.x - position.x) if ball != null else 0
+    var moving = false
+
+    if not blockedByBall or ballDirection != direction:
+        if direction:
+            #if is_on_floor():
+            #   velocity = Vector2(direction, 0).rotated(deg_to_rad(get_floor_angle())) * SPEED
+            #else:
+            velocity.x = direction * adjustedSpeed
+        else:
+            velocity.x = move_toward(velocity.x, 0, adjustedSpeed)
+
+        move_and_slide()
+        apply_floor_snap()
+        raycastLegs()
+
     rayCastArms()
+
+    if touchingBall and not ball == null:
+        ball.linear_velocity = velocity
     
 var timerL = 1
 var oldTargetL
