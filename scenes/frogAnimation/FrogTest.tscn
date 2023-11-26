@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://uufdga4rfj30"]
+[gd_scene load_steps=6 format=3 uid="uid://uufdga4rfj30"]
 
 [ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="1_rrsgh"]
 [ext_resource type="Texture2D" uid="uid://c8eees67e7kj3" path="res://scenes/chunks/square_chunks/square_chunk_a.png" id="2_4a4m4"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_w2i4i"]
+[ext_resource type="PackedScene" uid="uid://c4hkpr4g3pmpj" path="res://scenes/HUD/hud.tscn" id="4_wvfbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_be5xj"]
 size = Vector2(1268, 93)
@@ -61,3 +62,5 @@ frog = NodePath("../FROGG")
 position = Vector2(1905, 1811)
 scale = Vector2(0.226507, 0.226507)
 metadata/_edit_group_ = true
+
+[node name="HUD" parent="." instance=ExtResource("4_wvfbd")]

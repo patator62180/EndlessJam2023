@@ -32,8 +32,10 @@ var scaleScalar
 var body
 var bodyCollider
 var touchingBall
+var hips
 
 var ball
+
 
 func _ready():
     legLTarget = $"FootL"
@@ -51,6 +53,8 @@ func _ready():
     
     body = $"Skeleton2D/Hip/Torso"
     bodyCollider = $"IsTouchingRock"
+    
+    hips = $"Skeleton2D/Hip"
     
     bodyCollider.body_entered.connect(collision_start)
     bodyCollider.body_exited.connect(collision_end)
@@ -77,7 +81,7 @@ func _physics_process(delta):
     # As good practice, you should replace UI actions with custom gameplay actions.
     var adjustedSpeed = SPEED if !touchingBall else SPEED / 2
     
-    var direction = Input.get_axis("ui_left", "ui_right")
+    var direction = Input.get_axis("move_left", "move_right")
     if direction:
         #if is_on_floor():
         #   velocity = Vector2(direction, 0).rotated(deg_to_rad(get_floor_angle())) * SPEED
@@ -111,12 +115,25 @@ func raycastLegs():
     var moving = right || left
     var modifier = 1 if right else -1 if left else 0
     
-    body.rotation = deg_to_rad(-modifier * 25)
+    #if modifier == 0:
+    #    return
+    
+    
+    #sbody.rotation = deg_to_rad(-modifier * 25)
+    
+    if is_on_floor():
+        hips.rotation = lerp(hips.rotation, -get_floor_angle(), 0.1) 
+    else:
+        hips.rotation = lerp(hips.rotation, deg_to_rad(0), 0.1) 
+        
+    body.rotation = lerp(body.rotation, deg_to_rad(-modifier * 25), 0.1)         
     
     var justStopped = wasMoving && !moving
     var footSpeedModifier = 1 if ! touchingBall else 0.5
     
-    raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
+    var footAngleModifier = 40
+    #raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
+    raycastLegL2.rotation = deg_to_rad(modifier * -footAngleModifier)
     var rayCastL = raycastLegL if !moving || !is_on_floor() else raycastLegL2
     
     var colliderL = rayCastL.get_collider()
@@ -145,7 +162,8 @@ func raycastLegs():
     else:
         currentTargetL = null
 
-    raycastLegR2.position = raycastLegR.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
+    #raycastLegR2.position = raycastLegR.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
+    raycastLegR2.rotation = deg_to_rad(modifier * -footAngleModifier)
     var rayCastR = raycastLegR if !moving || !is_on_floor() else raycastLegR2
     
     var colliderR = rayCastR.get_collider()
