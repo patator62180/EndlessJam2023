@@ -24,21 +24,9 @@ position = Vector2(3150, 1799)
 rotation = 1.57079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_be5xj")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
-scale = Vector2(8, 0.075)
-texture = ExtResource("2_4a4m4")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(1272, 1917)
-rotation = 1.57079
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-shape = SubResource("RectangleShape2D_be5xj")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
 scale = Vector2(8, 0.075)
 texture = ExtResource("2_4a4m4")
 
@@ -53,11 +41,10 @@ shape = SubResource("RectangleShape2D_be5xj")
 scale = Vector2(7.675, 0.075)
 texture = ExtResource("2_4a4m4")
 
-[node name="Ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("3_w2i4i")]
-position = Vector2(2541, 1636)
-frog = NodePath("../FROGG")
-
 [node name="FROGG" parent="." instance=ExtResource("1_rrsgh")]
 position = Vector2(1905, 1811)
 scale = Vector2(0.226507, 0.226507)
 metadata/_edit_group_ = true
+
+[node name="Ball" parent="." instance=ExtResource("3_w2i4i")]
+position = Vector2(2541, 1636)
