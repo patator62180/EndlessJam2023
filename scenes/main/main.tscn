@@ -26,7 +26,7 @@ position = Vector2(441, -2021)
 
 [node name="Parallax" parent="." instance=ExtResource("7_r6pn2")]
 
-[node name="Path2D" parent="." instance=ExtResource("4_qy21y")]
+[node name="Pigeon" parent="." instance=ExtResource("4_qy21y")]
 
 [node name="HUD" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("7_ylbo0")]
 frog = NodePath("../Frog")
