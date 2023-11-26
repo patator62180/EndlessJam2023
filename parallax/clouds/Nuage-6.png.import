@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgushl8m73xdb"
-path="res://.godot/imported/cloud4.png-4606617fa86861b88339cc32d8bd4905.ctex"
+uid="uid://rg7wwgmmldw0"
+path="res://.godot/imported/Nuage-6.png-591b2691762067875480ffd04206dcab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://parallax/clouds/cloud4.png"
-dest_files=["res://.godot/imported/cloud4.png-4606617fa86861b88339cc32d8bd4905.ctex"]
+source_file="res://parallax/clouds/Nuage-6.png"
+dest_files=["res://.godot/imported/Nuage-6.png-591b2691762067875480ffd04206dcab.ctex"]
 
 [params]
 

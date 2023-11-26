@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqumlk8y24dsq"
-path="res://.godot/imported/cloud0.png-25084fe10f1fdab8aa1e2643747df0b4.ctex"
+uid="uid://c354fb8k2ko1g"
+path="res://.godot/imported/Pilier_steep.png-e0c094a826b1322a6370044346f324d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://parallax/clouds/cloud0.png"
-dest_files=["res://.godot/imported/cloud0.png-25084fe10f1fdab8aa1e2643747df0b4.ctex"]
+source_file="res://scenes/chunks/steep_chunks/Pilier_steep.png"
+dest_files=["res://.godot/imported/Pilier_steep.png-e0c094a826b1322a6370044346f324d1.ctex"]
 
 [params]
 

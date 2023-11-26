@@ -1,16 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://cf5xkij4alusm"]
+[gd_scene load_steps=21 format=3 uid="uid://cf5xkij4alusm"]
 
 [ext_resource type="PackedScene" uid="uid://cb1dg8mbxkspp" path="res://parallax/bloc.tscn" id="2_tj6wb"]
-[ext_resource type="Texture2D" uid="uid://cqumlk8y24dsq" path="res://parallax/clouds/cloud0.png" id="3_a1dlw"]
+[ext_resource type="Texture2D" uid="uid://dxcrllf1uj16l" path="res://parallax/clouds/Nuage-1.png" id="2_tpbxg"]
 [ext_resource type="Texture2D" uid="uid://d1a5b47ko8myw" path="res://icon.svg" id="3_r51uw"]
-[ext_resource type="Texture2D" uid="uid://qptj327x3jbx" path="res://parallax/clouds/cloud1.png" id="4_k3ay7"]
-[ext_resource type="Texture2D" uid="uid://wr7cqfee0iem" path="res://parallax/trees.png" id="4_mn20d"]
-[ext_resource type="Texture2D" uid="uid://b6pclkw480kpj" path="res://parallax/clouds/cloud2.png" id="5_gxe3a"]
 [ext_resource type="Texture2D" uid="uid://ftl70sb6r1ir" path="res://parallax/flyingBird.png" id="5_xtaac"]
-[ext_resource type="Texture2D" uid="uid://cyu767eodwr24" path="res://parallax/clouds/cloud3.png" id="6_du2eb"]
-[ext_resource type="Texture2D" uid="uid://cgushl8m73xdb" path="res://parallax/clouds/cloud4.png" id="7_euhrw"]
+[ext_resource type="Texture2D" uid="uid://buhdiacipndwc" path="res://parallax/clouds/Nuage-2.png" id="6_kijn1"]
+[ext_resource type="Texture2D" uid="uid://cvcpoxda4xulb" path="res://parallax/clouds/Nuage-3.png" id="7_m802v"]
 [ext_resource type="Script" path="res://parallax/MockPlayer.gd" id="8_8ojb8"]
-[ext_resource type="Texture2D" uid="uid://bf8q0vo1utw5r" path="res://parallax/clouds/cloud5.png" id="8_t8w1a"]
+[ext_resource type="Texture2D" uid="uid://bou1p02abi0nx" path="res://parallax/clouds/Nuage-4.png" id="8_sea8l"]
+[ext_resource type="Texture2D" uid="uid://g30cyjwigajo" path="res://parallax/clouds/Nuage-5.png" id="9_s1at5"]
+[ext_resource type="Texture2D" uid="uid://rg7wwgmmldw0" path="res://parallax/clouds/Nuage-6.png" id="10_75002"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58xsm"]
 atlas = ExtResource("5_xtaac")
@@ -91,106 +90,73 @@ animations = [{
 color = Color(0.552941, 0.811765, 0.827451, 1)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-3, 0)
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(3840, 2160)
 
-[node name="Cloud0" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(144, 135)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_a1dlw")
+[node name="Nuage-1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(330, 337)
+texture = ExtResource("2_tpbxg")
 
-[node name="Cloud1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(146, 290)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_k3ay7")
+[node name="Nuage-2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(977, 493)
+texture = ExtResource("6_kijn1")
 
-[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(881, 349)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_gxe3a")
+[node name="Nuage-3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1493, 253)
+texture = ExtResource("7_m802v")
 
-[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(1385, 206)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("6_du2eb")
+[node name="Nuage-4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(612, 810)
+texture = ExtResource("8_sea8l")
 
-[node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(399, 630)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_euhrw")
+[node name="Nuage-5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1978, 984)
+texture = ExtResource("9_s1at5")
 
-[node name="Cloud5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(625, 151)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_t8w1a")
+[node name="Nuage-6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1151, 1200)
+texture = ExtResource("10_75002")
 
-[node name="Cloud6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(907, 791)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_a1dlw")
+[node name="Nuage-7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(438, 1655)
+texture = ExtResource("2_tpbxg")
 
-[node name="Cloud7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(167, 846)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_k3ay7")
+[node name="Nuage-8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2739, 289)
+texture = ExtResource("6_kijn1")
 
-[node name="Cloud8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(1525, 1248)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_gxe3a")
+[node name="Nuage-9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2913, 1560)
+texture = ExtResource("8_sea8l")
 
-[node name="Cloud9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(1748, 584)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("6_du2eb")
+[node name="Nuage-10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(3159, 774)
+texture = ExtResource("7_m802v")
 
-[node name="Cloud10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(2327, 174)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_euhrw")
+[node name="Nuage-11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(576, 1937)
+texture = ExtResource("9_s1at5")
 
-[node name="Cloud11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(643, 1366)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_t8w1a")
+[node name="Nuage-12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1738, 1679)
+texture = ExtResource("10_75002")
 
-[node name="Cloud12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(2810, 801)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_a1dlw")
+[node name="Nuage-13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-17, 939)
+texture = ExtResource("7_m802v")
 
-[node name="Cloud13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(295, 1774)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_k3ay7")
+[node name="Nuage-14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(3543, 1867)
+texture = ExtResource("9_s1at5")
 
-[node name="Cloud14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(2857, 1633)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_gxe3a")
+[node name="Nuage-15" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(3823, 203)
+texture = ExtResource("6_kijn1")
 
-[node name="Cloud15" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(2033, 1240)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("6_du2eb")
-
-[node name="Cloud16" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(3283, 407)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_euhrw")
-
-[node name="Cloud17" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(1437, 1666)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_t8w1a")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_mirroring = Vector2(1152, 648)
-
-[node name="Trees" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("4_mn20d")
-centered = false
+[node name="Nuage-16" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(3583, 315)
+texture = ExtResource("8_sea8l")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 visible = false
