@@ -90,5 +90,3 @@ func attach_new_chunk(previous_chunk: Chunk, packedChunk: PackedScene):
     new_chunk.position = Vector2(previous_chunk.get_segment().b.x + previous_chunk.position.x - new_chunk.get_segment().a.x, previous_chunk.position.y + previous_chunk.get_segment().b.y - new_chunk.get_segment().a.y)
     return new_chunk
 
-func _process(delta):
-    pass
