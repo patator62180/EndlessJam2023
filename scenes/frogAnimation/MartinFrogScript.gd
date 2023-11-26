@@ -36,6 +36,12 @@ var hips
 
 var ball
 
+var handRRest
+var handLRest
+
+var animator
+
+var jumping
 
 func _ready():
     legLTarget = $"FootL"
@@ -56,8 +62,13 @@ func _ready():
     
     hips = $"Skeleton2D/Hip"
     
+    handLRest = $"Skeleton2D/Hip/HandLRest"
+    handRRest = $"Skeleton2D/Hip/HandRRest"
+    
     bodyCollider.body_entered.connect(collision_start)
     bodyCollider.body_exited.connect(collision_end)
+    
+    animator = $AnimationPlayer
     
 func collision_start(body: Node2D):
     if body.is_in_group(BALL_GROUP):
@@ -74,8 +85,10 @@ func _physics_process(delta):
         velocity.y += gravity * delta
 
     # Handle Jump.
-    if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-        velocity.y = JUMP_VELOCITY
+    if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !jumping:
+        #velocity.y = JUMP_VELOCITY
+        animator.play("Jump");
+        jumping = true
 
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
@@ -194,9 +207,19 @@ func raycastLegs():
     wasMoving = moving
       
 func rayCastArms():
+    var targetL
+    var targetR
+    
     if touchingBall:
-        armLTarget.set_global_position(ball.targetL.get_global_position())
-        armRTarget.set_global_position(ball.targetR.get_global_position())
+        targetL = lerp(armLTarget.get_global_position(), ball.targetL.get_global_position(), 0.1)
+        targetR = lerp(armRTarget.get_global_position(), ball.targetR.get_global_position(), 0.1)
+    else:
+        targetL = lerp(armLTarget.get_global_position(), handLRest.get_global_position(), 0.1)
+        targetR = lerp(armRTarget.get_global_position(), handRRest.get_global_position(), 0.1)
+        
+    armLTarget.set_global_position(targetL)
+    armRTarget.set_global_position(targetR)
+    
   
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
     var q0 = p0.lerp(p1, t)
@@ -211,3 +234,10 @@ func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 # throwing
 # better jumping (looking & feeling)
 
+
+
+func _on_animation_player_animation_finished(anim_name):
+    if anim_name == "Jump":
+        velocity.y = JUMP_VELOCITY
+        jumping = false;
+        
