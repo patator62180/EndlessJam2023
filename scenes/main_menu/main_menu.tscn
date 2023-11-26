@@ -1,145 +1,248 @@
-[gd_scene load_steps=12 format=3 uid="uid://bok2yqw2duxen"]
+[gd_scene load_steps=43 format=3 uid="uid://bok2yqw2duxen"]
 
 [ext_resource type="FontFile" uid="uid://24sqtlkpc22r" path="res://scenes/fonts/intuitive.ttf" id="1_dg6fh"]
+[ext_resource type="Texture2D" uid="uid://dnwwo870kh6g3" path="res://scenes/main_menu/BG.png" id="1_ggnt5"]
+[ext_resource type="Texture2D" uid="uid://ck7iusj5xc7q2" path="res://scenes/main_menu/Title_01.png" id="1_kbpwv"]
 [ext_resource type="FontFile" uid="uid://cqcbgevv0jq6u" path="res://scenes/fonts/ThatNogoFontCasual.ttf" id="1_n60ro"]
 [ext_resource type="Script" path="res://scenes/main_menu/NewGame.gd" id="2_mmyad"]
+[ext_resource type="Texture2D" uid="uid://8i3l0woe5m2y" path="res://scenes/main_menu/Title_02.png" id="2_trt1c"]
 [ext_resource type="Script" path="res://scenes/main_menu/Quit.gd" id="3_178uf"]
-[ext_resource type="Texture2D" uid="uid://blcldw0scircv" path="res://scenes/frog/speech_bubble_black.png" id="7_fb4ts"]
-[ext_resource type="Texture2D" uid="uid://dmefmqm3ksv0t" path="res://scenes/frog/frog_main.png" id="8_fydsm"]
-[ext_resource type="Texture2D" uid="uid://cfq1y87q2kaje" path="res://scenes/UI/left_right_arrows.png" id="9_fwk0y"]
-[ext_resource type="Texture2D" uid="uid://bkdbkeuvy3joh" path="res://scenes/UI/mouse_icon.png" id="10_537w3"]
+[ext_resource type="Texture2D" uid="uid://0ggleix0yidr" path="res://scenes/main_menu/Title_03.png" id="3_ebgrw"]
+[ext_resource type="Texture2D" uid="uid://mwv4ipc7kg3f" path="res://scenes/main_menu/Start_01.png" id="6_3t506"]
+[ext_resource type="Texture2D" uid="uid://bdftbdv37tqlt" path="res://scenes/main_menu/Start_02.png" id="7_kwy68"]
+[ext_resource type="Texture2D" uid="uid://qtqmpheb2251" path="res://scenes/main_menu/Illustration_sans_titre-1.png" id="8_sxuiv"]
+[ext_resource type="Texture2D" uid="uid://b7qe0djptast8" path="res://scenes/main_menu/Quit_01.png" id="9_77m7i"]
+[ext_resource type="Texture2D" uid="uid://c1v2igegf4a0m" path="res://scenes/main_menu/Illustration_sans_titre-2.png" id="9_afufv"]
+[ext_resource type="Texture2D" uid="uid://bx5avv44a1gfo" path="res://scenes/main_menu/Quit_02.png" id="10_4c21p"]
+[ext_resource type="Texture2D" uid="uid://eldvb8qkla7a" path="res://scenes/main_menu/Illustration_sans_titre-3.png" id="10_sh13q"]
+[ext_resource type="Texture2D" uid="uid://b73mmdk2gxf85" path="res://scenes/UI/Blink_01.png" id="11_7btsw"]
+[ext_resource type="Texture2D" uid="uid://cpuwjsf40643w" path="res://scenes/UI/Blink_02.png" id="12_0irgt"]
+[ext_resource type="Texture2D" uid="uid://bioyvpficbfpw" path="res://scenes/UI/Blink_03.png" id="13_lajvg"]
+[ext_resource type="Texture2D" uid="uid://bfc56ylry6uv2" path="res://scenes/UI/Blink_04.png" id="14_gaq77"]
+[ext_resource type="Texture2D" uid="uid://djqmvx8086n87" path="res://scenes/UI/Blink_05.png" id="15_3jujg"]
+[ext_resource type="Texture2D" uid="uid://c0w7ygnxt4mug" path="res://scenes/UI/Blink_06.png" id="16_vicsb"]
+[ext_resource type="Texture2D" uid="uid://5aahbyyy8g63" path="res://scenes/UI/Grenouille_Blabla_-5.png" id="17_1dwdi"]
+[ext_resource type="Texture2D" uid="uid://dgdbjsmvq6omb" path="res://scenes/UI/Grenouille_Blabla_-4.png" id="18_b1wou"]
+[ext_resource type="Texture2D" uid="uid://3l2s6tlormtb" path="res://scenes/UI/Grenouille_Blabla_-3.png" id="19_1ik3v"]
+[ext_resource type="Texture2D" uid="uid://d1r4cnynwnms3" path="res://scenes/UI/Grenouille_Blabla_-2.png" id="20_s6cew"]
+[ext_resource type="Texture2D" uid="uid://dxj2kipednot7" path="res://scenes/UI/Bulle_Texte-1.png" id="21_85dab"]
+[ext_resource type="Texture2D" uid="uid://cvo7dbim06qdi" path="res://scenes/UI/Grenouille_Blabla_-1.png" id="21_lttvt"]
+[ext_resource type="Texture2D" uid="uid://dxn4o6vgpas36" path="res://scenes/UI/Bulle_Texte-2.png" id="22_r6pon"]
+[ext_resource type="Texture2D" uid="uid://debryfp36b8ua" path="res://scenes/UI/Bulle_Texte-3.png" id="23_th66u"]
+[ext_resource type="Texture2D" uid="uid://dfe42gysy48jw" path="res://scenes/main_menu/Controles_01.png" id="26_eiopd"]
+[ext_resource type="Texture2D" uid="uid://7ga6w3b6g2jx" path="res://scenes/main_menu/Controles_02.png" id="27_al6cn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21oxo"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.588235)
-corner_radius_top_left = 100
-corner_radius_top_right = 50
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 50
+[sub_resource type="SpriteFrames" id="SpriteFrames_2753k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_sxuiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_afufv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sh13q")
+}],
+"loop": true,
+"name": &"background",
+"speed": 5.0
+}]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovro8"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.686275)
-corner_radius_top_left = 100
-corner_radius_top_right = 50
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 50
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4xnj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kbpwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_trt1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ebgrw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_735b1"]
-bg_color = Color(0.352941, 0.356863, 0.290196, 0.784314)
-corner_radius_top_left = 100
-corner_radius_top_right = 50
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 50
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ue53"]
+texture = ExtResource("6_3t506")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ub6a0"]
+texture = ExtResource("7_kwy68")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_io4aq"]
+texture = ExtResource("7_kwy68")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6244"]
+texture = ExtResource("9_77m7i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kmqs7"]
+texture = ExtResource("10_4c21p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_roaa0"]
+texture = ExtResource("10_4c21p")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xk2gs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_eiopd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_al6cn")
+}],
+"loop": true,
+"name": &"Controls",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtddu"]
+animations = [{
+"frames": [{
+"duration": 48.0,
+"texture": ExtResource("11_7btsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0irgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lajvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gaq77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3jujg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vicsb")
+}],
+"loop": true,
+"name": &"Frog blink",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_1dwdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_b1wou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1ik3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_s6cew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_lttvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_s6cew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1ik3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_b1wou")
+}],
+"loop": true,
+"name": &"Frog talk",
+"speed": 24.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0scq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_85dab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_r6pon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_th66u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Node2D"]
 scale = Vector2(3.335, 3.335)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.4, 0.643137, 0, 1)
+texture = ExtResource("1_ggnt5")
+expand_mode = 1
+
+[node name="AnimatedBackground" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(574.673, 323.103)
+scale = Vector2(0.298309, 0.298309)
+sprite_frames = SubResource("SpriteFrames_2753k")
+animation = &"background"
+autoplay = "background"
+frame_progress = 0.0398671
+
+[node name="AnimatedTitle" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(575.592, 324.288)
+scale = Vector2(0.299434, 0.299434)
+sprite_frames = SubResource("SpriteFrames_s4xnj")
+autoplay = "default"
+frame_progress = 0.40781
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 1144.0
-offset_bottom = 648.0
-theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 150
-theme_override_constants/margin_bottom = 100
+offset_left = 554.0
+offset_top = 319.0
+offset_right = 748.0
+offset_bottom = 583.0
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_n60ro")
-theme_override_font_sizes/font_size = 150
-text = "GRENOUILLE"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 25
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_right = 300
-
-[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_n60ro")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_21oxo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ovro8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_735b1")
-text = "start"
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ue53")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ub6a0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_io4aq")
+text = " "
+icon_alignment = 1
 script = ExtResource("2_mmyad")
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 300
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_n60ro")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_21oxo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ovro8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_735b1")
-text = "quit"
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxTexture_l6244")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kmqs7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_roaa0")
+text = " "
 script = ExtResource("3_178uf")
 
-[node name="SpeechBubbleBlack" type="Sprite2D" parent="."]
-position = Vector2(184, 376)
-scale = Vector2(0.397222, 0.35)
-texture = ExtResource("7_fb4ts")
-
-[node name="Speechbubble" type="Label" parent="."]
-offset_left = 72.0
-offset_top = 275.0
-offset_right = 296.0
-offset_bottom = 478.0
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_dg6fh")
-theme_override_font_sizes/font_size = 25
-text = "There is scarcely any passion without struggle."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Controls" type="Label" parent="."]
-offset_left = 928.0
-offset_top = 324.0
-offset_right = 1104.0
-offset_bottom = 452.0
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_dg6fh")
-theme_override_font_sizes/font_size = 25
-text = "Walk
-
-Control arms "
-vertical_alignment = 1
-autowrap_mode = 2
+[node name="Controls" type="AnimatedSprite2D" parent="."]
+position = Vector2(576.272, 323.403)
+scale = Vector2(0.30053, 0.30053)
+sprite_frames = SubResource("SpriteFrames_xk2gs")
+animation = &"Controls"
+autoplay = "Controls"
+frame_progress = 0.52405
 
 [node name="Credits" type="Label" parent="."]
-offset_left = 344.0
-offset_top = 560.0
-offset_right = 811.0
-offset_bottom = 647.0
+offset_left = 1.0
+offset_top = 593.0
+offset_right = 1153.0
+offset_bottom = 648.0
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.396078, 0.396078, 0.396078, 1)
 theme_override_fonts/font = ExtResource("1_dg6fh")
 theme_override_font_sizes/font_size = 20
 text = "Made by: David Corticchiato, Lucy Gradoz, Martin Briand, Omar Slimani & Samuel Terras-Viola"
@@ -147,18 +250,49 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="FrogMain" type="Sprite2D" parent="."]
-position = Vector2(168, 696)
-scale = Vector2(0.411133, 0.411133)
-texture = ExtResource("8_fydsm")
+[node name="FrogTalk" type="AnimatedSprite2D" parent="."]
+position = Vector2(110.28, 528.195)
+scale = Vector2(0.313373, 0.313373)
+sprite_frames = SubResource("SpriteFrames_qtddu")
+animation = &"Frog talk"
+autoplay = "Frog talk"
+frame_progress = 0.0593525
 
-[node name="LeftRightArrows" type="Sprite2D" parent="."]
-position = Vector2(904, 356)
-texture = ExtResource("9_fwk0y")
+[node name="FrogBlink" type="AnimatedSprite2D" parent="."]
+position = Vector2(110.28, 528.195)
+scale = Vector2(0.313373, 0.313373)
+sprite_frames = SubResource("SpriteFrames_qtddu")
+animation = &"Frog blink"
+autoplay = "Frog blink"
+frame_progress = 0.760074
 
-[node name="MouseIcon" type="Sprite2D" parent="."]
-position = Vector2(904, 416)
-texture = ExtResource("10_537w3")
+[node name="SpeechBubble" type="AnimatedSprite2D" parent="."]
+position = Vector2(357.867, 416.129)
+scale = Vector2(0.258904, 0.258904)
+sprite_frames = SubResource("SpriteFrames_n0scq")
+autoplay = "default"
+frame_progress = 0.638786
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGame" to="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGame" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/Quit" to="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/Quit" method="_on_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="SpeechBubble"]
+anchors_preset = -1
+anchor_left = -0.55
+anchor_top = 0.124
+anchor_right = -0.55
+anchor_bottom = 0.124
+offset_left = 290.7
+offset_top = -303.0
+offset_right = 1207.7
+offset_bottom = 129.0
+
+[node name="Quote" type="Label" parent="SpeechBubble/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_dg6fh")
+theme_override_font_sizes/font_size = 75
+text = "I am here to push a rock, not do something desirable."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="MarginContainer/VBoxContainer/Start" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="MarginContainer/VBoxContainer/Quit" method="_on_pressed"]
