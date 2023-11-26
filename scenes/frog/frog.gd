@@ -58,7 +58,8 @@ func _process(delta):
     
     var new_velocity = velocity
     
-    new_velocity.y += delta * 700;
+    if not is_on_floor():
+        new_velocity.y += delta * 700;
 
     if moving_right and not wrist_touching_ball:
         new_velocity.x = VELOCITY_SCALE
