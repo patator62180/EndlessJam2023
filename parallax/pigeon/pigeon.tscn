@@ -9,9 +9,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_pd1g8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -318.814, 38.0546, 318.814, -38.0546, 822, -663, -337.841, 15, 337.841, -15, 2235, -245, -434.384, 0, 434.384, 0, 3566, -919, 0, 0, 0, 0, 4659, -418)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -242.742, 95.399, 242.742, -95.399, 618, -274, -223.806, 94.526, 223.806, -94.526, 1438, -616, -287.513, 105.235, 287.513, -105.235, 2229, -922, -235.197, 106.908, 235.197, -106.908, 2949, -1222, -292.215, 149.671, 292.215, -149.671, 3604, -1521, 0, 0, 0, 0, 4239, -1863)
 }
-point_count = 5
+point_count = 7
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hby2l"]
 animations = [{
@@ -50,22 +50,24 @@ tracks/0/path = NodePath("PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 8, 10),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.0, 1.0]
+"values": [0.0, 1.0]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PathFollow2D/Sprite2D:visible")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_7a3oy"]
@@ -93,7 +95,7 @@ _data = {
 curve = SubResource("Curve2D_pd1g8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-rotation = -0.678734
+rotation = -0.417323
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="PathFollow2D"]
 scale = Vector2(0.2, 0.2)
