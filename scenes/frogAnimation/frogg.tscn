@@ -289,8 +289,9 @@ target_position = Vector2(0, 1000)
 
 [node name="RaycastLegL2" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(172, -51)
+rotation = -0.349066
 scale = Vector2(0.999991, 0.999991)
-target_position = Vector2(0, 1000)
+target_position = Vector2(0, 1500)
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Hip/RaycastLegL2"]
 texture = ExtResource("2_v7esi")
@@ -303,8 +304,9 @@ target_position = Vector2(0, 1000)
 
 [node name="RaycastLegR2" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(-176, -51)
+rotation = 0.349066
 scale = Vector2(0.999991, 0.999991)
-target_position = Vector2(0, 1000)
+target_position = Vector2(0, 1500)
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Hip/RaycastLegR2"]
 texture = ExtResource("2_v7esi")
