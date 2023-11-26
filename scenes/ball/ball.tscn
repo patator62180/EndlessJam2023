@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://two7o0ypxlcy"]
+[gd_scene load_steps=7 format=3 uid="uid://two7o0ypxlcy"]
 
 [ext_resource type="Texture2D" uid="uid://dmofmpnswmryl" path="res://scenes/ball/ball_background.png" id="1_7hoyy"]
 [ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_wrdng"]
 [ext_resource type="Texture2D" uid="uid://444ka5otna1c" path="res://scenes/ball/ball_shadow.png" id="2_76c8o"]
 [ext_resource type="Texture2D" uid="uid://cko525jfor41d" path="res://scenes/ball/ball_border.png" id="2_idbim"]
+[ext_resource type="Texture2D" uid="uid://yguof4xbjr4c" path="res://scenes/frogAnimation/pixil-frame-0.png" id="5_5ch0v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_puh2d"]
 
@@ -27,3 +28,17 @@ shape = SubResource("CircleShape2D_puh2d")
 
 [node name="Border" type="Sprite2D" parent="."]
 texture = ExtResource("2_idbim")
+
+[node name="HandTargets" type="Node2D" parent="."]
+
+[node name="HandL" type="Node2D" parent="HandTargets"]
+position = Vector2(-144, -47)
+
+[node name="Sprite2D" type="Sprite2D" parent="HandTargets/HandL"]
+texture = ExtResource("5_5ch0v")
+
+[node name="HandR" type="Node2D" parent="HandTargets"]
+position = Vector2(-147, 30)
+
+[node name="Sprite2D" type="Sprite2D" parent="HandTargets/HandR"]
+texture = ExtResource("5_5ch0v")

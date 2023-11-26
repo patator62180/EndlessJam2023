@@ -9,6 +9,8 @@ const FOOT_HEIGHT = 30
 
 const FOOT_TIMER_INCREMENT = 0.1
 
+const BALL_GROUP = 'ball'
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -22,9 +24,16 @@ var raycastLegR
 var raycastLegR2
 var lastRFootPos
 
+var armLTarget
+var armRTarget
+
 var scaleScalar
 
 var body
+var bodyCollider
+var touchingBall
+
+var ball
 
 func _ready():
     legLTarget = $"FootL"
@@ -35,9 +44,25 @@ func _ready():
     raycastLegR = $"Skeleton2D/Hip/RaycastLegR"
     raycastLegR2 = $"Skeleton2D/Hip/RaycastLegR2"
     
+    armLTarget = $"HandL"
+    armRTarget = $"HandR"
+    
     scaleScalar = scale.x
     
     body = $"Skeleton2D/Hip/Torso"
+    bodyCollider = $"IsTouchingRock"
+    
+    bodyCollider.body_entered.connect(collision_start)
+    bodyCollider.body_exited.connect(collision_end)
+    
+func collision_start(body: Node2D):
+    if body.is_in_group(BALL_GROUP):
+        touchingBall = true
+        ball = body
+
+func collision_end(body: Node2D):
+    if body.is_in_group(BALL_GROUP):
+        touchingBall = false
 
 func _physics_process(delta):
     # Add the gravity.
@@ -50,15 +75,23 @@ func _physics_process(delta):
 
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
+    var adjustedSpeed = SPEED if !touchingBall else SPEED / 2
+    
     var direction = Input.get_axis("ui_left", "ui_right")
     if direction:
-        velocity.x = direction * SPEED
+        #if is_on_floor():
+        #   velocity = Vector2(direction, 0).rotated(deg_to_rad(get_floor_angle())) * SPEED
+        #else:
+        velocity.x = direction * adjustedSpeed
     else:
-        velocity.x = move_toward(velocity.x, 0, SPEED)
-
+        velocity.x = move_toward(velocity.x, 0, adjustedSpeed)
+        
     move_and_slide()
     
+    apply_floor_snap()
+    
     raycastLegs()
+    rayCastArms()
     
 var timerL = 1
 var oldTargetL
@@ -81,6 +114,7 @@ func raycastLegs():
     body.rotation = deg_to_rad(-modifier * 25)
     
     var justStopped = wasMoving && !moving
+    var footSpeedModifier = 1 if ! touchingBall else 0.5
     
     raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
     var rayCastL = raycastLegL if !moving || !is_on_floor() else raycastLegL2
@@ -105,7 +139,7 @@ func raycastLegs():
                 timerL = 0
             
         var target = _quadratic_bezier(oldTargetL, midTargetL, currentTargetL, timerL)
-        timerL = min(timerL + FOOT_TIMER_INCREMENT, 1)
+        timerL = min(timerL + FOOT_TIMER_INCREMENT * footSpeedModifier, 1)
             
         legLTarget.set_global_position(target)
     else:
@@ -133,14 +167,19 @@ func raycastLegs():
                 timerR = 0
             
         var target = _quadratic_bezier(oldTargetR, midTargetR, currentTargetR, timerR)
-        timerR = min(timerR + FOOT_TIMER_INCREMENT, 1)
+        timerR = min(timerR + FOOT_TIMER_INCREMENT * footSpeedModifier, 1)
             
         legRTarget.set_global_position(target)
     else:
         currentTargetR = null
         
     wasMoving = moving
-        
+      
+func rayCastArms():
+    if touchingBall:
+        armLTarget.set_global_position(ball.targetL.get_global_position())
+        armRTarget.set_global_position(ball.targetR.get_global_position())
+  
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
     var q0 = p0.lerp(p1, t)
     var q1 = p1.lerp(p2, t)
