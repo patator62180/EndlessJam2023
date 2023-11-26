@@ -1,19 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://fgpywe8hrjge"]
+[gd_scene load_steps=3 format=3 uid="uid://fgpywe8hrjge"]
 
 [ext_resource type="PackedScene" uid="uid://cgtd7vgqbqbff" path="res://scenes/map_generation/map_generation.tscn" id="1_1d3bu"]
-[ext_resource type="PackedScene" uid="uid://d26idy78h2r88" path="res://scenes/frog/frog.tscn" id="2_wq4wd"]
-[ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_hw53h"]
+[ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="2_kgidb"]
 
 [node name="TestMapGeneration" type="Node2D"]
 
-[node name="MapGeneration" parent="." instance=ExtResource("1_1d3bu")]
+[node name="MapGeneration" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("1_1d3bu")]
+frog = NodePath("../FROGG")
 
-[node name="Frog" parent="." instance=ExtResource("2_wq4wd")]
-position = Vector2(-11, -1550)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(8095, -4058)
+offset = Vector2(2.96, 0)
+zoom = Vector2(0.16, 0.16)
 
-[node name="Camera2D" type="Camera2D" parent="Frog"]
-position = Vector2(707, 78)
-zoom = Vector2(0.5, 0.5)
-
-[node name="Ball" parent="." instance=ExtResource("3_hw53h")]
-position = Vector2(441, -2021)
+[node name="FROGG" parent="." instance=ExtResource("2_kgidb")]
+position = Vector2(-36, -1940)
