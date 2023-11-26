@@ -1,17 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://mc3motghlfuj"]
+[gd_scene load_steps=17 format=3 uid="uid://mc3motghlfuj"]
 
 [ext_resource type="Texture2D" uid="uid://dsg44gqys8ka8" path="res://parallax/pigeon/Illustration_sans_titre-1.png" id="1_2ibhh"]
+[ext_resource type="Shader" path="res://parallax/pigeon/pigeon.gdshader" id="1_uxutc"]
 [ext_resource type="Texture2D" uid="uid://b561m8oh7xg76" path="res://parallax/pigeon/Illustration_sans_titre-2.png" id="2_i3jg7"]
 [ext_resource type="Texture2D" uid="uid://sfknw5w3v1ua" path="res://parallax/pigeon/Illustration_sans_titre-3.png" id="3_uv27g"]
 [ext_resource type="Texture2D" uid="uid://ddexpj3e6wao0" path="res://parallax/pigeon/Illustration_sans_titre-4.png" id="4_xd7y7"]
 [ext_resource type="Texture2D" uid="uid://cg64h1iv3mwew" path="res://parallax/pigeon/Illustration_sans_titre-5.png" id="5_ickno"]
 [ext_resource type="Texture2D" uid="uid://2gfvsy4sit5p" path="res://parallax/pigeon/Illustration_sans_titre-6.png" id="6_8sa3b"]
+[ext_resource type="Script" path="res://parallax/pigeon/pigeonColor.gd" id="8_fjvyk"]
 
 [sub_resource type="Curve2D" id="Curve2D_pd1g8"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, -242.742, 95.399, 242.742, -95.399, 618, -274, -223.806, 94.526, 223.806, -94.526, 1438, -616, -287.513, 105.235, 287.513, -105.235, 2229, -922, -235.197, 106.908, 235.197, -106.908, 2949, -1222, -292.215, 149.671, 292.215, -149.671, 3604, -1521, 0, 0, 0, 0, 4239, -1863)
 }
 point_count = 7
+
+[sub_resource type="Curve" id="Curve_g1vfs"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(0.75, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 4.0, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4j4aq"]
+curve = SubResource("Curve_g1vfs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34t41"]
+shader = ExtResource("1_uxutc")
+shader_parameter/hue = 0.12
+shader_parameter/sat = 0.8
+shader_parameter/value = 1.0
+shader_parameter/red_curve = SubResource("CurveTexture_4j4aq")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hby2l"]
 animations = [{
@@ -98,10 +114,12 @@ curve = SubResource("Curve2D_pd1g8")
 rotation = -0.417323
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="PathFollow2D"]
+material = SubResource("ShaderMaterial_34t41")
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_hby2l")
 autoplay = "default"
 frame_progress = 0.875047
+script = ExtResource("8_fjvyk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Pigeon"
