@@ -4,10 +4,11 @@ var CHUNK_TYPE_SQUARE = 0;
 var Y_PRECISION = 10
 var POLYGON_MINIMUM_HEIGHT = 200
 
-@export var start_chunk: Chunk;
-@export var packed_chunks: Array[PackedScene];
-@export var chunks_root: Node2D;
-@export var collision_polygon: CollisionPolygon2D;
+@export var start_chunk: Chunk
+@export var packed_chunks: Array[PackedScene]
+@export var chunks_root: Node2D
+@export var collision_polygon: CollisionPolygon2D
+@export var chunks_count: int = 50
 
 var points: Array[Vector2] = [];
 
@@ -20,7 +21,7 @@ func _ready():
     chunks.push_back(start_chunk);
     points.push_back(start_chunk.position + start_chunk.get_segment().a);
     
-    for index in range(50):
+    for index in range(chunks_count):
         var chunk_type: int;
         
         if (len(chunk_types) < 2 or (chunk_types[len(chunk_types) - 2] != chunk_types[len(chunk_types) - 1]) and chunk_types[len(chunk_types) - 1] == CHUNK_TYPE_SQUARE):

@@ -9,7 +9,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_pd1g8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -100, 0, 100, 0, 960, 100, -100, 15, 100, -15, 1920, 0, -100, 0, 100, 0, 2880, -100, 0, 0, 0, 0, 3840, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -1079, -1511, -100, 0, 100, 0, 1099, -2479, -100, 15, 100, -15, 1975, -2173, -100, 0, 100, 0, 3356, -2812, 0, 0, 0, 0, 4312, -2326)
 }
 point_count = 5
 
@@ -89,7 +89,7 @@ _data = {
 "RESET": SubResource("Animation_7a3oy")
 }
 
-[node name="Path2D" type="Path2D"]
+[node name="Pigeon" type="Path2D"]
 curve = SubResource("Curve2D_pd1g8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
