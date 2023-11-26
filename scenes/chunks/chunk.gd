@@ -2,10 +2,10 @@ extends StaticBody2D
 
 class_name Chunk
 
-enum {SQUARE, STEEP}
+enum Type {SQUARE, STEEP}
 
 @export var collisionShape: CollisionShape2D
-@export_enum("Square", "Steep") var type: String
+@export var type: Type
 
 func get_segment():
     return collisionShape.shape as SegmentShape2D

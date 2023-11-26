@@ -1,43 +1,60 @@
 extends Node2D
 
-var CHUNK_TYPE_SQUARE = 0;
-var Y_PRECISION = 10
-var POLYGON_MINIMUM_HEIGHT = 200
+const Y_PRECISION = 10
+const POLYGON_MINIMUM_HEIGHT = 200
 
 @export var start_chunk: Chunk
-@export var packed_chunks: Array[PackedScene]
+@export var square_chunks_bank: Array[PackedScene]
+@export var steep_chunks_bank: Array[PackedScene]
 @export var chunks_root: Node2D
 @export var collision_polygon: CollisionPolygon2D
+
+@export_category("Chunks")
 @export var chunks_count: int = 50
+@export var min_square_series: int = 2
+@export var max_square_series: int = 3
+@export var min_steep_series: int = 4
+@export var max_steep_series: int = 10
+
 
 var points: Array[Vector2] = [];
 
 func _ready():
     var chunks: Array[Chunk] = [];
     var previous_chunk = start_chunk;
-    var chunk_types: Array[int] = [];
     var rng = RandomNumberGenerator.new();
     
     chunks.push_back(start_chunk);
     points.push_back(start_chunk.position + start_chunk.get_segment().a);
     
+    var bank = square_chunks_bank
+    var series_counter = 1
+    var series_length = rng.randi_range(min_square_series, max_square_series)
+    var bank_type = Chunk.Type.SQUARE
+    
     for index in range(chunks_count):
-        var chunk_type: int;
+        var packed_chunk = bank[rng.randi_range(0, len(bank) - 1)];
         
-        if (len(chunk_types) < 2 or (chunk_types[len(chunk_types) - 2] != chunk_types[len(chunk_types) - 1]) and chunk_types[len(chunk_types) - 1] == CHUNK_TYPE_SQUARE):
-            chunk_type = CHUNK_TYPE_SQUARE
-        else:
-            chunk_type = rng.randi_range(0, len(packed_chunks) - 1)
+        series_counter += 1
         
-        var packed_chunk = packed_chunks[chunk_type];
-        
+        if series_counter == series_length:
+            series_counter = 0
+
+            if bank_type == Chunk.Type.SQUARE:
+                bank = steep_chunks_bank
+                series_length = rng.randi_range(min_steep_series, max_steep_series)
+                bank_type = Chunk.Type.STEEP
+            else:
+                bank = square_chunks_bank
+                series_length = rng.randi_range(min_square_series, max_square_series)
+                bank_type = Chunk.Type.SQUARE                
+
         var new_chunk = attach_new_chunk(previous_chunk, packed_chunk)
         var new_point = new_chunk.position + new_chunk.get_segment().a
         
         remove_extra_points(new_point)
         points.push_back(new_point)
         chunks.push_back(new_chunk)
-        chunk_types.push_back(chunk_type)
         
         previous_chunk = new_chunk
         

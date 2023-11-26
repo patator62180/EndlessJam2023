@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var VELOCITY_SCALE: float = 300
-var BALL_GROUP = 'ball'
-var MOVE_RIGHT_INPUT = 'move_right'
+const VELOCITY_SCALE: float = 300
+const BALL_GROUP = 'ball'
+const MOVE_RIGHT_INPUT = 'move_right'
 
 @export var left_arm: Node2D
 @export var right_arm: Node2D
