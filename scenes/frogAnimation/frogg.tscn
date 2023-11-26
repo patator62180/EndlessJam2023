@@ -321,11 +321,6 @@ length = 74.11
 bone_angle = 0.0
 metadata/_local_pose_override_enabled_ = true
 
-[node name="RaycastLegL" type="RayCast2D" parent="Skeleton2D/Hip"]
-position = Vector2(172, -51)
-scale = Vector2(0.999991, 0.999991)
-target_position = Vector2(0, 1000)
-
 [node name="RaycastLegL2" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(172, -51)
 rotation = -0.349066
@@ -335,11 +330,6 @@ target_position = Vector2(0, 1500)
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Hip/RaycastLegL2"]
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
-
-[node name="RaycastLegR" type="RayCast2D" parent="Skeleton2D/Hip"]
-position = Vector2(-176, -51)
-scale = Vector2(0.999991, 0.999991)
-target_position = Vector2(0, 1000)
 
 [node name="RaycastLegR2" type="RayCast2D" parent="Skeleton2D/Hip"]
 position = Vector2(-176, -51)
@@ -366,6 +356,16 @@ position = Vector2(297, 896)
 position = Vector2(-894, 195)
 script = ExtResource("4_tv2qb")
 range = 500
+
+[node name="RaycastLegL" type="RayCast2D" parent="Skeleton2D"]
+position = Vector2(173, 43)
+scale = Vector2(0.999991, 0.999991)
+target_position = Vector2(0, 1000)
+
+[node name="RaycastLegR" type="RayCast2D" parent="Skeleton2D"]
+position = Vector2(-175, 43)
+scale = Vector2(0.999991, 0.999991)
+target_position = Vector2(0, 1000)
 
 [node name="HandL" type="Node2D" parent="."]
 position = Vector2(1341, -6)

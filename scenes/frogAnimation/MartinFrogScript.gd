@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 700
+const SPEED = 500
 const JUMP_VELOCITY = -900.0
 
 const FOOT_DISTANCE = 150
@@ -47,11 +47,11 @@ var jumping
 
 func _ready():
     legLTarget = $"FootL"
-    raycastLegL = $"Skeleton2D/Hip/RaycastLegL"
+    raycastLegL = $"Skeleton2D/RaycastLegL"
     raycastLegL2 = $"Skeleton2D/Hip/RaycastLegL2"    
     
     legRTarget = $"FootR"
-    raycastLegR = $"Skeleton2D/Hip/RaycastLegR"
+    raycastLegR = $"Skeleton2D/RaycastLegR"
     raycastLegR2 = $"Skeleton2D/Hip/RaycastLegR2"
     
     armLTarget = $"HandL"
