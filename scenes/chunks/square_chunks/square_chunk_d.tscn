@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cbc8attn7nalw" path="res://parallax/fossils/fossil5.png" id="3_beuxu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ioa8w"]
-a = Vector2(-164, -1310)
-b = Vector2(146, -1311)
+a = Vector2(-174, -1494)
+b = Vector2(169, -1495)
 
 [node name="SquareChunkD" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
 collision_mask = 255
@@ -17,7 +17,6 @@ collisionShape = NodePath("CollisionShape2D")
 texture = ExtResource("2_0ucj5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -179)
 shape = SubResource("SegmentShape2D_ioa8w")
 
 [node name="Fossil5" type="Sprite2D" parent="."]
