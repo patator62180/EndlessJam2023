@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://quh13abej5cv"]
+
+[ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="1_uiyvh"]
+[ext_resource type="Texture2D" uid="uid://bmehfgws3rpd5" path="res://scenes/chunks/steep_chunks/steep_chunk_a.png" id="2_hk653"]
+[ext_resource type="Texture2D" uid="uid://dcg1qucjiigxf" path="res://parallax/fossils/fossil0.png" id="3_1m08g"]
+[ext_resource type="Texture2D" uid="uid://dfodt6qtmfinm" path="res://parallax/fossils/fossil7.png" id="4_x18yj"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8ti30"]
+a = Vector2(-161, -1307)
+b = Vector2(460, -1687)
+
+[node name="SteepChunkObstacleA" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
+collision_mask = 255
+script = ExtResource("1_uiyvh")
+collisionShape = NodePath("CollisionShape2D")
+type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_hk653")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(314, -193)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hk653")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_8ti30")
+
+[node name="Fossil0" type="Sprite2D" parent="."]
+position = Vector2(13, -242)
+texture = ExtResource("3_1m08g")
+
+[node name="Obstacle" type="StaticBody2D" parent="."]
+collision_mask = 255
+
+[node name="Fossil7" type="Sprite2D" parent="Obstacle"]
+position = Vector2(108, -1595)
+rotation = -0.380482
+scale = Vector2(0.300293, 0.300293)
+texture = ExtResource("4_x18yj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle"]
+polygon = PackedVector2Array(22, -1492, 22, -1492, -56, -1510, -79, -1585, -61, -1618, 2, -1648, 65, -1678, 138, -1673, 173, -1651, 198, -1593, 165, -1522, 85, -1479)

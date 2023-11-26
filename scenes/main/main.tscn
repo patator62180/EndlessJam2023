@@ -1,32 +1,36 @@
 [gd_scene load_steps=8 format=3 uid="uid://b3m830ehdkgn4"]
 
-[ext_resource type="PackedScene" uid="uid://d26idy78h2r88" path="res://scenes/frog/frog.tscn" id="2_lq666"]
+[ext_resource type="Script" path="res://scenes/main/camera.gd" id="1_a0ijr"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
 [ext_resource type="PackedScene" uid="uid://cgtd7vgqbqbff" path="res://scenes/map_generation/map_generation.tscn" id="4_aqiom"]
-[ext_resource type="PackedScene" uid="uid://mc3motghlfuj" path="res://parallax/pigeon/pigeon.tscn" id="4_qy21y"]
 [ext_resource type="PackedScene" uid="uid://bgpj1wv1a252f" path="res://scenes/Audio/audio_stream_player_2d.tscn" id="6_pj581"]
 [ext_resource type="PackedScene" uid="uid://cf5xkij4alusm" path="res://parallax/MainParallax.tscn" id="7_r6pn2"]
 [ext_resource type="PackedScene" path="res://scenes/UI/hud.tscn" id="7_ylbo0"]
+[ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="8_vg3mi"]
 
 [node name="Main" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("frog")]
+position = Vector2(-31, -2088)
+scale = Vector2(0.348753, 0.348753)
+script = ExtResource("1_a0ijr")
+frog = NodePath("../FROGG")
+
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_pj581")]
+position = Vector2(0, 1)
 volume_db = 15.0
 
 [node name="MapGeneration" parent="." instance=ExtResource("4_aqiom")]
 
-[node name="Frog" parent="." instance=ExtResource("2_lq666")]
-position = Vector2(0, -1550)
-
-[node name="Camera2D" type="Camera2D" parent="Frog"]
-position = Vector2(707, 78)
-
-[node name="Ball" parent="." instance=ExtResource("3_libtn")]
+[node name="Ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("3_libtn")]
 position = Vector2(441, -2021)
+frog = NodePath("../FROGG")
 
 [node name="Parallax" parent="." instance=ExtResource("7_r6pn2")]
 
-[node name="Pigeon" parent="." instance=ExtResource("4_qy21y")]
-
 [node name="HUD" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("7_ylbo0")]
-frog = NodePath("../Frog")
+frog = NodePath("../FROGG")
+
+[node name="FROGG" parent="." instance=ExtResource("8_vg3mi")]
+position = Vector2(5.00001, -1544)
+scale = Vector2(0.227, 0.227)

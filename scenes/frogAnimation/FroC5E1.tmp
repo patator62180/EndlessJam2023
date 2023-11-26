@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://uufdga4rfj30"]
+[gd_scene load_steps=5 format=3 uid="uid://uufdga4rfj30"]
 
 [ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="1_rrsgh"]
 [ext_resource type="Texture2D" uid="uid://c8eees67e7kj3" path="res://scenes/chunks/square_chunks/square_chunk_a.png" id="2_4a4m4"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_w2i4i"]
-[ext_resource type="PackedScene" uid="uid://c4hkpr4g3pmpj" path="res://scenes/HUD/hud.tscn" id="4_wvfbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_be5xj"]
 size = Vector2(1268, 93)
@@ -25,21 +24,9 @@ position = Vector2(3150, 1799)
 rotation = 1.57079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_be5xj")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
-scale = Vector2(8, 0.075)
-texture = ExtResource("2_4a4m4")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(1272, 1917)
-rotation = 1.57079
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-shape = SubResource("RectangleShape2D_be5xj")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
 scale = Vector2(8, 0.075)
 texture = ExtResource("2_4a4m4")
 
@@ -54,13 +41,10 @@ shape = SubResource("RectangleShape2D_be5xj")
 scale = Vector2(7.675, 0.075)
 texture = ExtResource("2_4a4m4")
 
-[node name="Ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("3_w2i4i")]
-position = Vector2(2541, 1636)
-frog = NodePath("../FROGG")
-
 [node name="FROGG" parent="." instance=ExtResource("1_rrsgh")]
 position = Vector2(1905, 1811)
 scale = Vector2(0.226507, 0.226507)
 metadata/_edit_group_ = true
 
-[node name="HUD" parent="." instance=ExtResource("4_wvfbd")]
+[node name="Ball" parent="." instance=ExtResource("3_w2i4i")]
+position = Vector2(2541, 1636)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyu767eodwr24"
-path="res://.godot/imported/cloud3.png-95cbafe1a1a4b6708ef12e6a84d9cc4a.ctex"
+uid="uid://c7k850ct4jmse"
+path="res://.godot/imported/start_rock.png-92f0356de29ccf9a59f6285f0e26eeaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://parallax/clouds/cloud3.png"
-dest_files=["res://.godot/imported/cloud3.png-95cbafe1a1a4b6708ef12e6a84d9cc4a.ctex"]
+source_file="res://scenes/map_generation/start_rock.png"
+dest_files=["res://.godot/imported/start_rock.png-92f0356de29ccf9a59f6285f0e26eeaf.ctex"]
 
 [params]
 
