@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqdwncfyjmeo6"]
+[gd_scene load_steps=16 format=3 uid="uid://bqdwncfyjmeo6"]
 
 [ext_resource type="Script" path="res://scenes/frogAnimation/MartinFrogScript.gd" id="1_c7gqk"]
 [ext_resource type="Texture2D" uid="uid://dk5vwhhglfb4y" path="res://scenes/frogAnimation/Froggg.png" id="1_hfxak"]
@@ -99,18 +99,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 94), Vector2(-7, 500), Vector2(1, 550), Vector2(1, 94)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton2D/Hip:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 0.8), Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_8lt3g"]
 length = 0.001
@@ -125,18 +113,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 94)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton2D/Hip:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.2, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4pbi7"]
@@ -243,12 +219,10 @@ modification_stack = SubResource("SkeletonModificationStack2D_878nt")
 
 [node name="Hip" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(1, 94)
-scale = Vector2(1.2, 1)
 rest = Transform2D(1, 0, 0, 1, 1, 94)
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(-1, -140)
-scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, -1, -140)
 
 [node name="Neck" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
