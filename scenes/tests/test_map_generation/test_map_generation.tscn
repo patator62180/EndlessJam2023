@@ -5,8 +5,7 @@
 
 [node name="TestMapGeneration" type="Node2D"]
 
-[node name="MapGeneration" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("1_1d3bu")]
-frog = NodePath("../FROGG")
+[node name="MapGeneration" parent="." instance=ExtResource("1_1d3bu")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(8095, -4058)

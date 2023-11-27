@@ -1,22 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3m830ehdkgn4"]
+[gd_scene load_steps=8 format=3 uid="uid://b3m830ehdkgn4"]
 
 [ext_resource type="Script" path="res://scenes/main/camera.gd" id="1_a0ijr"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
 [ext_resource type="PackedScene" uid="uid://cgtd7vgqbqbff" path="res://scenes/map_generation/map_generation.tscn" id="4_aqiom"]
-[ext_resource type="PackedScene" uid="uid://cb1dg8mbxkspp" path="res://parallax/bloc.tscn" id="5_e76rq"]
-[ext_resource type="Texture2D" uid="uid://dxcrllf1uj16l" path="res://parallax/clouds/Nuage-1.png" id="6_84sw3"]
+[ext_resource type="PackedScene" uid="uid://cf5xkij4alusm" path="res://parallax/MainParallax.tscn" id="4_yqh2d"]
 [ext_resource type="PackedScene" uid="uid://bgpj1wv1a252f" path="res://scenes/Audio/audio_stream_player_2d.tscn" id="6_pj581"]
-[ext_resource type="Texture2D" uid="uid://buhdiacipndwc" path="res://parallax/clouds/Nuage-2.png" id="7_238ng"]
 [ext_resource type="PackedScene" path="res://scenes/UI/hud.tscn" id="7_ylbo0"]
-[ext_resource type="Texture2D" uid="uid://cvcpoxda4xulb" path="res://parallax/clouds/Nuage-3.png" id="8_ndqk2"]
 [ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="8_vg3mi"]
-[ext_resource type="Texture2D" uid="uid://bou1p02abi0nx" path="res://parallax/clouds/Nuage-4.png" id="9_wc803"]
-[ext_resource type="Texture2D" uid="uid://g30cyjwigajo" path="res://parallax/clouds/Nuage-5.png" id="10_25325"]
-[ext_resource type="Texture2D" uid="uid://rg7wwgmmldw0" path="res://parallax/clouds/Nuage-6.png" id="11_qvpaf"]
-[ext_resource type="Script" path="res://parallax/pigeon/pigeon_randomizer.gd" id="12_t8rwe"]
-[ext_resource type="PackedScene" uid="uid://mc3motghlfuj" path="res://parallax/pigeon/pigeon.tscn" id="13_jq2qs"]
-[ext_resource type="Texture2D" uid="uid://d1a5b47ko8myw" path="res://icon.svg" id="14_mj8l3"]
-[ext_resource type="Script" path="res://parallax/MockPlayer.gd" id="15_6xgpi"]
 
 [node name="Main" type="Node2D"]
 
@@ -26,149 +16,14 @@ scale = Vector2(0.348753, 0.348753)
 script = ExtResource("1_a0ijr")
 frog = NodePath("../FROGG")
 
-[node name="MapGeneration" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("4_aqiom")]
-frog = NodePath("../FROGG")
+[node name="MapGeneration" parent="." instance=ExtResource("4_aqiom")]
 chunks_count_trigger = 20
 
 [node name="Ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("3_libtn")]
 position = Vector2(441, -2021)
 frog = NodePath("../FROGG")
 
-[node name="Parallax" type="Node2D" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax"]
-
-[node name="Bloc" parent="Parallax/ParallaxBackground" instance=ExtResource("5_e76rq")]
-color = Color(0.552941, 0.811765, 0.827451, 1)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax/ParallaxBackground"]
-position = Vector2(-3, 0)
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(3840, 2160)
-
-[node name="Nuage-1" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(330, 337)
-texture = ExtResource("6_84sw3")
-
-[node name="Nuage-2" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(977, 493)
-texture = ExtResource("7_238ng")
-
-[node name="Nuage-3" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(1493, 253)
-texture = ExtResource("8_ndqk2")
-
-[node name="Nuage-4" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(612, 810)
-texture = ExtResource("9_wc803")
-
-[node name="Nuage-5" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(1978, 984)
-texture = ExtResource("10_25325")
-
-[node name="Nuage-6" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(1151, 1200)
-texture = ExtResource("11_qvpaf")
-
-[node name="Nuage-7" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(438, 1655)
-texture = ExtResource("6_84sw3")
-
-[node name="Nuage-8" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(2739, 289)
-texture = ExtResource("7_238ng")
-
-[node name="Nuage-9" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(2913, 1560)
-texture = ExtResource("9_wc803")
-
-[node name="Nuage-10" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(3159, 774)
-texture = ExtResource("8_ndqk2")
-
-[node name="Nuage-11" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(576, 1937)
-texture = ExtResource("10_25325")
-
-[node name="Nuage-12" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(1738, 1679)
-texture = ExtResource("11_qvpaf")
-
-[node name="Nuage-13" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(-17, 939)
-texture = ExtResource("8_ndqk2")
-
-[node name="Nuage-14" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(3543, 1867)
-texture = ExtResource("10_25325")
-
-[node name="Nuage-15" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(3823, 203)
-texture = ExtResource("7_238ng")
-
-[node name="Nuage-16" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(3583, 315)
-texture = ExtResource("9_wc803")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax/ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-
-[node name="MapGeneration" parent="Parallax/ParallaxBackground/ParallaxLayer2" node_paths=PackedStringArray("frog") instance=ExtResource("4_aqiom")]
-modulate = Color(0.7, 0.7, 0.7, 1)
-position = Vector2(0, 1500)
-frog = NodePath("../../../../FROGG")
-chunks_count_trigger = 20
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax/ParallaxBackground"]
-motion_scale = Vector2(0, 0)
-script = ExtResource("12_t8rwe")
-pigeonScene = ExtResource("13_jq2qs")
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax/ParallaxBackground"]
-position = Vector2(-3, 0)
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(3840, 2160)
-
-[node name="Nuage-3" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer4"]
-position = Vector2(1493, 253)
-texture = ExtResource("8_ndqk2")
-
-[node name="Nuage-7" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer4"]
-position = Vector2(438, 1655)
-texture = ExtResource("6_84sw3")
-
-[node name="Nuage-11" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer4"]
-position = Vector2(576, 1937)
-texture = ExtResource("10_25325")
-
-[node name="Nuage-15" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer4"]
-position = Vector2(3823, 203)
-texture = ExtResource("7_238ng")
-
-[node name="Nuage-1" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer4"]
-position = Vector2(330, 337)
-texture = ExtResource("6_84sw3")
-
-[node name="Nuage-5" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer4"]
-position = Vector2(1978, 984)
-texture = ExtResource("10_25325")
-
-[node name="Nuage-9" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer4"]
-position = Vector2(2913, 1560)
-texture = ExtResource("9_wc803")
-
-[node name="Nuage-13" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer4"]
-position = Vector2(-17, 939)
-texture = ExtResource("8_ndqk2")
-
-[node name="Icon" type="Sprite2D" parent="Parallax"]
-visible = false
-position = Vector2(361, 358)
-rotation = -0.494385
-texture = ExtResource("14_mj8l3")
-script = ExtResource("15_6xgpi")
-
-[node name="Camera2D" type="Camera2D" parent="Parallax/Icon"]
+[node name="Parallax" parent="." instance=ExtResource("4_yqh2d")]
 
 [node name="HUD" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("7_ylbo0")]
 frog = NodePath("../FROGG")
