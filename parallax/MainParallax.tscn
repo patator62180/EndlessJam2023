@@ -95,6 +95,7 @@ motion_scale = Vector2(0.2, 0.2)
 [node name="MapGeneration" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource("8_1ntlu")]
 modulate = Color(0.7, 0.7, 0.7, 1)
 position = Vector2(0, 1500)
+enable_collision_polygon = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)

@@ -10,6 +10,7 @@ const FROG_GROUP = 'frog'
 @export var steep_obstacle_chunks_bank: Array[PackedScene]
 @export var chunks_root: Node2D
 @export var collision_polygon: CollisionPolygon2D
+@export var enable_collision_polygon: bool = true
 
 @export_category("Chunks")
 @export var initial_chunks_count: int = 3
@@ -128,13 +129,14 @@ func spawn_chunk(index: int):
 
 
 func draw_collision_polygon():
-    var looped_points = [] + points
+    if enable_collision_polygon:
+        var looped_points = [] + points
 
-    looped_points.append(Vector2(points[len(points) - 1].x, points[0].y + POLYGON_MINIMUM_HEIGHT));
-    looped_points.append(Vector2(points[0].x, points[0].y + POLYGON_MINIMUM_HEIGHT));
-    looped_points.append(points[0]);
-    
-    collision_polygon.polygon = looped_points;
+        looped_points.append(Vector2(points[len(points) - 1].x, points[0].y + POLYGON_MINIMUM_HEIGHT));
+        looped_points.append(Vector2(points[0].x, points[0].y + POLYGON_MINIMUM_HEIGHT));
+        looped_points.append(points[0]);
+        
+        collision_polygon.polygon = looped_points;
 
 
 func populate_chunks(target: int):
