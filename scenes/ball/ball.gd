@@ -1,4 +1,5 @@
-extends RigidBody2D
+#extends RigidBody2D
+extends Node2D
 
 @export var shadow: Sprite2D
 @export var frog: CharacterBody2D

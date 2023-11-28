@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://b3m830ehdkgn4"]
 
 [ext_resource type="Script" path="res://scenes/main/camera.gd" id="1_a0ijr"]
-[ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_libtn"]
 [ext_resource type="PackedScene" uid="uid://cgtd7vgqbqbff" path="res://scenes/map_generation/map_generation.tscn" id="4_aqiom"]
 [ext_resource type="PackedScene" uid="uid://cf5xkij4alusm" path="res://parallax/MainParallax.tscn" id="4_yqh2d"]
+[ext_resource type="PackedScene" uid="uid://ceyrmnml1jtix" path="res://scenes/ball/ball2.tscn" id="5_1oeum"]
 [ext_resource type="PackedScene" uid="uid://bgpj1wv1a252f" path="res://scenes/Audio/audio_stream_player_2d.tscn" id="6_pj581"]
-[ext_resource type="PackedScene" path="res://scenes/UI/hud.tscn" id="7_ylbo0"]
+[ext_resource type="PackedScene" uid="uid://d33w2xvakpbih" path="res://scenes/UI/hud.tscn" id="7_ylbo0"]
 [ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="8_vg3mi"]
 
 [node name="Main" type="Node2D"]
@@ -18,13 +18,13 @@ frog = NodePath("../FROGG")
 
 [node name="MapGeneration" parent="." instance=ExtResource("4_aqiom")]
 
-[node name="Ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("3_libtn")]
-position = Vector2(441, -2021)
-frog = NodePath("../FROGG")
-
 [node name="Parallax" parent="." instance=ExtResource("4_yqh2d")]
 
 [node name="HUD" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("7_ylbo0")]
+frog = NodePath("../FROGG")
+
+[node name="ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("5_1oeum")]
+position = Vector2(518, -1904)
 frog = NodePath("../FROGG")
 
 [node name="FROGG" parent="." instance=ExtResource("8_vg3mi")]

@@ -1,0 +1,179 @@
+[gd_scene load_steps=27 format=3 uid="uid://brsgleus0m4r4"]
+
+[ext_resource type="Texture2D" uid="uid://ykcweo7c3yu6" path="res://parallax/taupe/Illustration_sans_titre-1.png" id="1_m44jh"]
+[ext_resource type="Texture2D" uid="uid://bgtyxk18sl0ry" path="res://parallax/taupe/Illustration_sans_titre-2.png" id="2_c8u77"]
+[ext_resource type="Texture2D" uid="uid://hw2p7sna0tto" path="res://parallax/taupe/Illustration_sans_titre-3.png" id="3_t88wl"]
+[ext_resource type="Texture2D" uid="uid://chqnojqanlg8c" path="res://parallax/taupe/Illustration_sans_titre-4.png" id="4_atwwe"]
+[ext_resource type="Texture2D" uid="uid://l1a72qwsvnn4" path="res://parallax/taupe/Illustration_sans_titre-5.png" id="5_mj2f5"]
+[ext_resource type="Texture2D" uid="uid://bg3kcji1uic63" path="res://parallax/taupe/Illustration_sans_titre-6.png" id="6_jfnqy"]
+[ext_resource type="Texture2D" uid="uid://dqirjlbvfy1n2" path="res://parallax/taupe/Illustration_sans_titre-7.png" id="7_3mh62"]
+[ext_resource type="Texture2D" uid="uid://s3s0sx24tu0f" path="res://parallax/taupe/Illustration_sans_titre-8.png" id="8_fk2pj"]
+[ext_resource type="Texture2D" uid="uid://bxagv7msv2x3p" path="res://parallax/taupe/Illustration_sans_titre-9.png" id="9_vyfru"]
+[ext_resource type="Texture2D" uid="uid://bx3eypk3pitx0" path="res://parallax/taupe/Illustration_sans_titre-10.png" id="10_67151"]
+[ext_resource type="Texture2D" uid="uid://ry6cfjdt3mms" path="res://parallax/taupe/Illustration_sans_titre-11.png" id="11_s6bhw"]
+[ext_resource type="Texture2D" uid="uid://dwaem17eqs7l1" path="res://parallax/taupe/Illustration_sans_titre-12.png" id="12_8y62e"]
+[ext_resource type="Texture2D" uid="uid://cxj11lw2tp0u7" path="res://parallax/taupe/Illustration_sans_titre-13.png" id="13_pgas2"]
+[ext_resource type="Texture2D" uid="uid://k3c8gfodbvdg" path="res://parallax/taupe/Illustration_sans_titre-14.png" id="14_8lcxt"]
+[ext_resource type="Texture2D" uid="uid://b1w4hagh612lm" path="res://parallax/taupe/Illustration_sans_titre-15.png" id="15_n4gae"]
+[ext_resource type="Texture2D" uid="uid://c244g6m7apxkf" path="res://parallax/taupe/Illustration_sans_titre-16.png" id="16_8ir7h"]
+[ext_resource type="Texture2D" uid="uid://dgsyhvv3n21ie" path="res://parallax/taupe/Illustration_sans_titre-17.png" id="17_0honk"]
+[ext_resource type="Texture2D" uid="uid://h52yx1gwu1ul" path="res://parallax/taupe/Illustration_sans_titre-18.png" id="18_lexnd"]
+[ext_resource type="Texture2D" uid="uid://cmwfg8fpii7wi" path="res://parallax/taupe/Illustration_sans_titre-19.png" id="19_x2hie"]
+[ext_resource type="Texture2D" uid="uid://cmt7jgctql8k3" path="res://parallax/taupe/Illustration_sans_titre-20.png" id="20_5mja5"]
+[ext_resource type="Texture2D" uid="uid://cmx2rbg5o6sxw" path="res://parallax/taupe/Illustration_sans_titre-21.png" id="21_rpo7u"]
+[ext_resource type="Script" path="res://parallax/taupe/taupe.gd" id="22_k2ywo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0lmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m44jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c8u77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t88wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_atwwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mj2f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jfnqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3mh62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fk2pj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vyfru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_67151")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s6bhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s6bhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s6bhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8y62e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8y62e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8y62e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pgas2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pgas2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pgas2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8lcxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8lcxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8lcxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n4gae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n4gae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n4gae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8ir7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0honk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lexnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_x2hie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_5mja5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_rpo7u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a70no"]
+radius = 37.0
+height = 355.75
+
+[sub_resource type="Animation" id="Animation_fllaq"]
+resource_name = "Default"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 30, 30]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4, 3.3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 380), Vector2(5, 380), Vector2(5, 30), Vector2(5, 30), Vector2(5, 380)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgn1b"]
+_data = {
+"Default": SubResource("Animation_fllaq")
+}
+
+[node name="taupe" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_f0lmb")
+script = ExtResource("22_k2ywo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5, 380)
+shape = SubResource("CapsuleShape2D_a70no")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Default"
+libraries = {
+"": SubResource("AnimationLibrary_jgn1b")
+}
