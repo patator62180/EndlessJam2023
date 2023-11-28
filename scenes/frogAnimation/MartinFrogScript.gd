@@ -59,6 +59,9 @@ var footR
 @export var foot_r_area = CollisionShape2D
 @export var foot_l_area = CollisionShape2D
 
+var hand_l
+var hand_r
+
 func _ready():
     legLTarget = $"FootL"
     legL = $Skeleton2D/Hip/LegL
@@ -85,6 +88,9 @@ func _ready():
     animator = $AnimationPlayer
     
     rockThrowTarget = $"Skeleton2D/Hip/RockThrowTarget"
+    
+    hand_l = $"Skeleton2D/Hip/Torso/ArmL/ForeArmL/ForeForeArmL/HandL"
+    hand_r = $"Skeleton2D/Hip/Torso/ArmR/ForeArmR/ForeForeArmR/HandR"
 
     #safeRockArea.body_entered.connect(body_entered_safe_rock_area)
     #safeRockArea.body_exited.connect(body_exited_safe_rock_area)
@@ -145,6 +151,10 @@ func _physics_process(delta):
     var direction = Input.get_axis("move_left", "move_right")
     
     input_vector = direction
+    
+    var body_rotation = deg_to_rad(input_vector * 15)
+    
+    body.rotation = lerp(body.rotation, body_rotation if touchingBall or holding or holdAnim else -body_rotation, 0.1)
     #var ballDirection = sign(ball.position.x - position.x) if ball != null else 0
 
     #if not blockedByBall or ballDirection != direction:
@@ -229,10 +239,11 @@ func raycastLegs():
         if currentTargetR == null:
             currentTargetR = raycastLegR.get_collision_point()
 
-        if currentTargetR.distance_to(foot_r_area.global_position) > foot_area_size && timerL >= 1 && timerR >= 1:
+        if (currentTargetR.distance_to(foot_r_area.global_position) > foot_area_size or (input_vector == 0 && currentTargetR.distance_to(foot_r_area.global_position) > 10)) && timerL >= 1 && timerR >= 1:
             timerR = 0
-            previousTargetR = footR.global_position  
-            raycastLegR2.global_position = raycastLegR.global_position + Vector2(input_vector, 0) * foot_area_size * 0.75  
+            previousTargetR = footR.global_position
+            raycastLegR2.global_position = raycastLegR.global_position + Vector2(input_vector, 0) * foot_area_size * 0.75
+            collider2 = raycastLegR2.get_collision_point()   
     else:
         currentTargetR = null
               
@@ -249,7 +260,7 @@ func raycastLegs():
         midTargetR = midPoint + midPointModifier
         
         target = _quadratic_bezier(previousTargetR, midTargetR, currentTargetR, timerR)
-        legRTarget.rotation = raycastLegR2.get_collision_normal().angle() + deg_to_rad(90)
+        #legRTarget.rotation = raycastLegR2.get_collision_normal().angle() + deg_to_rad(90)
         
     
     if target != null:
@@ -267,10 +278,11 @@ func raycastLegs():
         if currentTargetL == null:
             currentTargetL = raycastLegL.get_collision_point()
 
-        if currentTargetL.distance_to(foot_l_area.global_position) > foot_area_size && timerR >= 1 && timerL >= 1:
+        if (currentTargetL.distance_to(foot_l_area.global_position) > foot_area_size or (input_vector == 0 && currentTargetL.distance_to(foot_l_area.global_position) > 10)) && timerR >= 1 && timerL >= 1:
             timerL = 0
             previousTargetL = currentTargetL  
             raycastLegL2.global_position = raycastLegL.global_position + Vector2(input_vector, 0) * foot_area_size * 0.75
+            collider2 = raycastLegL2.get_collision_point()   
     else:
         currentTargetL = null
         
@@ -287,15 +299,12 @@ func raycastLegs():
         midTargetL = midPoint + midPointModifier
         
         target = _quadratic_bezier(previousTargetL, midTargetL, currentTargetL, timerL)
-        legLTarget.rotation = raycastLegL2.get_collision_normal().angle() + deg_to_rad(90)
+        #legLTarget.rotation = raycastLegL2.get_collision_normal().angle() + deg_to_rad(90)
     
     if target != null:
         legLTarget.global_position = target
     else:
         legLTarget.global_position = lerp(legLTarget.global_position, foot_l_area.global_position, 0.1)
-
-        
-        
         
     #raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0).normalized().rotated(-floorAngle) * FOOT_DETECTION / scaleScalar
     #var rayCastL = raycastLegL if !moving || !is_on_floor() else raycastLegL2
@@ -391,19 +400,27 @@ func raycastLegs():
     wasMoving = moving
 
 
+@export var hand_l_follow = Node2D
+@export var hand_r_follow = Node2D
+
 func rayCastArms():
     var targetL
     var targetR
     
-#    if touchingBall:
-#        targetL = lerp(armLTarget.get_global_position(), ball.targetL.get_global_position(), 0.1)
-#        targetR = lerp(armRTarget.get_global_position(), ball.targetR.get_global_position(), 0.1)
+    var hand_gravity = Vector2.DOWN * 50
+    hand_l_follow.global_position = lerp(hand_l_follow.global_position, hand_l.global_position + hand_gravity, 0.05)
+    hand_r_follow.global_position = lerp(hand_r_follow.global_position, hand_r.global_position + hand_gravity, 0.05)
+    
     if holding || holdAnim || touchingBall:
-        targetL = lerp(armLTarget.get_global_position(), ball.targetR.get_global_position(), 0.5)
-        targetR = lerp(armRTarget.get_global_position(), ball.targetL.get_global_position(), 0.5)
+        var speed = 0.1 if touchingBall else 0.5
+        targetL = lerp(armLTarget.get_global_position(), ball.targetR.get_global_position(), speed)
+        targetR = lerp(armRTarget.get_global_position(), ball.targetL.get_global_position(), speed)
+        
+        hand_l_follow.global_position = targetL
+        hand_r_follow.global_position = targetR
     else:
-        targetL = lerp(armLTarget.get_global_position(), handLRest.get_global_position(), 0.1)
-        targetR = lerp(armRTarget.get_global_position(), handRRest.get_global_position(), 0.1)
+        targetL = hand_l_follow.global_position
+        targetR = hand_r_follow.global_position
         
     armLTarget.set_global_position(targetL)
     armRTarget.set_global_position(targetR)

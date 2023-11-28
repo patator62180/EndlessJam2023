@@ -33,14 +33,14 @@ texture = ExtResource("4_kl7cl")
 [node name="HandTargets" type="Node2D" parent="."]
 
 [node name="HandL" type="Node2D" parent="HandTargets"]
-position = Vector2(-144, -47)
+position = Vector2(-130, -81)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandTargets/HandL"]
 visible = false
 texture = ExtResource("5_himf4")
 
 [node name="HandR" type="Node2D" parent="HandTargets"]
-position = Vector2(-147, 30)
+position = Vector2(-136, 66)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandTargets/HandR"]
 visible = false

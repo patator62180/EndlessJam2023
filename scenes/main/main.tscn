@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3m830ehdkgn4"]
+[gd_scene load_steps=9 format=3 uid="uid://b3m830ehdkgn4"]
 
 [ext_resource type="Script" path="res://scenes/main/camera.gd" id="1_a0ijr"]
 [ext_resource type="PackedScene" uid="uid://cgtd7vgqbqbff" path="res://scenes/map_generation/map_generation.tscn" id="4_aqiom"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ceyrmnml1jtix" path="res://scenes/ball/ball2.tscn" id="5_1oeum"]
 [ext_resource type="PackedScene" uid="uid://bgpj1wv1a252f" path="res://scenes/Audio/audio_stream_player_2d.tscn" id="6_pj581"]
 [ext_resource type="PackedScene" uid="uid://d33w2xvakpbih" path="res://scenes/UI/hud.tscn" id="7_ylbo0"]
+[ext_resource type="Texture2D" uid="uid://cvo7dbim06qdi" path="res://scenes/UI/Grenouille_Blabla_-1.png" id="8_fwc2t"]
 [ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="8_vg3mi"]
 
 [node name="Main" type="Node2D"]
@@ -27,10 +28,28 @@ target = NodePath("../ball")
 position = Vector2(527, -1477)
 frog = NodePath("../FROGG")
 
-[node name="FROGG" parent="." instance=ExtResource("8_vg3mi")]
+[node name="FROGG" parent="." node_paths=PackedStringArray("hand_l_follow", "hand_r_follow") instance=ExtResource("8_vg3mi")]
 position = Vector2(5.00001, -1544)
 scale = Vector2(0.227, 0.227)
+hand_l_follow = NodePath("../HandLFollow")
+hand_r_follow = NodePath("../HandRFollow")
 
 [node name="AudioStreamPlayer2D" parent="FROGG" instance=ExtResource("6_pj581")]
 position = Vector2(-22.0265, 6806.17)
 scale = Vector2(4.40529, 4.40529)
+
+[node name="HandLFollow" type="Node2D" parent="."]
+position = Vector2(143, -1726)
+
+[node name="Sprite2D" type="Sprite2D" parent="HandLFollow"]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_fwc2t")
+
+[node name="HandRFollow" type="Node2D" parent="."]
+position = Vector2(-136, -1726)
+
+[node name="Sprite2D" type="Sprite2D" parent="HandRFollow"]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_fwc2t")
