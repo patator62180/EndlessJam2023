@@ -8,6 +8,7 @@ const FROG_GROUP = 'frog'
 @export var square_chunks_bank: Array[PackedScene]
 @export var steep_chunks_bank: Array[PackedScene]
 @export var steep_obstacle_chunks_bank: Array[PackedScene]
+@export var square_obstacle_chunks_bank: Array[PackedScene]
 @export var chunks_root: Node2D
 @export var chunks_pool_root: Node2D
 @export var collision_polygon: CollisionPolygon2D
@@ -53,10 +54,12 @@ var frog: Node2D
 var square_chunks_pool: Array[Array] = []
 var steep_chunks_pool: Array[Array] = []
 var steep_obstacle_chunks_pool: Array[Array] = []
+var square_obstacle_chunks_pool: Array[Array] = []
 
 
 func build_chunk_pools():
     build_chunk_pool_type(ChunkType.Square, false)
+    build_chunk_pool_type(ChunkType.Square, true)
     build_chunk_pool_type(ChunkType.Steep, false)
     build_chunk_pool_type(ChunkType.Steep, true)
 
@@ -65,16 +68,19 @@ func build_chunk_pool_type(type: ChunkType, obstacle: bool):
     var bank: Array[PackedScene] = []
     var pool: Array[Array] = []
     
-    if type == ChunkType.Square:
+    if type == ChunkType.Square and obstacle == false:
         bank = square_chunks_bank
         pool = square_chunks_pool
+    elif type == ChunkType.Square and obstacle == true:
+        bank = square_obstacle_chunks_bank
+        pool = square_obstacle_chunks_pool
     elif type == ChunkType.Steep and obstacle == true:
         bank = steep_obstacle_chunks_bank
         pool = steep_obstacle_chunks_pool
     else:
         bank = steep_chunks_bank
         pool = steep_chunks_pool
-   
+ 
     for packed_chunk in bank:
         var typed_pool: Array[Chunk] = []
 
@@ -117,8 +123,10 @@ func toggle_type(type):
 
 
 func pick_pool(type: ChunkType, obstacle: bool):
-    if type == ChunkType.Square:
+    if type == ChunkType.Square and obstacle == false:
         return square_chunks_pool
+    if type == ChunkType.Square and obstacle == true:
+        return square_obstacle_chunks_pool
     elif type == ChunkType.Steep and obstacle == true:
         return steep_obstacle_chunks_pool
     else:
@@ -136,18 +144,16 @@ func append_chunk_def():
     var chunk_def = ChunkDef.new()
 
     chunk_def.obstacle = false
+    chunk_def.type = type
     
     if chunk_count_since_type_change == next_chunk_threshold:
         chunk_def.type = toggle_type(type)
         next_chunk_threshold = generate_next_threshold(chunk_def.type)
         chunk_count_since_type_change = 0
-    elif chunks_count_since_obstacle >= next_obstacle_threshold and type == ChunkType.Steep:
-        chunk_def.type = type
+    elif chunks_count_since_obstacle >= next_obstacle_threshold:
         next_obstacle_threshold = rng.randi_range(min_chunks_before_obstacle, max_chunks_before_obstacle)
         chunk_def.obstacle = true
         chunks_count_since_obstacle = -1
-    else:
-        chunk_def.type = type
 
     chunks_count_since_obstacle += 1
     chunk_count_since_type_change += 1
