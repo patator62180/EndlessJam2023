@@ -17,7 +17,6 @@ script = ExtResource("1_a0ijr")
 frog = NodePath("../FROGG")
 
 [node name="MapGeneration" parent="." instance=ExtResource("4_aqiom")]
-chunks_count_trigger = 20
 
 [node name="Ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("3_libtn")]
 position = Vector2(441, -2021)

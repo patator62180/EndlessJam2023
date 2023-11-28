@@ -15,7 +15,7 @@ const FROG_GROUP = 'frog'
 
 @export_category("Chunks")
 @export var initial_chunks_count: int = 3
-@export var chunks_count_trigger: int = 10
+@export var chunks_count_trigger: int = 50
 @export var min_square_series: int = 3
 @export var max_square_series: int = 4
 @export var min_steep_series: int = 4
@@ -23,7 +23,7 @@ const FROG_GROUP = 'frog'
 @export var average_chunk_width: int = 652
 @export var min_chunks_before_obstacle: int = 6
 @export var max_chunks_before_obstacle: int = 10
-@export var chunks_pools_size: int = 20
+@export var chunks_pools_size: int = 500
 
 enum ChunkType {Square, Steep}
 
