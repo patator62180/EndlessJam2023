@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mwl4g7upi7y7"]
+[gd_scene load_steps=15 format=3 uid="uid://mwl4g7upi7y7"]
 
 [ext_resource type="Texture2D" uid="uid://ce7rqkyoxkn0c" path="res://parallax/champignon/Champi_01.png" id="1_8533q"]
 [ext_resource type="Script" path="res://parallax/champignon/champignon.gd" id="1_hsj1y"]
@@ -55,16 +55,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7cnff"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ib1ol"]
 bounce = 1.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s11k3"]
-radius = 16.0901
-height = 107.18
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ae08"]
-radius = 17.8814
-height = 90.4946
 
 [node name="champignon" type="Node2D"]
 script = ExtResource("1_hsj1y")
@@ -79,25 +71,8 @@ position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_mdtkc")
 autoplay = "default"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_7cnff")
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ib1ol")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-49, 19)
-rotation = 1.21173
-shape = SubResource("CapsuleShape2D_s11k3")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1, -5)
-rotation = 0.837456
-shape = SubResource("CapsuleShape2D_s11k3")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(49, -3)
-rotation = -0.535786
-shape = SubResource("CapsuleShape2D_2ae08")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(71, 17)
-rotation = -0.963419
-shape = SubResource("CapsuleShape2D_2ae08")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(33, -55, 134, 39, 126, 104, -108, 105, -110, 12)
