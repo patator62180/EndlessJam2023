@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://brsgleus0m4r4"]
+[gd_scene load_steps=30 format=3 uid="uid://brsgleus0m4r4"]
 
 [ext_resource type="Texture2D" uid="uid://ykcweo7c3yu6" path="res://parallax/taupe/Illustration_sans_titre-1.png" id="1_m44jh"]
 [ext_resource type="Texture2D" uid="uid://bgtyxk18sl0ry" path="res://parallax/taupe/Illustration_sans_titre-2.png" id="2_c8u77"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cmt7jgctql8k3" path="res://parallax/taupe/Illustration_sans_titre-20.png" id="20_5mja5"]
 [ext_resource type="Texture2D" uid="uid://cmx2rbg5o6sxw" path="res://parallax/taupe/Illustration_sans_titre-21.png" id="21_rpo7u"]
 [ext_resource type="Script" path="res://parallax/taupe/taupe.gd" id="22_k2ywo"]
+[ext_resource type="Script" path="res://parallax/taupe/bounce.gd" id="23_1dbgl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f0lmb"]
 animations = [{
@@ -193,22 +194,22 @@ _data = {
 "RESET": SubResource("Animation_jxl1m")
 }
 
-[node name="taupe" type="AnimatedSprite2D" node_paths=PackedStringArray("bounce_collision")]
+[node name="taupe" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_f0lmb")
-frame = 4
+frame = 18
 script = ExtResource("22_k2ywo")
-bounce_collision = NodePath("BouceCollision")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(5, 380)
+position = Vector2(5, 30)
 shape = SubResource("CapsuleShape2D_a70no")
 
 [node name="BouceCollision" type="Area2D" parent="."]
 position = Vector2(0, 168)
 collision_layer = 0
 collision_mask = 32768
+script = ExtResource("23_1dbgl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BouceCollision"]
 position = Vector2(5, 154)

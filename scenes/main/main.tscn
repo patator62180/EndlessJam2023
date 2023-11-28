@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cf5xkij4alusm" path="res://parallax/MainParallax.tscn" id="4_yqh2d"]
 [ext_resource type="PackedScene" uid="uid://ceyrmnml1jtix" path="res://scenes/ball/ball2.tscn" id="5_1oeum"]
 [ext_resource type="PackedScene" uid="uid://bgpj1wv1a252f" path="res://scenes/Audio/audio_stream_player_2d.tscn" id="6_pj581"]
-[ext_resource type="PackedScene" path="res://scenes/UI/hud.tscn" id="7_ylbo0"]
+[ext_resource type="PackedScene" uid="uid://d33w2xvakpbih" path="res://scenes/UI/hud.tscn" id="7_ylbo0"]
 [ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="8_vg3mi"]
 
 [node name="Main" type="Node2D"]
@@ -20,11 +20,11 @@ frog = NodePath("../FROGG")
 
 [node name="Parallax" parent="." instance=ExtResource("4_yqh2d")]
 
-[node name="HUD" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("7_ylbo0")]
-frog = NodePath("../FROGG")
+[node name="HUD" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_ylbo0")]
+target = NodePath("../ball")
 
 [node name="ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("5_1oeum")]
-position = Vector2(518, -1904)
+position = Vector2(527, -1477)
 frog = NodePath("../FROGG")
 
 [node name="FROGG" parent="." instance=ExtResource("8_vg3mi")]

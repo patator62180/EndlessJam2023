@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://mwl4g7upi7y7"]
+[gd_scene load_steps=17 format=3 uid="uid://mwl4g7upi7y7"]
 
 [ext_resource type="Texture2D" uid="uid://ce7rqkyoxkn0c" path="res://parallax/champignon/Champi_01.png" id="1_8533q"]
 [ext_resource type="Script" path="res://parallax/champignon/champignon.gd" id="1_hsj1y"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cpjhmrfxahg6m" path="res://parallax/champignon/Chapeau_02.png" id="6_dduoe"]
 [ext_resource type="Texture2D" uid="uid://cm103xom77py2" path="res://parallax/champignon/Chapeau_03.png" id="7_uvsnt"]
 [ext_resource type="Texture2D" uid="uid://bkkf261d5nmhb" path="res://parallax/champignon/Chapeau_04.png" id="8_ol3kw"]
+[ext_resource type="Script" path="res://parallax/taupe/bounce.gd" id="11_m0v6r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qjg1m"]
 shader = ExtResource("5_yl7a4")
@@ -56,7 +57,9 @@ animations = [{
 }]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ib1ol"]
-bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cib71"]
+radius = 123.037
 
 [node name="champignon" type="Node2D"]
 script = ExtResource("1_hsj1y")
@@ -76,3 +79,14 @@ physics_material_override = SubResource("PhysicsMaterial_ib1ol")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 polygon = PackedVector2Array(33, -55, 134, 39, 126, 104, -108, 105, -110, 12)
+
+[node name="BouceCollision" type="Area2D" parent="."]
+position = Vector2(3, -118)
+collision_layer = 0
+collision_mask = 32768
+script = ExtResource("11_m0v6r")
+directional_bounce = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouceCollision"]
+position = Vector2(9, 147)
+shape = SubResource("CircleShape2D_cib71")
