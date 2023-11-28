@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://uufdga4rfj30"]
+[gd_scene load_steps=8 format=3 uid="uid://uufdga4rfj30"]
 
 [ext_resource type="PackedScene" uid="uid://bqdwncfyjmeo6" path="res://scenes/frogAnimation/frogg.tscn" id="1_rrsgh"]
 [ext_resource type="Texture2D" uid="uid://c8eees67e7kj3" path="res://scenes/chunks/square_chunks/square_chunk_a.png" id="2_4a4m4"]
 [ext_resource type="PackedScene" uid="uid://two7o0ypxlcy" path="res://scenes/ball/ball.tscn" id="3_w2i4i"]
 [ext_resource type="PackedScene" uid="uid://c4hkpr4g3pmpj" path="res://scenes/HUD/hud.tscn" id="4_wvfbd"]
+[ext_resource type="PackedScene" uid="uid://ceyrmnml1jtix" path="res://scenes/ball/ball2.tscn" id="5_fvemt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_be5xj"]
 size = Vector2(1268, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks273"]
+size = Vector2(127, 130)
 
 [node name="FrogTest" type="Node2D"]
 
@@ -55,12 +59,23 @@ scale = Vector2(7.675, 0.075)
 texture = ExtResource("2_4a4m4")
 
 [node name="Ball" parent="." node_paths=PackedStringArray("frog") instance=ExtResource("3_w2i4i")]
-position = Vector2(2541, 1636)
+position = Vector2(1279, 1072)
 frog = NodePath("../FROGG")
 
 [node name="FROGG" parent="." instance=ExtResource("1_rrsgh")]
 position = Vector2(1905, 1811)
 scale = Vector2(0.226507, 0.226507)
+floor_snap_length = 0.0
 metadata/_edit_group_ = true
 
 [node name="HUD" parent="." instance=ExtResource("4_wvfbd")]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(1543, 1817)
+collision_layer = 32768
+collision_mask = 32769
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_ks273")
+
+[node name="ball" parent="." instance=ExtResource("5_fvemt")]
