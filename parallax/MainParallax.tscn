@@ -96,6 +96,7 @@ motion_scale = Vector2(0.2, 0.2)
 modulate = Color(0.7, 0.7, 0.7, 1)
 position = Vector2(0, 1500)
 enable_collision_polygon = false
+trigger_scale = 0.3
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)

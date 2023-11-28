@@ -16,7 +16,7 @@ const FROG_GROUP = 'frog'
 
 @export_category("Chunks")
 @export var initial_chunks_count: int = 3
-@export var chunks_count_trigger: int = 50
+@export var chunks_count_trigger: int = 30
 @export var min_square_series: int = 3
 @export var max_square_series: int = 4
 @export var min_steep_series: int = 4
@@ -24,7 +24,8 @@ const FROG_GROUP = 'frog'
 @export var average_chunk_width: int = 652
 @export var min_chunks_before_obstacle: int = 6
 @export var max_chunks_before_obstacle: int = 10
-@export var chunks_pools_size: int = 500
+@export var trigger_scale: float = 1
+
 
 enum ChunkType {Square, Steep}
 
@@ -39,7 +40,7 @@ class Bounds:
     var min: int
     var max: int
 
-
+var chunks_pools_size
 var chunks_count_since_obstacle: int = 0
 var next_obstacle_threshold: int = 0
 var chunk_count_since_type_change: int = 0
@@ -266,7 +267,7 @@ func remove_extra_points(new_point: Vector2):
 func populate_relative(frog: Node2D):
     var x_distance = chunks[last_chunk_index].global_position.x + chunks[last_chunk_index].get_segment().a.x - frog.global_position.x
     var chunks_distance = ceil(x_distance / average_chunk_width)
-    var frog_chunk = last_chunk_index - chunks_distance
+    var frog_chunk = (last_chunk_index - chunks_distance) * trigger_scale
 
     populate_chunks(frog_chunk - chunks_count_trigger, frog_chunk + chunks_count_trigger)
 
@@ -280,6 +281,7 @@ func _ready():
         printerr('No frog found in tree, cannot update map automatically')
 
     rng = RandomNumberGenerator.new()
+    chunks_pools_size = 3 * chunks_count_trigger
     build_chunk_pools()
     populate_chunks(0, initial_chunks_count)
 
