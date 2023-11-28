@@ -7,7 +7,7 @@ const FOOT_DISTANCE = 150
 const FOOT_DETECTION = 100
 const FOOT_HEIGHT = 30
 
-const FOOT_TIMER_INCREMENT = 0.1
+const FOOT_TIMER_INCREMENT = 0.2
 
 const BALL_GROUP = 'ball'
 
@@ -191,7 +191,6 @@ func raycastLegs():
 
     #raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
     #raycastLegL2.rotation = deg_to_rad(modifier * -footAngleModifier)
-    print(floorAngle)
     raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0).normalized().rotated(-floorAngle) * FOOT_DETECTION / scaleScalar
     var rayCastL = raycastLegL if !moving || !is_on_floor() else raycastLegL2
     
