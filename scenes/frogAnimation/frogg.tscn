@@ -369,6 +369,7 @@ texture = ExtResource("2_v7esi")
 position = Vector2(1341, -6)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandL"]
+visible = false
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
@@ -376,6 +377,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-1162, 18)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandR"]
+visible = false
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
@@ -384,6 +386,8 @@ position = Vector2(294, 1110)
 rotation = -0.0792272
 
 [node name="Sprite2D" type="Sprite2D" parent="FootL"]
+visible = false
+scale = Vector2(10, 10)
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
@@ -392,6 +396,8 @@ position = Vector2(-60, 1115)
 rotation = -0.0208066
 
 [node name="Sprite2D" type="Sprite2D" parent="FootR"]
+visible = false
+scale = Vector2(10, 10)
 texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
