@@ -1,0 +1,103 @@
+[gd_scene load_steps=17 format=3 uid="uid://mwl4g7upi7y7"]
+
+[ext_resource type="Texture2D" uid="uid://ce7rqkyoxkn0c" path="res://parallax/champignon/Champi_01.png" id="1_8533q"]
+[ext_resource type="Script" path="res://parallax/champignon/champignon.gd" id="1_hsj1y"]
+[ext_resource type="Texture2D" uid="uid://c5ade5rodkn2d" path="res://parallax/champignon/Champi_02.png" id="2_eq0wf"]
+[ext_resource type="Texture2D" uid="uid://bpoeg5gbg7qfv" path="res://parallax/champignon/Champi_03.png" id="3_5j3tq"]
+[ext_resource type="Texture2D" uid="uid://crdo1qywhrxf1" path="res://parallax/champignon/Champi_04.png" id="4_8admu"]
+[ext_resource type="Texture2D" uid="uid://begtpgk7xytpd" path="res://parallax/champignon/Chapeau_01.png" id="5_d42y6"]
+[ext_resource type="Shader" path="res://parallax/champignon/champignon.gdshader" id="5_yl7a4"]
+[ext_resource type="Texture2D" uid="uid://cpjhmrfxahg6m" path="res://parallax/champignon/Chapeau_02.png" id="6_dduoe"]
+[ext_resource type="Texture2D" uid="uid://cm103xom77py2" path="res://parallax/champignon/Chapeau_03.png" id="7_uvsnt"]
+[ext_resource type="Texture2D" uid="uid://bkkf261d5nmhb" path="res://parallax/champignon/Chapeau_04.png" id="8_ol3kw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjg1m"]
+shader = ExtResource("5_yl7a4")
+shader_parameter/hueShift = 3.285
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gedm5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d42y6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dduoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uvsnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ol3kw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mdtkc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8533q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eq0wf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5j3tq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8admu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7cnff"]
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s11k3"]
+radius = 16.0901
+height = 107.18
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ae08"]
+radius = 17.8814
+height = 90.4946
+
+[node name="champignon" type="Node2D"]
+script = ExtResource("1_hsj1y")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_qjg1m")
+sprite_frames = SubResource("SpriteFrames_gedm5")
+autoplay = "default"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_mdtkc")
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_7cnff")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-49, 19)
+rotation = 1.21173
+shape = SubResource("CapsuleShape2D_s11k3")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, -5)
+rotation = 0.837456
+shape = SubResource("CapsuleShape2D_s11k3")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(49, -3)
+rotation = -0.535786
+shape = SubResource("CapsuleShape2D_2ae08")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(71, 17)
+rotation = -0.963419
+shape = SubResource("CapsuleShape2D_2ae08")
