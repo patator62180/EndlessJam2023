@@ -4,7 +4,7 @@ const SPEED = 700
 const JUMP_VELOCITY = -900.0
 
 const FOOT_DISTANCE = 150
-const FOOT_DETECTION = 150
+const FOOT_DETECTION = 100
 const FOOT_HEIGHT = 30
 
 const FOOT_TIMER_INCREMENT = 0.1
@@ -53,12 +53,12 @@ var rockThrowTarget
 
 func _ready():
     legLTarget = $"FootL"
-    raycastLegL = $"Skeleton2D/Hip/RaycastLegL"
-    raycastLegL2 = $"Skeleton2D/Hip/RaycastLegL2"    
+    raycastLegL = $"Skeleton2D/RaycastLegL"
+    raycastLegL2 = $"Skeleton2D/RaycastLegL2"    
     
     legRTarget = $"FootR"
-    raycastLegR = $"Skeleton2D/Hip/RaycastLegR"
-    raycastLegR2 = $"Skeleton2D/Hip/RaycastLegR2"
+    raycastLegR = $"Skeleton2D/RaycastLegR"
+    raycastLegR2 = $"Skeleton2D/RaycastLegR2"
     
     armLTarget = $"HandL"
     armRTarget = $"HandR"
@@ -187,9 +187,12 @@ func raycastLegs():
     var justStopped = wasMoving && !moving
     var footSpeedModifier = 1 if ! touchingBall else 0.5
     
-    var footAngleModifier = 40
+    var floorAngle = 0 if !is_on_floor() else get_floor_angle()
+
     #raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
-    raycastLegL2.rotation = deg_to_rad(modifier * -footAngleModifier)
+    #raycastLegL2.rotation = deg_to_rad(modifier * -footAngleModifier)
+    print(floorAngle)
+    raycastLegL2.position = raycastLegL.position + Vector2(modifier, 0).normalized().rotated(-floorAngle) * FOOT_DETECTION / scaleScalar
     var rayCastL = raycastLegL if !moving || !is_on_floor() else raycastLegL2
     
     var colliderL = rayCastL.get_collider()
@@ -219,7 +222,8 @@ func raycastLegs():
         currentTargetL = null
 
     #raycastLegR2.position = raycastLegR.position + Vector2(modifier, 0) * FOOT_DETECTION / scaleScalar
-    raycastLegR2.rotation = deg_to_rad(modifier * -footAngleModifier)
+    #raycastLegR2.rotation = deg_to_rad(modifier * -footAngleModifier)
+    raycastLegR2.position = raycastLegR.position + Vector2(modifier, 0).normalized().rotated(-floorAngle) * FOOT_DETECTION / scaleScalar 
     var rayCastR = raycastLegR if !moving || !is_on_floor() else raycastLegR2
     
     var colliderR = rayCastR.get_collider()
