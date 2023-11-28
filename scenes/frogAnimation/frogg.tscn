@@ -342,6 +342,7 @@ scale = Vector2(0.999991, 0.999991)
 target_position = Vector2(0, 1500)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Skeleton2D/RaycastLegL2"]
+visible = false
 modulate = Color(1, 0, 1, 1)
 position = Vector2(17.203, 747.007)
 scale = Vector2(-1.86716, 125.501)
@@ -358,6 +359,7 @@ scale = Vector2(0.999991, 0.999991)
 target_position = Vector2(0, 1500)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Skeleton2D/RaycastLegR2"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(17.203, 747.007)
 scale = Vector2(-1.86716, 125.501)
