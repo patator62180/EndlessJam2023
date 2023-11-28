@@ -31,6 +31,7 @@ chunks_pool_root = NodePath("ChunksPools")
 collision_polygon = NodePath("WorldPolygonBody/CollisionPolygon2D")
 
 [node name="ChunksPools" type="Node2D" parent="."]
+position = Vector2(-10240, -1216)
 
 [node name="StartChunk" type="StaticBody2D" parent="." node_paths=PackedStringArray("collisionShape")]
 collision_mask = 255

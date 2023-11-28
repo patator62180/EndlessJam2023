@@ -46,6 +46,7 @@ var chunk_defs: Array[ChunkDef] = []
 var chunks: Array[Chunk] = []
 var rng: RandomNumberGenerator
 var last_chunk_index: int = -1
+var first_chunk_index: int = 0
 var points: Array[Vector2] = []
 var frog: Node2D
 var square_chunks_pool: Array[Array] = []
@@ -150,7 +151,6 @@ func append_chunk_def():
 
 func spawn_chunk(index: int):
     var chunk: Chunk = chunk_defs[index].pool.pop_front()
-    var previous_chunk = chunks[last_chunk_index] if len(chunks) > 0 else start_chunk
 
     if len(points) == 0:
         points.append(start_chunk.position + start_chunk.get_segment().a)
@@ -158,17 +158,28 @@ func spawn_chunk(index: int):
     chunks_pool_root.remove_child(chunk)
     chunks_root.add_child(chunk)
 
-    chunk.position = Vector2(previous_chunk.get_segment().b.x + previous_chunk.position.x - chunk.get_segment().a.x, previous_chunk.position.y + previous_chunk.get_segment().b.y - chunk.get_segment().a.y)
+    if index < last_chunk_index:
+        var next_chunk = chunks[index + 1]
+        chunk.position = Vector2(next_chunk.get_segment().a.x + next_chunk.position.x - chunk.get_segment().b.x, next_chunk.position.y + next_chunk.get_segment().a.y - chunk.get_segment().b.y)
+    else:
+        var previous_chunk = chunks[index - 1] if (len(chunks) > 0) and index > 0 else start_chunk
+        chunk.position = Vector2(previous_chunk.get_segment().b.x + previous_chunk.position.x - chunk.get_segment().a.x, previous_chunk.position.y + previous_chunk.get_segment().b.y - chunk.get_segment().a.y)
 
-    var new_point = chunk.position + chunk.get_segment().a
 
-    chunks.append(chunk)
-    remove_extra_points(new_point)
+    if len(chunks) < index + 1:
+        var new_point = chunk.position + chunk.get_segment().a
 
-    if index > len(points) - 1:
+        chunks.append(null)
+        remove_extra_points(new_point)
         points.append(new_point)
 
-    last_chunk_index = index
+    chunks[index] = chunk
+
+    if first_chunk_index > index:
+        first_chunk_index = index
+
+    if last_chunk_index < index:
+        last_chunk_index = index
 
 
 func draw_collision_polygon():
@@ -181,19 +192,48 @@ func draw_collision_polygon():
         
         collision_polygon.polygon = looped_points;
 
-
-func populate_chunks(target: int):
-    var initial_last_chunk_index = last_chunk_index
+func return_chunk_to_pool(index: int):
+    var chunk_def: ChunkDef = chunk_defs[index]
+    var chunk: Chunk = chunks[index]
     
-    if target > last_chunk_index + 1:
-        for index in range(target - initial_last_chunk_index):
-            var absolute_index = initial_last_chunk_index + index + 1
-            
-            if absolute_index > len(chunk_defs) - 1:
+    chunk_def.pool.append(chunk)
+    chunks_root.remove_child(chunk)
+    chunks_pool_root.add_child(chunk)
+    chunk.position = Vector2.ZERO
+    
+
+func free_chunk_right():
+    return_chunk_to_pool(last_chunk_index)
+    chunks[last_chunk_index] = null
+    last_chunk_index -= 1
+
+
+func free_chunk_left():
+    return_chunk_to_pool(first_chunk_index)
+    chunks[first_chunk_index] = null
+    first_chunk_index += 1
+
+
+func populate_chunks(left_target: int, right_target: int):
+    if right_target > last_chunk_index + 1:
+        for index in range(right_target - last_chunk_index):
+            if last_chunk_index + 1 > len(chunk_defs) - 1:
                 append_chunk_def()
-            if absolute_index > last_chunk_index:
-                spawn_chunk(absolute_index)
+            if last_chunk_index + 1 > last_chunk_index:
+                spawn_chunk(last_chunk_index + 1)
                 draw_collision_polygon()
+    elif right_target < last_chunk_index + 1:
+        for index in range(last_chunk_index - right_target):
+            free_chunk_right()
+
+
+    if left_target > first_chunk_index:
+        for index in range(left_target - first_chunk_index):
+            free_chunk_left()
+    elif left_target >= 0 and left_target < first_chunk_index:
+        for index in range(first_chunk_index - left_target):
+            spawn_chunk(first_chunk_index - 1)
+
 
 
 func remove_extra_points(new_point: Vector2):
@@ -213,7 +253,7 @@ func populate_relative(frog: Node2D):
     var chunks_distance = ceil(x_distance / average_chunk_width)
     var frog_chunk = last_chunk_index - chunks_distance
 
-    populate_chunks(frog_chunk + chunks_count_trigger)
+    populate_chunks(frog_chunk - chunks_count_trigger, frog_chunk + chunks_count_trigger)
 
 
 func _ready():
@@ -226,7 +266,7 @@ func _ready():
 
     rng = RandomNumberGenerator.new()
     build_chunk_pools()
-    populate_chunks(initial_chunks_count)
+    populate_chunks(0, initial_chunks_count)
 
     
 func _process(delta):
