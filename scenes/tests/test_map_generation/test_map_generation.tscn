@@ -10,7 +10,7 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(8095, -4058)
 offset = Vector2(2.96, 0)
-zoom = Vector2(0.16, 0.16)
+zoom = Vector2(0.145, 0.145)
 
 [node name="FROGG" parent="." instance=ExtResource("2_kgidb")]
 position = Vector2(-36, -1940)
