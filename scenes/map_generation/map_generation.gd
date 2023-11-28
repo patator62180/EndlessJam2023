@@ -161,6 +161,7 @@ func spawn_chunk(index: int):
     if index < last_chunk_index:
         var next_chunk = chunks[index + 1]
         chunk.position = Vector2(next_chunk.get_segment().a.x + next_chunk.position.x - chunk.get_segment().b.x, next_chunk.position.y + next_chunk.get_segment().a.y - chunk.get_segment().b.y)
+        chunks_root.move_child(chunk, 0)
     else:
         var previous_chunk = chunks[index - 1] if (len(chunks) > 0) and index > 0 else start_chunk
         chunk.position = Vector2(previous_chunk.get_segment().b.x + previous_chunk.position.x - chunk.get_segment().a.x, previous_chunk.position.y + previous_chunk.get_segment().b.y - chunk.get_segment().a.y)
