@@ -72,7 +72,7 @@ func _ready():
     handRRest = $"Skeleton2D/Hip/HandRRest"
     animator = $AnimationPlayer
     
-    rockThrowTarget = $"RockThrowTarget"
+    rockThrowTarget = $"Skeleton2D/Hip/RockThrowTarget"
 
     #safeRockArea.body_entered.connect(body_entered_safe_rock_area)
     #safeRockArea.body_exited.connect(body_exited_safe_rock_area)
@@ -130,7 +130,7 @@ func _physics_process(delta):
     var moving = false
 
     #if not blockedByBall or ballDirection != direction:
-    if direction and !holding:
+    if direction and !holding && !holdAnim:
         velocity.x = direction * adjustedSpeed
     else:
         velocity.x = move_toward(velocity.x, 0, adjustedSpeed)
@@ -142,7 +142,7 @@ func _physics_process(delta):
     raycastLegs()
     rayCastArms()
     
-    if !holding:
+    if !holding && !holdAnim:
         for i in get_slide_collision_count():
             var c = get_slide_collision(i)
             if c.get_collider() is RigidBody2D:
@@ -257,6 +257,9 @@ func rayCastArms():
     if touchingBall:
         targetL = lerp(armLTarget.get_global_position(), ball.targetL.get_global_position(), 0.1)
         targetR = lerp(armRTarget.get_global_position(), ball.targetR.get_global_position(), 0.1)
+    elif holding || holdAnim:
+        targetL = lerp(armLTarget.get_global_position(), ball.targetR.get_global_position(), 0.5)
+        targetR = lerp(armRTarget.get_global_position(), ball.targetL.get_global_position(), 0.5)
     else:
         targetL = lerp(armLTarget.get_global_position(), handLRest.get_global_position(), 0.1)
         targetR = lerp(armRTarget.get_global_position(), handRRest.get_global_position(), 0.1)
@@ -283,22 +286,47 @@ func _on_animation_player_animation_finished(anim_name):
         velocity.y = JUMP_VELOCITY
         jumping = false
         
+var holdAnim = false
+
+var ballHoldStart
+var ballHoldMid
+var ballHoldT = 1
 
 func throw_rock(direction):
     if touchingBall && Input.is_action_just_pressed("ui_accept") and !jumping:
-        holding = true
+        #holding = true
+        holdAnim = true
+        ballHoldStart = ball.global_position
+        var vector = (ballHoldStart + rockThrowTarget.global_position) / 2
+        ballHoldMid = vector + Vector2.UP * 200
+        ballHoldT = 0
+        
         ball.freeze = true     
         ball.sleeping = true
+        hips.position.y += 100
         
-    if holding:
-        ball.global_position = rockThrowTarget.global_position
+        ball.get_node("CollisionShape2D").disabled = true
         
     var dir = 1 if direction > 0 else -1 if direction < 0 else 0
         
-    if holding and Input.is_action_just_released("ui_accept"):
+    if holding:
+        hips.rotation = lerp(hips.rotation, deg_to_rad(dir * 45), 0.1)
+        ball.global_position = rockThrowTarget.global_position
+        
+    if holding and !Input.is_action_pressed("ui_accept"):
         holding = false
         ball.freeze = false
         ball.sleeping = false
+        ball.get_node("CollisionShape2D").disabled = false
         ball.apply_central_impulse((Vector2.UP + Vector2(dir, 0) * 0.5) * throw_force)
+        hips.position.y -= 100
         
-
+    if holdAnim:
+        if ballHoldT >= 1:
+            holdAnim = false
+            holding = true
+        else:
+            ball.global_position = _quadratic_bezier(ballHoldStart, ballHoldMid, rockThrowTarget.global_position, ballHoldT)
+            ballHoldT += 0.05
+        
+        
