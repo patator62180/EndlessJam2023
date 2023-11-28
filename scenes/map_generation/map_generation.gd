@@ -39,7 +39,8 @@ class Bounds:
     var max: int
 
 
-var last_obstacle_position: int = 0
+var chunks_count_since_obstacle: int = 0
+var next_obstacle_threshold: int = 0
 var chunk_count_since_type_change: int = 0
 var next_chunk_threshold: int = 0
 var chunk_defs: Array[ChunkDef] = []
@@ -127,6 +128,7 @@ func pick_pool(type: ChunkType, obstacle: bool):
 func append_chunk_def():
     if len(chunk_defs) == 0:
         next_chunk_threshold = generate_next_threshold(ChunkType.Square)
+        next_obstacle_threshold = rng.randi_range(min_chunks_before_obstacle, max_chunks_before_obstacle)
         chunk_count_since_type_change = 1
     
     var type = get_current_type()
@@ -139,9 +141,15 @@ func append_chunk_def():
         chunk_def.type = toggle_type(type)
         next_chunk_threshold = generate_next_threshold(chunk_def.type)
         chunk_count_since_type_change = 0
+    elif chunks_count_since_obstacle >= next_obstacle_threshold and type == ChunkType.Steep:
+        chunk_def.type = type
+        next_obstacle_threshold = rng.randi_range(min_chunks_before_obstacle, max_chunks_before_obstacle)
+        chunk_def.obstacle = true
+        chunks_count_since_obstacle = -1
     else:
         chunk_def.type = type
 
+    chunks_count_since_obstacle += 1
     chunk_count_since_type_change += 1
     var pool = pick_pool(chunk_def.type, chunk_def.obstacle)
 
