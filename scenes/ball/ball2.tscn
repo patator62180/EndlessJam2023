@@ -21,6 +21,15 @@ shadow = NodePath("Shadow")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_o4yyi")
 
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_vgur2")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("3_w72ns")
+
+[node name="Border" type="Sprite2D" parent="."]
+texture = ExtResource("4_kl7cl")
+
 [node name="HandTargets" type="Node2D" parent="."]
 
 [node name="HandL" type="Node2D" parent="HandTargets"]
@@ -34,12 +43,3 @@ position = Vector2(-147, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandTargets/HandR"]
 texture = ExtResource("5_himf4")
-
-[node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("2_vgur2")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-texture = ExtResource("3_w72ns")
-
-[node name="Border" type="Sprite2D" parent="."]
-texture = ExtResource("4_kl7cl")
