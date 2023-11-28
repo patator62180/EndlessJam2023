@@ -10,6 +10,6 @@ func _ready():
     position = target
     
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    target = lerp(target, frog.position, 0.01)
+func _physics_process(delta):
+    target = lerp(target, frog.position, 0.05)
     position = target
