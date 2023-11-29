@@ -130,6 +130,9 @@ func untouch_ball(body: Node2D):
 
 var input_vector = 0
 
+func spawn_hat():
+    $Skeleton2D/Hip/Torso/Neck/HatFactory.spawn_hat()
+    
 func _physics_process(delta):
     # Add the gravity.
     if not is_on_floor():

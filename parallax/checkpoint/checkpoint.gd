@@ -9,4 +9,5 @@ func _on_checkpoint_enter(body):
     if body.is_in_group("ball"):
         $AnimatedSprite2D.modulate = Color.WHITE
         $CPUParticles2D.emitting = true
+        get_tree().get_root().get_node("Main/FROGG").spawn_hat()
         $Area2D.body_entered.disconnect(_on_checkpoint_enter)
