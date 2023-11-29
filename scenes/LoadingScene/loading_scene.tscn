@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://c03jsja73nd85"]
+
+[ext_resource type="Script" path="res://scenes/LoadingScene/loading_scene.gd" id="1_cibb4"]
+[ext_resource type="Texture2D" uid="uid://dnwwo870kh6g3" path="res://scenes/main_menu/BG.png" id="2_l4hgi"]
+[ext_resource type="Texture2D" uid="uid://qtqmpheb2251" path="res://scenes/main_menu/Illustration_sans_titre-1.png" id="3_p0lqv"]
+[ext_resource type="Texture2D" uid="uid://c1v2igegf4a0m" path="res://scenes/main_menu/Illustration_sans_titre-2.png" id="4_r43sr"]
+[ext_resource type="Texture2D" uid="uid://eldvb8qkla7a" path="res://scenes/main_menu/Illustration_sans_titre-3.png" id="5_vo31k"]
+[ext_resource type="FontFile" uid="uid://24sqtlkpc22r" path="res://scenes/fonts/intuitive.ttf" id="6_wtgr6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fm5gh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p0lqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r43sr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vo31k")
+}],
+"loop": true,
+"name": &"background",
+"speed": 5.0
+}]
+
+[node name="LoadingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cibb4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 3840.0
+offset_bottom = 2160.0
+texture = ExtResource("2_l4hgi")
+expand_mode = 1
+
+[node name="AnimatedBackground" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(1921.09, 1080.46)
+scale = Vector2(0.99957, 0.99957)
+sprite_frames = SubResource("SpriteFrames_fm5gh")
+animation = &"background"
+autoplay = "background"
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 912.0
+offset_right = 2304.0
+offset_bottom = 1152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_wtgr6")
+theme_override_font_sizes/font_size = 200
+text = "LOADING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 1176.0
+offset_right = 3400.0
+offset_bottom = 1496.0
+theme_override_fonts/font = ExtResource("6_wtgr6")
+theme_override_font_sizes/font_size = 200
