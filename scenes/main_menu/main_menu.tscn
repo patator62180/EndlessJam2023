@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://bioyvpficbfpw" path="res://scenes/UI/Blink_03.png" id="13_lajvg"]
 [ext_resource type="Texture2D" uid="uid://bfc56ylry6uv2" path="res://scenes/UI/Blink_04.png" id="14_gaq77"]
 [ext_resource type="Texture2D" uid="uid://djqmvx8086n87" path="res://scenes/UI/Blink_05.png" id="15_3jujg"]
+[ext_resource type="Texture2D" uid="uid://cpdgbhmrtao88" path="res://scenes/main_menu/Controles_01_NEW.png" id="15_hutk1"]
+[ext_resource type="Texture2D" uid="uid://xjt8tc6ehjfw" path="res://scenes/main_menu/Controles_02_NEW.png" id="16_mps0m"]
 [ext_resource type="Texture2D" uid="uid://c0w7ygnxt4mug" path="res://scenes/UI/Blink_06.png" id="16_vicsb"]
 [ext_resource type="Texture2D" uid="uid://5aahbyyy8g63" path="res://scenes/UI/Grenouille_Blabla_-5.png" id="17_1dwdi"]
 [ext_resource type="Texture2D" uid="uid://dgdbjsmvq6omb" path="res://scenes/UI/Grenouille_Blabla_-4.png" id="18_b1wou"]
@@ -29,8 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://cvo7dbim06qdi" path="res://scenes/UI/Grenouille_Blabla_-1.png" id="21_lttvt"]
 [ext_resource type="Texture2D" uid="uid://dxn4o6vgpas36" path="res://scenes/UI/Bulle_Texte-2.png" id="22_r6pon"]
 [ext_resource type="Texture2D" uid="uid://debryfp36b8ua" path="res://scenes/UI/Bulle_Texte-3.png" id="23_th66u"]
-[ext_resource type="Texture2D" uid="uid://dfe42gysy48jw" path="res://scenes/main_menu/Controles_01.png" id="26_eiopd"]
-[ext_resource type="Texture2D" uid="uid://7ga6w3b6g2jx" path="res://scenes/main_menu/Controles_02.png" id="27_al6cn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2753k"]
 animations = [{
@@ -88,10 +88,10 @@ texture = ExtResource("10_4c21p")
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("26_eiopd")
+"texture": ExtResource("15_hutk1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_al6cn")
+"texture": ExtResource("16_mps0m")
 }],
 "loop": true,
 "name": &"Controls",
@@ -230,12 +230,12 @@ text = " "
 script = ExtResource("3_178uf")
 
 [node name="Controls" type="AnimatedSprite2D" parent="."]
-position = Vector2(576.272, 323.403)
+position = Vector2(575.712, 232.684)
 scale = Vector2(0.30053, 0.30053)
 sprite_frames = SubResource("SpriteFrames_xk2gs")
 animation = &"Controls"
 autoplay = "Controls"
-frame_progress = 0.52405
+frame_progress = 0.472314
 
 [node name="Credits" type="Label" parent="."]
 offset_left = 1.0
