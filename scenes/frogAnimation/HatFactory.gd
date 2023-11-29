@@ -41,7 +41,7 @@ func spawn_hat():
 func balance_hats():
     var current_hat = first_hat
     
-    for i in range(index + 1):
+    for i in range(index):
         if current_hat != null:
             #current_hat.rotation = current_hat.get_parent().rotation + rotation_target.rotation / 2
             current_hat.rotation = lerp(current_hat.rotation, rotation_target.rotation * i / 20, 0.01) 

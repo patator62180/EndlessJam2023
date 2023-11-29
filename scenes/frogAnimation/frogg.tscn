@@ -295,14 +295,17 @@ position = Vector2(0, -200)
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
 position = Vector2(145, -75)
 rest = Transform2D(1, 0, 0, 1, 145, -75)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeArmL" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmL"]
 position = Vector2(-5, 283)
 rest = Transform2D(1, 0, 0, 1, -5, 283)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeForeArmL" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmL/ForeArmL"]
 position = Vector2(-4, 232)
 rest = Transform2D(1, 0, 0, 1, -4, 232)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HandL" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmL/ForeArmL/ForeForeArmL"]
 position = Vector2(2, 223)
@@ -310,18 +313,22 @@ rest = Transform2D(1, 0, 0, 1, 2, 223)
 auto_calculate_length_and_angle = false
 length = 91.22
 bone_angle = 81.11
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
 position = Vector2(-179, -54)
 rest = Transform2D(1, 0, 0, 1, -179, -54)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeArmR" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmR"]
 position = Vector2(-5, 283)
 rest = Transform2D(1, 0, 0, 1, -5, 283)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeForeArmR" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmR/ForeArmR"]
 position = Vector2(-4, 232)
 rest = Transform2D(1, 0, 0, 1, -4, 232)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HandR" type="Bone2D" parent="Skeleton2D/Hip/Torso/ArmR/ForeArmR/ForeForeArmR"]
 position = Vector2(2, 223)
@@ -329,18 +336,22 @@ rest = Transform2D(1, 0, 0, 1, 2, 223)
 auto_calculate_length_and_angle = false
 length = 91.22
 bone_angle = 81.11
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegL" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(172, -51)
 rest = Transform2D(1, 0, 0, 1, 172, -51)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeLegL" type="Bone2D" parent="Skeleton2D/Hip/LegL"]
 position = Vector2(-10, 254)
 rest = Transform2D(1, 0, 0, 1, -10, 254)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeForeLegL" type="Bone2D" parent="Skeleton2D/Hip/LegL/ForeLegL"]
 position = Vector2(-5, 301)
 rest = Transform2D(1, 0, 0, 1, -5, 301)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FootL" type="Bone2D" parent="Skeleton2D/Hip/LegL/ForeLegL/ForeForeLegL"]
 position = Vector2(3, 260)
@@ -348,18 +359,22 @@ rest = Transform2D(1, 0, 0, 1, 3, 260)
 auto_calculate_length_and_angle = false
 length = 74.11
 bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LegR" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(-175, -52)
 rest = Transform2D(1, 0, 0, 1, -175, -52)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeLegR" type="Bone2D" parent="Skeleton2D/Hip/LegR"]
 position = Vector2(-10, 254)
 rest = Transform2D(1, 0, 0, 1, -10, 254)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeForeLegR" type="Bone2D" parent="Skeleton2D/Hip/LegR/ForeLegR"]
 position = Vector2(-5, 301)
 rest = Transform2D(1, 0, 0, 1, -5, 301)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Hip/LegR/ForeLegR/ForeForeLegR"]
 position = Vector2(3, 260)
@@ -367,6 +382,7 @@ rest = Transform2D(1, 0, 0, 1, 3, 260)
 auto_calculate_length_and_angle = false
 length = 74.11
 bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HandLRest" type="Node2D" parent="Skeleton2D/Hip"]
 position = Vector2(494, 527)
