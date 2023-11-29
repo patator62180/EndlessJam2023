@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvq2apao3o7lc"]
+
+[ext_resource type="Texture2D" uid="uid://cmjcqk8gynkq8" path="res://parallax/checkpoint/Checkpoint_Pole.png" id="1_6an76"]
+[ext_resource type="Script" path="res://parallax/checkpoint/checkpoint.gd" id="1_hwsct"]
+[ext_resource type="Texture2D" uid="uid://b1hd3mi7q3iyn" path="res://parallax/checkpoint/Checkpoint_01.png" id="2_0qy14"]
+[ext_resource type="Texture2D" uid="uid://diis4s7xfch8r" path="res://parallax/checkpoint/Star.png" id="2_y5d1k"]
+[ext_resource type="Texture2D" uid="uid://bpav4q4dojtbt" path="res://parallax/checkpoint/Checkpoint_02.png" id="3_wxy23"]
+[ext_resource type="Texture2D" uid="uid://duu7u7jo15sm2" path="res://parallax/checkpoint/Checkpoint_03.png" id="4_o3dw7"]
+[ext_resource type="Texture2D" uid="uid://cs05fmw2e144u" path="res://parallax/checkpoint/Checkpoint_04.png" id="5_frwam"]
+[ext_resource type="Texture2D" uid="uid://3dxkrygxr5yw" path="res://parallax/checkpoint/Checkpoint_05.png" id="6_ie2gc"]
+[ext_resource type="Texture2D" uid="uid://sw5kkj7b2js8" path="res://parallax/checkpoint/Checkpoint_06.png" id="7_yricu"]
+
+[sub_resource type="Gradient" id="Gradient_e78yl"]
+offsets = PackedFloat32Array(0, 0.791246, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mu1f5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0qy14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wxy23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_o3dw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_frwam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ie2gc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yricu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgwhm"]
+radius = 56.6114
+height = 145.133
+
+[node name="checkpoint" type="Node2D"]
+z_index = 5
+script = ExtResource("1_hwsct")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 6
+lifetime = 1.1
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("2_y5d1k")
+direction = Vector2(0, -1)
+gravity = Vector2(0, 300)
+initial_velocity_min = 400.0
+initial_velocity_max = 450.0
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+angle_min = -30.0
+angle_max = 30.0
+scale_amount_min = 0.8
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_e78yl")
+
+[node name="CheckpointPole" type="Sprite2D" parent="."]
+texture = ExtResource("1_6an76")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_mu1f5")
+frame_progress = 0.387094
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 5)
+rotation = 0.629105
+shape = SubResource("CapsuleShape2D_kgwhm")
