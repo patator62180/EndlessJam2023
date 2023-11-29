@@ -7,7 +7,13 @@ extends AnimatedSprite2D
 func _ready():
     var rnd = RandomNumberGenerator.new()
     $AnimationPlayer.advance(rnd.randf_range(0.0,5.0))
-    
+
+func _process(delta):
+    var is_in_ground = frame == 0
+
+    $BouceCollision/CollisionShape2D.disabled = is_in_ground
+    $StaticBody2D/CollisionShape2D.disabled = is_in_ground
+
 #    bounce_collision.body_entered.connect(touch_ball)
 #    bounce_collision.body_exited.connect(untouch_ball)
 #
