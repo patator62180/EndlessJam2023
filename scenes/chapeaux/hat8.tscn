@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qile0ed70rrb"]
+
+[ext_resource type="Texture2D" uid="uid://cr5adghcrl4nv" path="res://scenes/chapeaux/Froggg-8.png" id="1_nmjt5"]
+
+[node name="Hat" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nmjt5")
