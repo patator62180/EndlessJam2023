@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqdwncfyjmeo6"]
+[gd_scene load_steps=25 format=3 uid="uid://bqdwncfyjmeo6"]
 
 [ext_resource type="Script" path="res://scenes/frogAnimation/MartinFrogScript.gd" id="1_c7gqk"]
 [ext_resource type="Texture2D" uid="uid://dk5vwhhglfb4y" path="res://scenes/frogAnimation/Froggg.png" id="1_hfxak"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bfc56ylry6uv2" path="res://scenes/UI/Blink_04.png" id="6_0rala"]
 [ext_resource type="Texture2D" uid="uid://djqmvx8086n87" path="res://scenes/UI/Blink_05.png" id="7_ig0mr"]
 [ext_resource type="Texture2D" uid="uid://c0w7ygnxt4mug" path="res://scenes/UI/Blink_06.png" id="8_js2m7"]
+[ext_resource type="Script" path="res://scenes/frogAnimation/HatFactory.gd" id="9_rwmmn"]
+[ext_resource type="PackedScene" uid="uid://cmx8ba0uardrp" path="res://scenes/chapeaux/hat.tscn" id="10_m18fq"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_p1ea1"]
 target_nodepath = NodePath("../HandL")
@@ -268,6 +270,8 @@ rest = Transform2D(1, 0, 0, 1, 1, 94)
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(-1, -140)
+rotation = 0.147186
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -1, -140)
 
 [node name="Neck" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
@@ -278,10 +282,19 @@ rest = Transform2D(1, 0, 0, 1, 1, -83)
 position = Vector2(-41, -199)
 sprite_frames = SubResource("SpriteFrames_1xisy")
 autoplay = "default"
-frame_progress = 0.730508
+frame_progress = 0.13898
+
+[node name="HatFactory" type="Node2D" parent="Skeleton2D/Hip/Torso/Neck" node_paths=PackedStringArray("rotation_target")]
+position = Vector2(-26.4974, 101.944)
+script = ExtResource("9_rwmmn")
+rotation_target = NodePath("../..")
+
+[node name="HatTest" parent="Skeleton2D/Hip/Torso/Neck/HatFactory" instance=ExtResource("10_m18fq")]
+position = Vector2(0, -200)
 
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
 position = Vector2(145, -75)
+rotation = 2.74222
 rest = Transform2D(1, 0, 0, 1, 145, -75)
 metadata/_local_pose_override_enabled_ = true
 
@@ -305,6 +318,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Hip/Torso"]
 position = Vector2(-179, -54)
+rotation = 2.33296
 rest = Transform2D(1, 0, 0, 1, -179, -54)
 metadata/_local_pose_override_enabled_ = true
 
@@ -328,7 +342,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="LegL" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2(172, -51)
-rotation = -0.106091
+rotation = -1.33813
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 172, -51)
 metadata/_local_pose_override_enabled_ = true
