@@ -80,13 +80,13 @@ physics_material_override = SubResource("PhysicsMaterial_ib1ol")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 polygon = PackedVector2Array(33, -55, 134, 39, 126, 104, -108, 105, -110, 12)
 
-[node name="BouceCollision" type="Area2D" parent="."]
+[node name="BounceCollision" type="Area2D" parent="."]
 position = Vector2(3, -118)
 collision_layer = 0
 collision_mask = 32768
 script = ExtResource("11_m0v6r")
 directional_bounce = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BouceCollision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceCollision"]
 position = Vector2(9, 147)
 shape = SubResource("CircleShape2D_cib71")
