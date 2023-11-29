@@ -18,6 +18,10 @@ script = ExtResource("1_a0ijr")
 frog = NodePath("../FROGG")
 
 [node name="MapGeneration" parent="." instance=ExtResource("4_aqiom")]
+max_square_series = 15
+max_steep_series = 20
+min_chunks_before_obstacle = 2
+max_chunks_before_obstacle = 4
 
 [node name="Parallax" parent="." instance=ExtResource("4_yqh2d")]
 

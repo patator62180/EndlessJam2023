@@ -249,7 +249,7 @@ one_shot = true
 
 [node name="TimerWait" type="Timer" parent="FrogQuote"]
 process_callback = 0
-wait_time = 10.0
+wait_time = 15.0
 one_shot = true
 
 [node name="FrogTalk" type="AnimatedSprite2D" parent="FrogQuote"]

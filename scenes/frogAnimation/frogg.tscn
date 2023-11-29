@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://djqmvx8086n87" path="res://scenes/UI/Blink_05.png" id="7_ig0mr"]
 [ext_resource type="Texture2D" uid="uid://c0w7ygnxt4mug" path="res://scenes/UI/Blink_06.png" id="8_js2m7"]
 [ext_resource type="Script" path="res://scenes/frogAnimation/HatFactory.gd" id="9_rwmmn"]
-[ext_resource type="PackedScene" uid="uid://cmx8ba0uardrp" path="res://scenes/chapeaux/hat.tscn" id="10_m18fq"]
+[ext_resource type="PackedScene" uid="uid://cmx8ba0uardrp" path="res://scenes/chapeaux/hat1.tscn" id="10_m18fq"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_p1ea1"]
 target_nodepath = NodePath("../HandL")
