@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 700
-const JUMP_VELOCITY = -900.0
+const JUMP_VELOCITY = -1500.0
 
 const FOOT_DISTANCE = 800
 const FOOT_DETECTION = 150
@@ -11,8 +11,8 @@ const FOOT_TIMER_INCREMENT = 0.1
 
 const BALL_GROUP = 'ball'
 
-var push_force = 200
-var throw_force = 8000
+var push_force = 500
+var throw_force = 15000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -101,7 +101,6 @@ func _ready():
     safeRockArea.body_exited.connect(untouch_ball)
     
     hipsOrigin = hips.position
-    
 
 func touch_ball(body: Node2D):
     if body.is_in_group(BALL_GROUP):
@@ -131,7 +130,6 @@ func untouch_ball(body: Node2D):
 
 var input_vector = 0
 
-
 func _physics_process(delta):
     # Add the gravity.
     if not is_on_floor():
@@ -143,6 +141,7 @@ func _physics_process(delta):
         #animator.play("Jump");
         #jumping = true
         velocity.y = JUMP_VELOCITY
+        #$Skeleton2D/Hip/Torso/Neck/HatFactory.spawn_hat()
 
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
@@ -163,7 +162,6 @@ func _physics_process(delta):
     else:
         velocity.x = move_toward(velocity.x, 0, adjustedSpeed)
 
-    
     move_and_slide()
     apply_floor_snap()
 
