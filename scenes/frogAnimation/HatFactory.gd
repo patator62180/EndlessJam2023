@@ -9,6 +9,8 @@ var index = 0
 
 @export var rotation_target = Node2D
 
+var height = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     chapi_chapeaux.push_back(preload("res://scenes/chapeaux/hat1.tscn"))
@@ -31,7 +33,7 @@ func spawn_hat():
     var instance = chapi_chapeaux[rnd.randi_range(0,chapi_chapeaux.size()-1)].instantiate()
     last_hat.add_child(instance)
     
-    instance.position = Vector2(0, -200)
+    instance.position = Vector2(0, -last_hat.height)
     
     last_hat = last_hat.get_node("Hat")
     index += 1
@@ -42,7 +44,7 @@ func balance_hats():
     for i in range(index + 1):
         if current_hat != null:
             #current_hat.rotation = current_hat.get_parent().rotation + rotation_target.rotation / 2
-            current_hat.rotation = rotation_target.rotation * i / 20
+            current_hat.rotation = lerp(current_hat.rotation, rotation_target.rotation * i / 20, 0.01) 
             current_hat = current_hat.get_node("Hat")
         else:
             return
