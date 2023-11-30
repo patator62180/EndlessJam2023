@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbj1i23w745id"]
+
+[ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="1_1laxh"]
+[ext_resource type="Texture2D" uid="uid://c354fb8k2ko1g" path="res://scenes/chunks/steep_chunks/Pilier_steep.png" id="2_tmyar"]
+[ext_resource type="Texture2D" uid="uid://c8irbevu0vr8g" path="res://parallax/fossils/fossil6.png" id="4_gdedj"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8ti30"]
+a = Vector2(-168, -1463)
+b = Vector2(161, -1668)
+
+[node name="SteepChunkB" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
+collision_mask = 255
+script = ExtResource("1_1laxh")
+collisionShape = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tmyar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_8ti30")
+
+[node name="Fossil6" type="Sprite2D" parent="."]
+position = Vector2(-40, -621)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gdedj")

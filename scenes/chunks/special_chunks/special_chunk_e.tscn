@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://be0nnm4sahsg3"]
+
+[ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="1_hqc17"]
+[ext_resource type="Texture2D" uid="uid://c354fb8k2ko1g" path="res://scenes/chunks/steep_chunks/Pilier_steep.png" id="2_pwrhq"]
+[ext_resource type="PackedScene" uid="uid://mwl4g7upi7y7" path="res://parallax/champignon/champignon.tscn" id="3_gp0bi"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8ti30"]
+a = Vector2(-165, -1466)
+b = Vector2(163, -1670)
+
+[node name="SteepChunkA" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
+collision_mask = 255
+script = ExtResource("1_hqc17")
+collisionShape = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pwrhq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_8ti30")
+
+[node name="champignon" parent="." instance=ExtResource("3_gp0bi")]
+position = Vector2(-58, -1660)
+rotation = -0.561691
