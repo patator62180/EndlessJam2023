@@ -18,4 +18,5 @@ func _ready():
     $BounceCollision.bounce_power = (bounceMax-bounceMin)*rndf + bounceMin
     
 func bounce():
-    $AnimationPlayer.play("Bounce")
+    if $AnimationPlayer:
+        $AnimationPlayer.play("Bounce")
