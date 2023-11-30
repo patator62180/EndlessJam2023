@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn3mhqi73nwal"]
+
+[ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="1_kc0ki"]
+[ext_resource type="Texture2D" uid="uid://c354fb8k2ko1g" path="res://scenes/chunks/steep_chunks/Pilier_steep.png" id="2_lfwop"]
+[ext_resource type="Texture2D" uid="uid://dtlsothwj5qu" path="res://parallax/fossils/fossil2.png" id="3_3p2ja"]
+[ext_resource type="Texture2D" uid="uid://cbc8attn7nalw" path="res://parallax/fossils/fossil5.png" id="4_e4jx6"]
+[ext_resource type="Texture2D" uid="uid://bb730g1ofge4y" path="res://parallax/fossils/fossil1.png" id="5_853i4"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8ti30"]
+a = Vector2(-168, -1463)
+b = Vector2(161, -1668)
+
+[node name="SteepChunkB" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
+collision_mask = 255
+script = ExtResource("1_kc0ki")
+collisionShape = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lfwop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_8ti30")
+
+[node name="Fossil2" type="Sprite2D" parent="."]
+position = Vector2(-212, -427)
+texture = ExtResource("3_3p2ja")
+
+[node name="Fossil5" type="Sprite2D" parent="."]
+position = Vector2(112, -1149)
+texture = ExtResource("4_e4jx6")
+
+[node name="Fossil1" type="Sprite2D" parent="."]
+position = Vector2(-85, 126)
+texture = ExtResource("5_853i4")
