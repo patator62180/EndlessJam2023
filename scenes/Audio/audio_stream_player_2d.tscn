@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgpj1wv1a252f"]
-
-[ext_resource type="AudioStream" uid="uid://rlof7ayr3qx0" path="res://Audio/Ravel_Bolero.mp3" id="1_twrqy"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_twrqy")
-autoplay = true
