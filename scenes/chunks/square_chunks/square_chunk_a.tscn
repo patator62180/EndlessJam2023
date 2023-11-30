@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cn1te11nr3yc8"]
 
 [ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="1_afqm0"]
-[ext_resource type="Texture2D" uid="uid://b2dr6hmfqdm5k" path="res://scenes/chunks/square_chunks/Pilier_carré.png" id="2_eepp0"]
+[ext_resource type="Texture2D" uid="uid://dfpdkv2n1raq0" path="res://scenes/chunks/square_chunks/Plat_01.png" id="2_3gjjq"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ioa8w"]
 a = Vector2(-166, -1486)
@@ -12,8 +12,8 @@ collision_mask = 255
 script = ExtResource("1_afqm0")
 collisionShape = NodePath("CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_eepp0")
+[node name="Plat01" type="Sprite2D" parent="."]
+texture = ExtResource("2_3gjjq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_ioa8w")
