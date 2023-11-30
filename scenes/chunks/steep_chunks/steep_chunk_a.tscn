@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://bax4ew5oucil7"]
 
 [ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="1_o64s6"]
-[ext_resource type="Texture2D" uid="uid://c354fb8k2ko1g" path="res://scenes/chunks/steep_chunks/Pilier_steep.png" id="2_173ms"]
+[ext_resource type="Texture2D" uid="uid://bsrvdpq6o2wpj" path="res://scenes/chunks/steep_chunks/Pilier_Steep_01.png" id="2_gcqn7"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8ti30"]
 a = Vector2(-173, -1460)
 b = Vector2(160, -1670)
 
-[node name="SteepChunkB" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
+[node name="SteepChunkA" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
 collision_mask = 255
 script = ExtResource("1_o64s6")
 collisionShape = NodePath("CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_173ms")
+[node name="PilierSteep01" type="Sprite2D" parent="."]
+texture = ExtResource("2_gcqn7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_8ti30")
