@@ -3,6 +3,8 @@ extends Node2D
 const Y_PRECISION = 10
 const POLYGON_MINIMUM_HEIGHT = 200
 const FROG_GROUP = 'frog'
+const SEED_LABEL_GROUP = 'seed_label'
+
 
 @export var start_chunk: Chunk
 @export var square_chunks_bank: Array[PackedScene]
@@ -28,7 +30,7 @@ const FROG_GROUP = 'frog'
 @export var min_chunks_before_checkpoint: int = 20
 @export var max_chunks_before_checkpoint: int = 100
 @export var trigger_scale: float = 1
-
+@export var seed: int = 0
 
 enum ChunkType {Square, Steep}
 
@@ -294,6 +296,7 @@ func populate_relative(frog: Node2D):
 
 func _ready():
     var frogs = get_tree().get_nodes_in_group(FROG_GROUP)
+    var seeds_labels = get_tree().get_nodes_in_group(SEED_LABEL_GROUP)
 
     if len(frogs) > 0:
         frog = frogs[0]
@@ -301,6 +304,19 @@ func _ready():
         printerr('No frog found in tree, cannot update map automatically')
 
     rng = RandomNumberGenerator.new()
+    
+    if seed != 0:
+        var message = 'MAP GEN: force set seed {seed}'.format({'seed': seed})
+        print(message)
+        
+        if len(seeds_labels) != 0:
+            var seed_label = seeds_labels[0] as Label
+            seed_label.text = message
+        
+        rng.set_seed(seed)
+    else:
+        seed = rng.get_seed()
+
     chunks_pools_size = 3 * chunks_count_trigger
     build_chunk_pools()
     populate_chunks(0, initial_chunks_count)

@@ -57,3 +57,13 @@ position = Vector2(-136, -1726)
 visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("8_fwc2t")
+
+[node name="DebugHUD" type="CanvasLayer" parent="."]
+
+[node name="SeedLabel" type="Label" parent="DebugHUD" groups=["seed_label"]]
+offset_left = 1685.0
+offset_top = 1999.0
+offset_right = 2055.0
+offset_bottom = 2085.0
+theme_override_colors/font_color = Color(0.917647, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
