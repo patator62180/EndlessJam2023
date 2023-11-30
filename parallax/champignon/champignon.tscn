@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://mwl4g7upi7y7"]
+[gd_scene load_steps=22 format=3 uid="uid://mwl4g7upi7y7"]
 
 [ext_resource type="Texture2D" uid="uid://ce7rqkyoxkn0c" path="res://parallax/champignon/Champi_01.png" id="1_8533q"]
 [ext_resource type="Script" path="res://parallax/champignon/champignon.gd" id="1_hsj1y"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cm103xom77py2" path="res://parallax/champignon/Chapeau_03.png" id="7_uvsnt"]
 [ext_resource type="Texture2D" uid="uid://bkkf261d5nmhb" path="res://parallax/champignon/Chapeau_04.png" id="8_ol3kw"]
 [ext_resource type="Script" path="res://parallax/taupe/bounce.gd" id="11_m0v6r"]
+[ext_resource type="AudioStream" uid="uid://b5flj2dxod033" path="res://Audio/Champi.mp3" id="12_3cm37"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qjg1m"]
 shader = ExtResource("5_yl7a4")
@@ -140,5 +141,9 @@ speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_3py28")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_3cm37")
+volume_db = -20.0
 
 [connection signal="bounced" from="BounceCollision" to="." method="bounce"]

@@ -23,8 +23,10 @@ shape = SubResource("SegmentShape2D_ioa8w")
 [node name="Fossil3" type="Sprite2D" parent="."]
 position = Vector2(40, -838)
 rotation = -0.844647
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_8n5qr")
 
 [node name="Fossil4" type="Sprite2D" parent="."]
 position = Vector2(-198, 305)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_ba7pk")

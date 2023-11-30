@@ -21,3 +21,4 @@ func _ready():
 func bounce():
     if $AnimationPlayer:
         $AnimationPlayer.play("Bounce")
+        $AudioStreamPlayer.play()
