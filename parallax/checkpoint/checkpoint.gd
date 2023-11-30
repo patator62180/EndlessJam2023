@@ -11,6 +11,5 @@ func _on_checkpoint_enter(body):
         $AnimatedSprite2D.modulate = Color.WHITE
         $CPUParticles2D.emitting = true
         get_tree().get_root().get_node("Main/FROGG").spawn_hat()
-        $Area2D.body_entered.disconnect(_on_checkpoint_enter)
-        
-        $AudioStreamPlayer.play()
+        $Area2D.body_entered.disconnect(_on_checkpoint_enter)        
+        $AudioStreamPlayer2D.play()

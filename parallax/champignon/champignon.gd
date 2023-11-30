@@ -3,11 +3,15 @@ extends Node2D
 @export var bounceMin = 8000
 @export var bounceMax = 20000
 
+@export var volumeMin = -5
+@export var volumeMax = 5
+
+var rndf
 
 func _ready():
     if $BounceCollision:
         var rnd = RandomNumberGenerator.new()
-        var rndf = rnd.randf()
+        rndf = rnd.randf()
         var sprite1 = $AnimationParent/AnimatedSprite2D
         var sprite2 = $AnimationParent/AnimatedSprite2D2
         
@@ -21,4 +25,5 @@ func _ready():
 func bounce():
     if $AnimationPlayer:
         $AnimationPlayer.play("Bounce")
-        $AudioStreamPlayer.play()
+        $AudioStreamPlayer2D.volume_db = (volumeMax-volumeMin)*rndf + volumeMin 
+        $AudioStreamPlayer2D.play()

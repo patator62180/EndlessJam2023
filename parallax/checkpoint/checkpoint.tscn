@@ -41,8 +41,9 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5h8sb"]
-radius = 208.06
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a54nd"]
+radius = 100.0
+height = 600.0
 
 [node name="checkpoint" type="Node2D"]
 z_index = 5
@@ -81,10 +82,8 @@ collision_layer = 32768
 collision_mask = 32768
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, 5)
-rotation = 0.629105
-shape = SubResource("CircleShape2D_5h8sb")
+position = Vector2(2, -219)
+shape = SubResource("CapsuleShape2D_a54nd")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_f4s28")
-volume_db = -5.0
