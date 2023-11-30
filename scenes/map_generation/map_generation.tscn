@@ -17,17 +17,17 @@
 [ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="10_w7y3k"]
 [ext_resource type="PackedScene" uid="uid://bbj1i23w745id" path="res://scenes/chunks/steep_chunks/steep_chunk_c.tscn" id="11_01us0"]
 [ext_resource type="Texture2D" uid="uid://c7k850ct4jmse" path="res://scenes/map_generation/start_rock.png" id="11_irhxh"]
-[ext_resource type="Texture2D" uid="uid://c8eees67e7kj3" path="res://scenes/chunks/square_chunks/square_chunk_a.png" id="12_4w0f0"]
 [ext_resource type="PackedScene" uid="uid://bqisytvyr0ppr" path="res://scenes/chunks/steep_chunks/steep_chunk_d.tscn" id="12_ttloe"]
 [ext_resource type="PackedScene" uid="uid://dn3mhqi73nwal" path="res://scenes/chunks/steep_chunks/steep_chunk_e.tscn" id="13_t6o24"]
 [ext_resource type="PackedScene" uid="uid://ctim3e0el4n4y" path="res://scenes/chunks/special_chunks/special_chunk_champi_a.tscn" id="18_4jvlt"]
+[ext_resource type="Texture2D" uid="uid://b2dr6hmfqdm5k" path="res://scenes/chunks/square_chunks/Pilier_carré.png" id="21_xqxtj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qv0nb"]
 size = Vector2(93.8233, 62.5637)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ioa8w"]
 a = Vector2(-825, -1303)
-b = Vector2(146, -1310)
+b = Vector2(166, -1308)
 
 [node name="MapGeneration" type="Node2D" node_paths=PackedStringArray("start_chunk", "chunks_root", "chunks_pool_root", "collision_polygon")]
 script = ExtResource("1_evye6")
@@ -61,8 +61,8 @@ scale = Vector2(22.585, 22.585)
 shape = SubResource("RectangleShape2D_qv0nb")
 
 [node name="Sprite2D" type="Sprite2D" parent="StartChunk"]
-scale = Vector2(2, 2)
-texture = ExtResource("12_4w0f0")
+position = Vector2(11, 188)
+texture = ExtResource("21_xqxtj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartChunk"]
 shape = SubResource("SegmentShape2D_ioa8w")
