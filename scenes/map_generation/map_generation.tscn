@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgtd7vgqbqbff"]
+[gd_scene load_steps=19 format=3 uid="uid://cgtd7vgqbqbff"]
 
 [ext_resource type="Script" path="res://scenes/map_generation/map_generation.gd" id="1_evye6"]
 [ext_resource type="PackedScene" uid="uid://cn1te11nr3yc8" path="res://scenes/chunks/square_chunks/square_chunk_a.tscn" id="2_gf4rr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ctim3e0el4n4y" path="res://scenes/chunks/special_chunks/special_chunk_c.tscn" id="7_m6q3o"]
 [ext_resource type="PackedScene" uid="uid://0om0c2i4ycj3" path="res://scenes/chunks/steep_chunks/steep_chunk_b.tscn" id="8_rrmk1"]
 [ext_resource type="PackedScene" uid="uid://quh13abej5cv" path="res://scenes/chunks/steep_chunks/steep_chunk_obstacle_a.tscn" id="9_3fu3b"]
+[ext_resource type="PackedScene" uid="uid://bjuyt6mveq38p" path="res://scenes/chunks/steeper_chunks/steeper_chunk_a.tscn" id="9_m47hm"]
 [ext_resource type="PackedScene" uid="uid://cyellof3nj4w8" path="res://scenes/chunks/special_chunks/special_chunk_a.tscn" id="10_dfm3f"]
 [ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="10_w7y3k"]
 [ext_resource type="Texture2D" uid="uid://c7k850ct4jmse" path="res://scenes/map_generation/start_rock.png" id="11_irhxh"]
@@ -27,7 +28,7 @@ b = Vector2(146, -1310)
 script = ExtResource("1_evye6")
 start_chunk = NodePath("StartChunk")
 square_chunks_bank = Array[PackedScene]([ExtResource("2_gf4rr"), ExtResource("3_h0ksc"), ExtResource("4_a7d6s"), ExtResource("5_mwqqw"), ExtResource("6_wda4j")])
-steep_chunks_bank = Array[PackedScene]([ExtResource("3_2mxbs"), ExtResource("8_rrmk1")])
+steep_chunks_bank = Array[PackedScene]([ExtResource("3_2mxbs"), ExtResource("8_rrmk1"), ExtResource("9_m47hm")])
 steep_obstacle_chunks_bank = Array[PackedScene]([ExtResource("9_3fu3b"), ExtResource("10_dfm3f")])
 square_obstacle_chunks_bank = Array[PackedScene]([ExtResource("7_m6q3o")])
 square_checkpoint_chunks_bank = Array[PackedScene]([ExtResource("12_pf1ng")])
