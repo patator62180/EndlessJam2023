@@ -18,6 +18,7 @@
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Bloc" parent="ParallaxBackground" instance=ExtResource("2_tj6wb")]
+visible = false
 color = Color(0.552941, 0.811765, 0.827451, 1)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -90,11 +91,13 @@ position = Vector2(3583, 315)
 texture = ExtResource("8_sea8l")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
+motion_scale = Vector2(0.2, 0.3)
 
-[node name="MapGeneration" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource("8_1ntlu")]
+[node name="MapGeneration" parent="ParallaxBackground/ParallaxLayer2" node_paths=PackedStringArray("chunks_pool_root") instance=ExtResource("8_1ntlu")]
+visible = false
 modulate = Color(0.7, 0.7, 0.7, 1)
-position = Vector2(0, 1500)
+position = Vector2(0, 500)
+chunks_pool_root = NodePath("../../../RootPool")
 enable_collision_polygon = false
 trigger_scale = 0.3
 
@@ -148,3 +151,6 @@ texture = ExtResource("3_r51uw")
 script = ExtResource("8_8ojb8")
 
 [node name="Camera2D" type="Camera2D" parent="Icon"]
+
+[node name="RootPool" type="Node2D" parent="."]
+position = Vector2(-10000, 0)
