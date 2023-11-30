@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready():
-    if $Area2D:
+    if get_node_or_null("Area2D"):
         $Area2D.body_entered.connect(_on_checkpoint_enter)
     
     

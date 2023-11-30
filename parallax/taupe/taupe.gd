@@ -4,16 +4,13 @@ extends AnimatedSprite2D
 
 #var ball 
 
-var animation_player
-
 func _ready():
     var rnd = RandomNumberGenerator.new()
-    animation_player = $AnimationPlayer
-    if animation_player != null:
+    if get_node_or_null("AnimationPlayer"):
         $AnimationPlayer.advance(rnd.randf_range(0.0,5.0))
 
 func _process(delta):
-    if animation_player != null:
+    if get_node_or_null("AnimationPlayer"):
         var is_in_ground = frame == 0
 
         $BouceCollision/CollisionShape2D.disabled = is_in_ground

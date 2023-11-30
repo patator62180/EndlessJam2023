@@ -9,7 +9,7 @@ extends Node2D
 var rndf
 
 func _ready():
-    if $BounceCollision:
+    if get_node_or_null("BounceCollision"):
         var rnd = RandomNumberGenerator.new()
         rndf = rnd.randf()
         var sprite1 = $AnimationParent/AnimatedSprite2D
