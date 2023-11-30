@@ -52,10 +52,6 @@ collisionShape = NodePath("CollisionShape2D")
 
 [node name="StartRock" type="StaticBody2D" parent="StartChunk"]
 
-[node name="Sprite2D" type="Sprite2D" parent="StartChunk/StartRock"]
-position = Vector2(-1407, -429)
-texture = ExtResource("11_irhxh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartChunk/StartRock"]
 position = Vector2(-1859.5, -1967.5)
 scale = Vector2(22.585, 22.585)
@@ -64,6 +60,10 @@ shape = SubResource("RectangleShape2D_qv0nb")
 [node name="Sprite2D" type="Sprite2D" parent="StartChunk"]
 position = Vector2(11, 188)
 texture = ExtResource("21_xqxtj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StartChunk"]
+position = Vector2(-1407, -430)
+texture = ExtResource("11_irhxh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartChunk"]
 shape = SubResource("SegmentShape2D_ioa8w")
