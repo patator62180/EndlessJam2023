@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c354fb8k2ko1g" path="res://scenes/chunks/steep_chunks/Pilier_steep.png" id="2_173ms"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8ti30"]
-a = Vector2(-168, -1463)
+a = Vector2(-173, -1460)
 b = Vector2(160, -1670)
 
 [node name="SteepChunkB" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
