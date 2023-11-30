@@ -93,8 +93,9 @@ motion_scale = Vector2(0.2, 0.3)
 [node name="MapGeneration" parent="ParallaxBackground/ParallaxLayer2" node_paths=PackedStringArray("chunks_pool_root") instance=ExtResource("8_1ntlu")]
 modulate = Color(0.7, 0.7, 0.7, 1)
 position = Vector2(0, 500)
+map_name = "Parallax"
 chunks_pool_root = NodePath("../../../RootPool")
-enable_collision_polygon = false
+enable_physics = false
 trigger_scale = 0.3
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]

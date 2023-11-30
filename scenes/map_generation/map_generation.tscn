@@ -1,38 +1,35 @@
-[gd_scene load_steps=22 format=3 uid="uid://cgtd7vgqbqbff"]
+[gd_scene load_steps=19 format=3 uid="uid://cgtd7vgqbqbff"]
 
 [ext_resource type="Script" path="res://scenes/map_generation/map_generation.gd" id="1_evye6"]
 [ext_resource type="PackedScene" uid="uid://cn1te11nr3yc8" path="res://scenes/chunks/square_chunks/square_chunk_a.tscn" id="2_gf4rr"]
+[ext_resource type="PackedScene" uid="uid://be0nnm4sahsg3" path="res://scenes/chunks/steep_chunks/steep_chunk_a.tscn" id="3_2mxbs"]
 [ext_resource type="PackedScene" uid="uid://dqgp2hllxl85b" path="res://scenes/chunks/square_chunks/square_chunk_b.tscn" id="3_h0ksc"]
 [ext_resource type="PackedScene" uid="uid://84fkymkaf8bf" path="res://scenes/chunks/square_chunks/square_chunk_c.tscn" id="4_a7d6s"]
 [ext_resource type="PackedScene" uid="uid://bojfl2cvl4dvm" path="res://scenes/chunks/square_chunks/square_chunk_d.tscn" id="5_mwqqw"]
 [ext_resource type="PackedScene" uid="uid://dhkt6jci6fap3" path="res://scenes/chunks/square_chunks/square_chunk_e.tscn" id="6_wda4j"]
 [ext_resource type="PackedScene" uid="uid://ctim3e0el4n4y" path="res://scenes/chunks/special_chunks/special_chunk_c.tscn" id="7_m6q3o"]
-[ext_resource type="PackedScene" uid="uid://cvcidmpnj63i8" path="res://scenes/chunks/square_chunks/square_chunk_f.tscn" id="7_ycmon"]
-[ext_resource type="PackedScene" uid="uid://cup0e3wfqbs6w" path="res://scenes/chunks/square_chunks/square_chunk_g.tscn" id="8_25b0k"]
 [ext_resource type="PackedScene" uid="uid://0om0c2i4ycj3" path="res://scenes/chunks/steep_chunks/steep_chunk_b.tscn" id="8_rrmk1"]
-[ext_resource type="PackedScene" uid="uid://bax4ew5oucil7" path="res://scenes/chunks/steep_chunks/steep_chunk_a.tscn" id="9_vijvx"]
+[ext_resource type="PackedScene" uid="uid://quh13abej5cv" path="res://scenes/chunks/steep_chunks/steep_chunk_obstacle_a.tscn" id="9_3fu3b"]
+[ext_resource type="PackedScene" uid="uid://bjuyt6mveq38p" path="res://scenes/chunks/steeper_chunks/steeper_chunk_a.tscn" id="9_m47hm"]
 [ext_resource type="PackedScene" uid="uid://cyellof3nj4w8" path="res://scenes/chunks/special_chunks/special_chunk_a.tscn" id="10_dfm3f"]
 [ext_resource type="Script" path="res://scenes/chunks/chunk.gd" id="10_w7y3k"]
-[ext_resource type="PackedScene" uid="uid://be0nnm4sahsg3" path="res://scenes/chunks/special_chunks/special_chunk_e.tscn" id="11_00gn7"]
 [ext_resource type="Texture2D" uid="uid://c7k850ct4jmse" path="res://scenes/map_generation/start_rock.png" id="11_irhxh"]
-[ext_resource type="PackedScene" uid="uid://bbj1i23w745id" path="res://scenes/chunks/steep_chunks/steep_chunk_c.tscn" id="11_rj60p"]
-[ext_resource type="PackedScene" uid="uid://bqisytvyr0ppr" path="res://scenes/chunks/steep_chunks/steep_chunk_d.tscn" id="12_2qgl2"]
+[ext_resource type="Texture2D" uid="uid://c8eees67e7kj3" path="res://scenes/chunks/square_chunks/square_chunk_a.png" id="12_4w0f0"]
 [ext_resource type="PackedScene" uid="uid://bvm6cwtk7s871" path="res://scenes/chunks/special_chunks/special_chunk_d.tscn" id="12_pf1ng"]
-[ext_resource type="PackedScene" uid="uid://dn3mhqi73nwal" path="res://scenes/chunks/steep_chunks/steep_chunk_e.tscn" id="13_mmohr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qv0nb"]
 size = Vector2(93.8233, 62.5637)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ioa8w"]
-a = Vector2(-823, -1297)
-b = Vector2(-188, -1301)
+a = Vector2(-825, -1303)
+b = Vector2(146, -1310)
 
 [node name="MapGeneration" type="Node2D" node_paths=PackedStringArray("start_chunk", "chunks_root", "chunks_pool_root", "collision_polygon")]
 script = ExtResource("1_evye6")
 start_chunk = NodePath("StartChunk")
-square_chunks_bank = Array[PackedScene]([ExtResource("2_gf4rr"), ExtResource("3_h0ksc"), ExtResource("4_a7d6s"), ExtResource("5_mwqqw"), ExtResource("6_wda4j"), ExtResource("7_ycmon"), ExtResource("8_25b0k")])
-steep_chunks_bank = Array[PackedScene]([ExtResource("9_vijvx"), ExtResource("8_rrmk1"), ExtResource("11_rj60p"), ExtResource("12_2qgl2"), ExtResource("13_mmohr")])
-steep_obstacle_chunks_bank = Array[PackedScene]([ExtResource("10_dfm3f"), ExtResource("11_00gn7")])
+square_chunks_bank = Array[PackedScene]([ExtResource("2_gf4rr"), ExtResource("3_h0ksc"), ExtResource("4_a7d6s"), ExtResource("5_mwqqw"), ExtResource("6_wda4j")])
+steep_chunks_bank = Array[PackedScene]([ExtResource("3_2mxbs"), ExtResource("8_rrmk1"), ExtResource("9_m47hm")])
+steep_obstacle_chunks_bank = Array[PackedScene]([ExtResource("9_3fu3b"), ExtResource("10_dfm3f")])
 square_obstacle_chunks_bank = Array[PackedScene]([ExtResource("7_m6q3o")])
 square_checkpoint_chunks_bank = Array[PackedScene]([ExtResource("12_pf1ng")])
 chunks_root = NodePath("Chunks")
@@ -54,9 +51,13 @@ position = Vector2(-1407, -429)
 texture = ExtResource("11_irhxh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartChunk/StartRock"]
-position = Vector2(-1851, -1968)
+position = Vector2(-1859.5, -1967.5)
 scale = Vector2(22.585, 22.585)
 shape = SubResource("RectangleShape2D_qv0nb")
+
+[node name="Sprite2D" type="Sprite2D" parent="StartChunk"]
+scale = Vector2(2, 2)
+texture = ExtResource("12_4w0f0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartChunk"]
 shape = SubResource("SegmentShape2D_ioa8w")

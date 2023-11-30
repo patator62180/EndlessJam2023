@@ -6,6 +6,7 @@ const FROG_GROUP = 'frog'
 const SEED_LABEL_GROUP = 'seed_label'
 
 
+@export var map_name = ""
 @export var start_chunk: Chunk
 @export var square_chunks_bank: Array[PackedScene]
 @export var steep_chunks_bank: Array[PackedScene]
@@ -15,7 +16,7 @@ const SEED_LABEL_GROUP = 'seed_label'
 @export var chunks_root: Node2D
 @export var chunks_pool_root: Node2D
 @export var collision_polygon: CollisionPolygon2D
-@export var enable_collision_polygon: bool = true
+@export var enable_physics: bool = true
 
 @export_category("Chunks")
 @export var initial_chunks_count: int = 3
@@ -31,6 +32,7 @@ const SEED_LABEL_GROUP = 'seed_label'
 @export var max_chunks_before_checkpoint: int = 100
 @export var trigger_scale: float = 1
 @export var seed: int = 0
+
 
 enum ChunkType {Square, Steep}
 
@@ -65,6 +67,7 @@ var steep_chunks_pool: Array[Array] = []
 var steep_obstacle_chunks_pool: Array[Array] = []
 var square_obstacle_chunks_pool: Array[Array] = []
 var square_checkpoint_chunks_pool: Array[Array] = []
+
 
 func build_chunk_pools():
     build_chunk_pool_type(ChunkType.Square, false, false)
@@ -102,11 +105,30 @@ func build_chunk_pool_type(type: ChunkType, obstacle: bool, checkpoint: bool):
             var chunk = packed_chunk.instantiate() as Chunk
     
             chunks_pool_root.add_child(chunk)
+
+            if not enable_physics:
+                collision_polygon.disabled = true
+                disable_nested_physics(chunk)
+
             chunk.position = Vector2.ZERO
             chunk.disable_segment()
             typed_pool.append(chunk)
 
         pool.append(typed_pool)
+
+
+func disable_nested_physics(chunk: Node):
+    for child in chunk.get_children():
+        var shape = child as CollisionShape2D
+        var polygon = child as CollisionPolygon2D
+        
+        if shape != null:
+            shape.disabled = true
+
+        if polygon != null: 
+            polygon.disabled = true
+
+        disable_nested_physics(child)
 
 
 func generate_next_threshold(type: ChunkType):
@@ -221,14 +243,15 @@ func spawn_chunk(index: int):
 
 
 func draw_collision_polygon():
-    if enable_collision_polygon:
+    if enable_physics:
         var looped_points = [] + points
 
         looped_points.append(Vector2(points[len(points) - 1].x, points[0].y + POLYGON_MINIMUM_HEIGHT));
         looped_points.append(Vector2(points[0].x, points[0].y + POLYGON_MINIMUM_HEIGHT));
         looped_points.append(points[0]);
-        
+
         collision_polygon.polygon = looped_points;
+
 
 func return_chunk_to_pool(index: int):
     var chunk_def: ChunkDef = chunk_defs[index]
@@ -238,7 +261,7 @@ func return_chunk_to_pool(index: int):
     chunks_root.remove_child(chunk)
     chunks_pool_root.add_child(chunk)
     chunk.position = Vector2.ZERO
-    
+
 
 func free_chunk_right():
     return_chunk_to_pool(last_chunk_index)
@@ -271,7 +294,6 @@ func populate_chunks(left_target: int, right_target: int):
     elif left_target >= 0 and left_target < first_chunk_index:
         for index in range(first_chunk_index - left_target):
             spawn_chunk(first_chunk_index - 1)
-
 
 
 func remove_extra_points(new_point: Vector2):
@@ -316,12 +338,13 @@ func _ready():
         rng.set_seed(seed)
     else:
         seed = rng.get_seed()
+        print('Seed for {name} = {seed}'.format({'name': map_name, 'seed': seed}))
 
     chunks_pools_size = 3 * chunks_count_trigger
     build_chunk_pools()
     populate_chunks(0, initial_chunks_count)
 
-    
+
 func _process(delta):
     if frog != null:
         populate_relative(frog)
