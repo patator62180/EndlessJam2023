@@ -192,7 +192,7 @@ func append_chunk_def():
         next_chunk_threshold = generate_next_threshold(chunk_def.type)
         chunk_count_since_type_change = 0
     elif chunks_count_since_checkpoint >= next_checkpoint_threshold:
-        next_checkpoint_threshold = min(max_chunks_before_checkpoint, next_checkpoint_threshold + 5)
+        next_checkpoint_threshold = min(max_chunks_before_checkpoint, next_checkpoint_threshold + 1)
         chunk_def.checkpoint = true
         chunks_count_since_checkpoint = -1
     elif chunks_count_since_obstacle >= next_obstacle_threshold:

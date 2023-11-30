@@ -44,6 +44,8 @@ chunks_pool_root = NodePath("ChunksPools")
 collision_polygon = NodePath("WorldPolygonBody/CollisionPolygon2D")
 chunks_count_trigger = 50
 average_chunk_width = 354
+min_chunks_before_checkpoint = 10
+max_chunks_before_checkpoint = 40
 
 [node name="ChunksPools" type="Node2D" parent="."]
 position = Vector2(-10240, -1216)
