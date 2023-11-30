@@ -41,6 +41,7 @@ hand_r_follow = NodePath("../HandRFollow")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FROGG"]
 stream = ExtResource("7_cftx3")
+volume_db = -10.0
 autoplay = true
 
 [node name="HandLFollow" type="Node2D" parent="."]
