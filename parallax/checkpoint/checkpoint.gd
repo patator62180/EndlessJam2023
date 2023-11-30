@@ -2,11 +2,12 @@ extends Node2D
 
 
 func _ready():
-    $Area2D.body_entered.connect(_on_checkpoint_enter)
+    if $Area2D:
+        $Area2D.body_entered.connect(_on_checkpoint_enter)
     
     
 func _on_checkpoint_enter(body):
-    if body.is_in_group("ball"):
+    if $Area2D and body.is_in_group("ball"):
         $AnimatedSprite2D.modulate = Color.WHITE
         $CPUParticles2D.emitting = true
         get_tree().get_root().get_node("Main/FROGG").spawn_hat()
