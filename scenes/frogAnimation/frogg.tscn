@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqdwncfyjmeo6"]
+[gd_scene load_steps=26 format=3 uid="uid://bqdwncfyjmeo6"]
 
 [ext_resource type="Script" path="res://scenes/frogAnimation/MartinFrogScript.gd" id="1_c7gqk"]
 [ext_resource type="Texture2D" uid="uid://dk5vwhhglfb4y" path="res://scenes/frogAnimation/Froggg.png" id="1_hfxak"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c0w7ygnxt4mug" path="res://scenes/UI/Blink_06.png" id="8_js2m7"]
 [ext_resource type="Script" path="res://scenes/frogAnimation/HatFactory.gd" id="9_rwmmn"]
 [ext_resource type="PackedScene" uid="uid://ks6vwi8vxtou" path="res://scenes/chapeaux/hat1.tscn" id="10_m18fq"]
+[ext_resource type="AudioStream" uid="uid://cesavipy7nt2r" path="res://Audio/Bruit_Pas.mp3" id="12_734y2"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_p1ea1"]
 target_nodepath = NodePath("../HandL")
@@ -162,7 +163,7 @@ height = 1861.18
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmrx8"]
 radius = 318.157
 
-[node name="FROGG" type="CharacterBody2D" node_paths=PackedStringArray("foot_r_area", "foot_l_area") groups=["frog"]]
+[node name="FROGG" type="CharacterBody2D" node_paths=PackedStringArray("foot_r_area", "foot_l_area", "step_noize") groups=["frog"]]
 collision_layer = 32776
 collision_mask = 32777
 floor_max_angle = 1.39626
@@ -172,6 +173,7 @@ platform_floor_layers = 4294934527
 script = ExtResource("1_c7gqk")
 foot_r_area = NodePath("FootRArea")
 foot_l_area = NodePath("FootLArea")
+step_noize = NodePath("StepNoize")
 
 [node name="Polygons" type="Node2D" parent="."]
 metadata/_edit_group_ = true
@@ -491,5 +493,10 @@ visible = false
 position = Vector2(-141, 856)
 shape = SubResource("CircleShape2D_xmrx8")
 disabled = true
+
+[node name="StepNoize" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_734y2")
+volume_db = -10.0
+pitch_scale = 0.01
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
