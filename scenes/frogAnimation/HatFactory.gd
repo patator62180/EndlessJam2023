@@ -22,6 +22,8 @@ func _ready():
     chapi_chapeaux.push_back(preload("res://scenes/chapeaux/hat7.tscn"))    
     chapi_chapeaux.push_back(preload("res://scenes/chapeaux/hat8.tscn"))    
     chapi_chapeaux.push_back(preload("res://scenes/chapeaux/hat9.tscn"))
+    chapi_chapeaux.push_back(preload("res://scenes/chapeaux/hat10.tscn"))
+    chapi_chapeaux.push_back(preload("res://scenes/chapeaux/hat11.tscn"))
     last_hat = self
     first_hat = self
     rnd = RandomNumberGenerator.new()
