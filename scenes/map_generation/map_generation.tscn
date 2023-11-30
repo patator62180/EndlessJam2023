@@ -24,9 +24,10 @@ size = Vector2(93.8233, 62.5637)
 a = Vector2(-825, -1303)
 b = Vector2(146, -1310)
 
-[node name="MapGeneration" type="Node2D" node_paths=PackedStringArray("start_chunk", "chunks_root", "chunks_pool_root", "collision_polygon")]
+[node name="MapGeneration" type="Node2D" node_paths=PackedStringArray("start_chunk", "start_rock", "chunks_root", "chunks_pool_root", "collision_polygon")]
 script = ExtResource("1_evye6")
 start_chunk = NodePath("StartChunk")
+start_rock = NodePath("StartChunk/StartRock")
 square_chunks_bank = Array[PackedScene]([ExtResource("2_gf4rr"), ExtResource("3_h0ksc"), ExtResource("4_a7d6s"), ExtResource("5_mwqqw"), ExtResource("6_wda4j")])
 steep_chunks_bank = Array[PackedScene]([ExtResource("3_2mxbs"), ExtResource("8_rrmk1"), ExtResource("9_m47hm")])
 steep_obstacle_chunks_bank = Array[PackedScene]([ExtResource("9_3fu3b"), ExtResource("10_dfm3f")])
