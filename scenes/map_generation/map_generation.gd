@@ -305,14 +305,21 @@ func remove_extra_points(new_point: Vector2):
         var aligned_y = p_a.y + (p_c.y - p_a.y) * (p_b.x - p_a.x) / (p_c.x - p_a.x)
         
         if (abs(aligned_y - p_b.y) <= Y_PRECISION):
-            points.erase(p_b)        
+            points.erase(p_b)
 
 
 func populate_relative(frog: Node2D):
-    var x_distance = chunks[last_chunk_index].global_position.x + chunks[last_chunk_index].get_segment().a.x - frog.global_position.x
+    var x_distance = frog.global_position.distance_to(start_chunk.global_position)
     var chunks_distance = ceil(x_distance / average_chunk_width)
-    var frog_chunk = (last_chunk_index - chunks_distance) * trigger_scale
+    var frog_chunk = floor(x_distance / average_chunk_width) * trigger_scale
 
+#    if map_name == 'Level':
+#        print("{l},{f},{r}".format({
+#            'l': frog_chunk - chunks_count_trigger,
+#            'f': frog_chunk,
+#            'r': frog_chunk + chunks_count_trigger
+#        }))
+    
     populate_chunks(frog_chunk - chunks_count_trigger, frog_chunk + chunks_count_trigger)
 
 
