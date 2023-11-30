@@ -11,7 +11,11 @@ func _ready():
 func _process(delta):
     pass
 
-
 func _on_pressed():
     get_tree().change_scene_to_file(loading_scene_path)
+    pass # Replace with function body.
+
+func _input(event):
+    if event.is_action_pressed("NewGame"):
+        get_tree().change_scene_to_file(loading_scene_path)
     pass # Replace with function body.
