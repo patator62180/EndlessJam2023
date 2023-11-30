@@ -103,11 +103,13 @@ func build_chunk_pool_type(type: ChunkType, obstacle: bool, checkpoint: bool):
 
         for index in range(chunks_pools_size):
             var chunk = packed_chunk.instantiate() as Chunk
-            
-            if not enable_physics:
-                disable_nested_physics(chunk)
     
             chunks_pool_root.add_child(chunk)
+
+            if not enable_physics:
+                collision_polygon.disabled = true
+                disable_nested_physics(chunk)
+
             chunk.position = Vector2.ZERO
             chunk.disable_segment()
             typed_pool.append(chunk)
@@ -118,9 +120,13 @@ func build_chunk_pool_type(type: ChunkType, obstacle: bool, checkpoint: bool):
 func disable_nested_physics(chunk: Node):
     for child in chunk.get_children():
         var shape = child as CollisionShape2D
+        var polygon = child as CollisionPolygon2D
         
         if shape != null:
             shape.disabled = true
+
+        if polygon != null: 
+            polygon.disabled = true
 
         disable_nested_physics(child)
 
