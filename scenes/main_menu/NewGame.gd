@@ -9,7 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    pass
+    if Input.is_action_just_pressed("ui_accept"):
+        _on_pressed()
 
 func _on_pressed():
     get_tree().change_scene_to_file(loading_scene_path)
