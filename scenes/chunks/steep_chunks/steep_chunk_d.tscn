@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cljjcrgdecnbn" path="res://parallax/fossils/fossil3.png" id="5_rq7po"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8ti30"]
-a = Vector2(-168, -1463)
+a = Vector2(-171, -1461)
 b = Vector2(161, -1668)
 
 [node name="SteepChunkB" type="StaticBody2D" node_paths=PackedStringArray("collisionShape")]
