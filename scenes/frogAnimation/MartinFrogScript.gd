@@ -59,6 +59,8 @@ var footR
 @export var foot_r_area = CollisionShape2D
 @export var foot_l_area = CollisionShape2D
 
+@export var step_noize = AudioStreamPlayer
+
 var hand_l
 var hand_r
 
@@ -102,6 +104,7 @@ func _ready():
     
     hipsOrigin = hips.position
     lastHipPosition = hips.position
+    
 
 func touch_ball(body: Node2D):
     if body.is_in_group(BALL_GROUP):
@@ -265,7 +268,10 @@ func raycastLegs():
         
         target = _quadratic_bezier(previousTargetR, midTargetR, currentTargetR, timerR)
         #legRTarget.rotation = raycastLegR2.get_collision_normal().angle() + deg_to_rad(90)
-        
+    
+    if timerR > 1:
+        timerR = 1
+        play_foot_noize()
     
     if target != null:
         legRTarget.global_position = target
@@ -304,6 +310,10 @@ func raycastLegs():
         
         target = _quadratic_bezier(previousTargetL, midTargetL, currentTargetL, timerL)
         #legLTarget.rotation = raycastLegL2.get_collision_normal().angle() + deg_to_rad(90)
+    
+    if timerL > 1:
+        timerL = 1
+        play_foot_noize()
     
     if target != null:
         legLTarget.global_position = target
@@ -539,6 +549,9 @@ func throw_rock(direction):
             throwAnim = false
         else:
             throw_timer += 0.05
-            
+
+func play_foot_noize():
+    step_noize.pitch_scale = randf_range(0.5, 1.5)
+    step_noize.playing = true
         
         

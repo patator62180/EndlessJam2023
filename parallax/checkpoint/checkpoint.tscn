@@ -40,9 +40,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgwhm"]
-radius = 56.6114
-height = 145.133
+[sub_resource type="CircleShape2D" id="CircleShape2D_5h8sb"]
+radius = 208.06
 
 [node name="checkpoint" type="Node2D"]
 z_index = 5
@@ -83,4 +82,4 @@ collision_mask = 32768
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2, 5)
 rotation = 0.629105
-shape = SubResource("CapsuleShape2D_kgwhm")
+shape = SubResource("CircleShape2D_5h8sb")
