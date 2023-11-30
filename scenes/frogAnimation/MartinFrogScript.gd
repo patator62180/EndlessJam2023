@@ -101,6 +101,7 @@ func _ready():
     safeRockArea.body_exited.connect(untouch_ball)
     
     hipsOrigin = hips.position
+    lastHipPosition = hips.position
 
 func touch_ball(body: Node2D):
     if body.is_in_group(BALL_GROUP):
@@ -139,7 +140,7 @@ func _physics_process(delta):
         velocity.y += gravity * delta
 
     # Handle Jump.
-    if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !jumping and !touchingBall and !holding and !holdAnim:
+    if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !jumping and !touchingBall and !holding and !holdAnim and !throwAnim:
         #velocity.y = JUMP_VELOCITY
         #animator.play("Jump");
         #jumping = true
@@ -160,7 +161,7 @@ func _physics_process(delta):
     #var ballDirection = sign(ball.position.x - position.x) if ball != null else 0
 
     #if not blockedByBall or ballDirection != direction:
-    if direction and !holding && !holdAnim:
+    if direction and !holding && !holdAnim and !throwAnim:
         velocity.x = direction * adjustedSpeed
     else:
         velocity.x = move_toward(velocity.x, 0, adjustedSpeed)
@@ -195,6 +196,10 @@ var midTargetR
 var wasMoving
 
 var hipsOrigin
+var lastHipPosition
+var default_crouch = 25
+var hold_crouch = 50
+var throw_crouch = 100
     
 func raycastLegs():
     var right = velocity.x > 0
@@ -214,21 +219,19 @@ func raycastLegs():
     
     var floorAngle = 0 if !is_on_floor() else get_floor_angle()
     
-    var default_crouch = 25
-    var throw_crouch = 50
+
     var foot_area_size = 100
     var foot_speed = 0.08 * footSpeedModifier
-    #moveLeg(raycastLegL, raycastLegL2, footL, legL, timerL, currentTargetL, oldTargetL, midTargetL, legLTarget, modifier, floorAngle, moving, justStopped, footSpeedModifier)
-    #moveLeg(raycastLegR, raycastLegR2, footR, legR, timerR, currentTargetR, oldTargetR, midTargetR, legRTarget, modifier, floorAngle, moving, justStopped, footSpeedModifier)
-
-    #var distanceL = legL.global_position.distance_to(footL.global_position)
-    #var distanceR = legR.global_position.distance_to(footR.global_position)
 
     if foot_l_area.global_position.y != foot_r_area.global_position.y:
         hips.position = hipsOrigin - Vector2(0, (foot_l_area.global_position.y - foot_r_area.global_position.y) / 2 - default_crouch) / scaleScalar
-        
-    if holding or holdAnim:
-        hips.position.y += throw_crouch / scaleScalar
+        lastHipPosition = hips.position
+#    if holding or holdAnim:
+#        var current_hold_crouch = lerp(0, hold_crouch, ballHoldT)
+#        hips.position.y += current_hold_crouch / scaleScalar
+#
+#    if throwAnim:
+#        hips.position.y += throw_crouch / scaleScalar
     
     ##RIGHT LEG       
     var collider = raycastLegR.get_collider()
@@ -404,6 +407,8 @@ func raycastLegs():
 @export var hand_l_follow = Node2D
 @export var hand_r_follow = Node2D
 
+var keep_your_hands_up_timer = 1
+
 func rayCastArms():
     var targetL
     var targetR
@@ -412,13 +417,16 @@ func rayCastArms():
     hand_l_follow.global_position = lerp(hand_l_follow.global_position, hand_l.global_position + hand_gravity, 0.05)
     hand_r_follow.global_position = lerp(hand_r_follow.global_position, hand_r.global_position + hand_gravity, 0.05)
     
-    if holding || holdAnim || touchingBall:
+    if holding || holdAnim || touchingBall || throwAnim:
         var speed = 0.1 if touchingBall else 0.5
         targetL = lerp(armLTarget.get_global_position(), ball.targetR.get_global_position(), speed)
         targetR = lerp(armRTarget.get_global_position(), ball.targetL.get_global_position(), speed)
         
-        hand_l_follow.global_position = targetL
-        hand_r_follow.global_position = targetR
+        if keep_your_hands_up_timer >= 1:
+            hand_l_follow.global_position = targetL
+            hand_r_follow.global_position = targetR
+        else:
+            keep_your_hands_up_timer += 0.1
     else:
         targetL = hand_l_follow.global_position
         targetR = hand_r_follow.global_position
@@ -446,13 +454,21 @@ func _on_animation_player_animation_finished(anim_name):
     jumping = false
         
 var holdAnim = false
+var throwAnim = false
 
 var ballHoldStart
 var ballHoldMid
 var ballHoldT = 1
 
+var throw_timer = 1
+var squat_vector
+var squat_start
+var squat_end
+
+var impulse
+
 func throw_rock(direction):
-    if touchingBall && Input.is_action_just_pressed("ui_accept") and !jumping:
+    if touchingBall && Input.is_action_pressed("ui_accept") and !jumping and is_on_floor() and !holding and !holdAnim and !throwAnim and keep_your_hands_up_timer >= 1:
         #holding = true
         holdAnim = true
         ballHoldStart = ball.global_position
@@ -462,26 +478,42 @@ func throw_rock(direction):
         
         ball.freeze = true     
         ball.sleeping = true
-        hips.position.y += 100
+        #hips.position.y += 100
         
         ball.get_node("CollisionShape2D").disabled = true
         
     var dir = 1 if direction > 0 else -1 if direction < 0 else 0
         
+    if holding or holdAnim:
+        hips.position = lerp(hips.position, lastHipPosition + Vector2(0, hold_crouch) / scaleScalar, ballHoldT)
+        
     if holding:
         hips.rotation = lerp(hips.rotation, deg_to_rad(dir * 20), 0.1)
         ball.global_position = rockThrowTarget.global_position
         ball.rotation = hips.rotation
-    else:
+    elif !throwAnim:
         hips.rotation = lerp(hips.rotation, deg_to_rad(0), 0.1)
+    else :
+        hips.position = _quadratic_bezier(squat_start, squat_vector, squat_end, throw_timer)
+        ball.global_position = rockThrowTarget.global_position
+
         
     if holding and !Input.is_action_pressed("ui_accept"):
         holding = false
-        ball.freeze = false
-        ball.sleeping = false
-        ball.get_node("CollisionShape2D").disabled = false
-        ball.apply_central_impulse((Vector2.UP + Vector2(dir, 0) * 0.5) * throw_force)
-        hips.position.y -= 100
+        #ball.freeze = false
+        #ball.sleeping = false
+        #ball.get_node("CollisionShape2D").disabled = false
+        #ball.apply_central_impulse((Vector2.UP + Vector2(dir, 0) * 0.5) * throw_force)
+        #hips.position.y -= 100
+        
+        throwAnim = true
+        throw_timer = 0
+        
+        squat_start = hips.position
+        squat_end = lastHipPosition
+        squat_vector = squat_start - Vector2.UP.rotated(hips.rotation) * 200 / scaleScalar
+        
+        impulse = (Vector2.UP + Vector2(dir, 0) * 0.5) * throw_force
         
     if holdAnim:
         if ballHoldT >= 1:
@@ -490,5 +522,22 @@ func throw_rock(direction):
         else:
             ball.global_position = _quadratic_bezier(ballHoldStart, ballHoldMid, rockThrowTarget.global_position, ballHoldT)
             ballHoldT += 0.05
+            
+    if throwAnim:
+        if throw_timer >= 1:
+            ball.freeze = false
+            ball.sleeping = false
+            ball.get_node("CollisionShape2D").disabled = false
+            ball.apply_central_impulse(impulse)
+            
+            hand_l_follow.global_position += impulse / 75
+            hand_r_follow.global_position += impulse / 75
+            
+            keep_your_hands_up_timer = 0
+            
+            throwAnim = false
+        else:
+            throw_timer += 0.05
+            
         
         

@@ -25,7 +25,7 @@ func _ready():
     last_hat = self
     first_hat = self
     rnd = RandomNumberGenerator.new()
-    spawn_hat()
+    #spawn_hat()
     
 func _process(delta):
     balance_hats()
@@ -45,7 +45,8 @@ func balance_hats():
     for i in range(index):
         if current_hat != null and current_hat.has_node("Hat"):
             #current_hat.rotation = current_hat.get_parent().rotation + rotation_target.rotation / 2
-            current_hat.rotation = lerp(current_hat.rotation, rotation_target.rotation * i / 20, 0.01) 
+            if i > 0:
+                current_hat.rotation = lerp(current_hat.rotation, rotation_target.rotation * i / 20, 0.01) 
             current_hat = current_hat.get_node("Hat")
         else:
             return

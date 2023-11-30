@@ -284,7 +284,7 @@ frame_progress = 0.13898
 
 [node name="HatFactory" type="Node2D" parent="Skeleton2D/Hip/Torso/Neck" node_paths=PackedStringArray("rotation_target")]
 position = Vector2(-85, -347)
-rotation = -0.176855
+rotation = -0.174533
 script = ExtResource("9_rwmmn")
 rotation_target = NodePath("../..")
 
@@ -391,15 +391,17 @@ position = Vector2(494, 527)
 position = Vector2(-560, 568)
 
 [node name="RockThrowTarget" type="Node2D" parent="Skeleton2D/Hip"]
-position = Vector2(-4, -1385)
+position = Vector2(-42, -1242)
 
 [node name="RaycastLegL" type="RayCast2D" parent="Skeleton2D"]
+visible = false
 position = Vector2(173, 43)
 scale = Vector2(0.999991, 0.999991)
 target_position = Vector2(0, 1000)
 collision_mask = 32769
 
 [node name="RaycastLegL2" type="RayCast2D" parent="Skeleton2D"]
+visible = false
 position = Vector2(173, 43)
 scale = Vector2(0.999991, 0.999991)
 target_position = Vector2(0, 1500)
@@ -413,12 +415,14 @@ scale = Vector2(-1.86716, 125.501)
 texture = ExtResource("2_v7esi")
 
 [node name="RaycastLegR" type="RayCast2D" parent="Skeleton2D"]
+visible = false
 position = Vector2(-175, 43)
 scale = Vector2(0.999991, 0.999991)
 target_position = Vector2(0, 1000)
 collision_mask = 32769
 
 [node name="RaycastLegR2" type="RayCast2D" parent="Skeleton2D"]
+visible = false
 position = Vector2(-175, 43)
 scale = Vector2(0.999991, 0.999991)
 target_position = Vector2(0, 1500)
@@ -432,6 +436,7 @@ scale = Vector2(-1.86716, 125.501)
 texture = ExtResource("2_v7esi")
 
 [node name="HandL" type="Node2D" parent="."]
+visible = false
 position = Vector2(84, -980)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandL"]
@@ -440,6 +445,7 @@ texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
 [node name="HandR" type="Node2D" parent="."]
+visible = false
 position = Vector2(-233, -753)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandR"]
@@ -448,6 +454,7 @@ texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
 [node name="FootL" type="Node2D" parent="."]
+visible = false
 position = Vector2(294, 1110)
 rotation = -0.0792272
 
@@ -458,6 +465,7 @@ texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
 [node name="FootR" type="Node2D" parent="."]
+visible = false
 position = Vector2(-60, 1115)
 rotation = -0.0208066
 
@@ -468,7 +476,6 @@ texture = ExtResource("2_v7esi")
 metadata/_edit_lock_ = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-25, 202)
 shape = SubResource("CapsuleShape2D_qnphd")
 
@@ -489,11 +496,13 @@ position = Vector2(-28.2353, 225.882)
 shape = SubResource("CapsuleShape2D_peyym")
 
 [node name="FootLArea" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(209, 867)
 shape = SubResource("CircleShape2D_xmrx8")
 disabled = true
 
 [node name="FootRArea" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-141, 856)
 shape = SubResource("CircleShape2D_xmrx8")
 disabled = true

@@ -3,7 +3,7 @@ extends Area2D
 @export var directional_bounce = false
 
 var ball 
-var bounce_power = 10000
+var bounce_power = 20000
 
 func _ready():
     body_entered.connect(touch_ball)

@@ -18,9 +18,6 @@ mass = 10.0
 script = ExtResource("1_8g156")
 shadow = NodePath("Shadow")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_o4yyi")
-
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("2_vgur2")
 
@@ -29,6 +26,9 @@ texture = ExtResource("3_w72ns")
 
 [node name="Border" type="Sprite2D" parent="."]
 texture = ExtResource("4_kl7cl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o4yyi")
 
 [node name="HandTargets" type="Node2D" parent="."]
 
