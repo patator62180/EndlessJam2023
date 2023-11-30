@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mwl4g7upi7y7"]
+[gd_scene load_steps=21 format=3 uid="uid://mwl4g7upi7y7"]
 
 [ext_resource type="Texture2D" uid="uid://ce7rqkyoxkn0c" path="res://parallax/champignon/Champi_01.png" id="1_8533q"]
 [ext_resource type="Script" path="res://parallax/champignon/champignon.gd" id="1_hsj1y"]
@@ -61,16 +61,60 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_cib71"]
 radius = 123.037
 
+[sub_resource type="Animation" id="Animation_pe15t"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_11ljm"]
+resource_name = "Bounce"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationParent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.735, 0.555), Vector2(1.534, 1.437), Vector2(0.874, 0.825), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wqgqx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationParent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3py28"]
+_data = {
+"Bounce": SubResource("Animation_11ljm"),
+"Idle": SubResource("Animation_pe15t"),
+"RESET": SubResource("Animation_wqgqx")
+}
+
 [node name="champignon" type="Node2D"]
 script = ExtResource("1_hsj1y")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="AnimationParent" type="Node2D" parent="."]
+position = Vector2(0, 105)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimationParent"]
 material = SubResource("ShaderMaterial_qjg1m")
+position = Vector2(0, -105)
 sprite_frames = SubResource("SpriteFrames_gedm5")
 autoplay = "default"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 2)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationParent"]
+position = Vector2(0, -103)
 sprite_frames = SubResource("SpriteFrames_mdtkc")
 autoplay = "default"
 
@@ -90,3 +134,11 @@ directional_bounce = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceCollision"]
 position = Vector2(9, 147)
 shape = SubResource("CircleShape2D_cib71")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_3py28")
+}
+
+[connection signal="bounced" from="BounceCollision" to="." method="bounce"]

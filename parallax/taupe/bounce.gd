@@ -5,6 +5,8 @@ extends Area2D
 var ball 
 var bounce_power = 20000
 
+signal bounced
+
 func _ready():
     body_entered.connect(touch_ball)
     body_exited.connect(untouch_ball)
@@ -18,6 +20,7 @@ func _process(delta):
             ball.freeze = false
             var direction = (ball.global_position - global_position).normalized() * bounce_power
             ball.apply_central_impulse(direction)
+            bounced.emit()
         ball = null
     
 func touch_ball(body):
