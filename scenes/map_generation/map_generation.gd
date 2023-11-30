@@ -8,6 +8,7 @@ const SEED_LABEL_GROUP = 'seed_label'
 
 @export var map_name = ""
 @export var start_chunk: Chunk
+@export var start_rock: StaticBody2D
 @export var square_chunks_bank: Array[PackedScene]
 @export var steep_chunks_bank: Array[PackedScene]
 @export var steep_obstacle_chunks_bank: Array[PackedScene]
@@ -97,6 +98,9 @@ func build_chunk_pool_type(type: ChunkType, obstacle: bool, checkpoint: bool):
     else:
         bank = steep_chunks_bank
         pool = steep_chunks_pool
+
+    if not enable_physics and start_rock.get_parent() != null:
+        start_rock.get_parent().remove_child(start_rock)
  
     for packed_chunk in bank:
         var typed_pool: Array[Chunk] = []
@@ -107,7 +111,6 @@ func build_chunk_pool_type(type: ChunkType, obstacle: bool, checkpoint: bool):
             chunks_pool_root.add_child(chunk)
 
             if not enable_physics:
-                collision_polygon.disabled = true
                 disable_nested_physics(chunk)
 
             chunk.position = Vector2.ZERO
@@ -117,16 +120,13 @@ func build_chunk_pool_type(type: ChunkType, obstacle: bool, checkpoint: bool):
         pool.append(typed_pool)
 
 
-func disable_nested_physics(chunk: Node):
-    for child in chunk.get_children():
-        var shape = child as CollisionShape2D
-        var polygon = child as CollisionPolygon2D
+func disable_nested_physics(parent: Node):
+    for child in parent.get_children():
+        var static_body = child as StaticBody2D
+        var animation_player = child as AnimationPlayer
         
-        if shape != null:
-            shape.disabled = true
-
-        if polygon != null: 
-            polygon.disabled = true
+        if static_body != null or animation_player != null:
+            parent.remove_child(child)
 
         disable_nested_physics(child)
 
@@ -211,6 +211,7 @@ func append_chunk_def():
 func spawn_chunk(index: int):
     var chunk: Chunk = chunk_defs[index].pool.pop_front()
 
+
     if len(points) == 0:
         points.append(start_chunk.position + start_chunk.get_segment().a)
 
@@ -224,7 +225,6 @@ func spawn_chunk(index: int):
     else:
         var previous_chunk = chunks[index - 1] if (len(chunks) > 0) and index > 0 else start_chunk
         chunk.position = Vector2(previous_chunk.get_segment().b.x + previous_chunk.position.x - chunk.get_segment().a.x, previous_chunk.position.y + previous_chunk.get_segment().b.y - chunk.get_segment().a.y)
-
 
     if len(chunks) < index + 1:
         var new_point = chunk.position + chunk.get_segment().a

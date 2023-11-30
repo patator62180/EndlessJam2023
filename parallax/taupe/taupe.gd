@@ -4,15 +4,20 @@ extends AnimatedSprite2D
 
 #var ball 
 
+var animation_player
+
 func _ready():
     var rnd = RandomNumberGenerator.new()
-    $AnimationPlayer.advance(rnd.randf_range(0.0,5.0))
+    animation_player = $AnimationPlayer
+    if animation_player != null:
+        $AnimationPlayer.advance(rnd.randf_range(0.0,5.0))
 
 func _process(delta):
-    var is_in_ground = frame == 0
+    if animation_player != null:
+        var is_in_ground = frame == 0
 
-    $BouceCollision/CollisionShape2D.disabled = is_in_ground
-    $StaticBody2D/CollisionShape2D.disabled = is_in_ground
+        $BouceCollision/CollisionShape2D.disabled = is_in_ground
+        $StaticBody2D/CollisionShape2D.disabled = is_in_ground
 
 #    bounce_collision.body_entered.connect(touch_ball)
 #    bounce_collision.body_exited.connect(untouch_ball)
