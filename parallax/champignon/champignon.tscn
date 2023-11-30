@@ -61,9 +61,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_cib71"]
 radius = 123.037
 
-[sub_resource type="Animation" id="Animation_pe15t"]
-resource_name = "Idle"
-
 [sub_resource type="Animation" id="Animation_11ljm"]
 resource_name = "Bounce"
 tracks/0/type = "value"
@@ -78,6 +75,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.735, 0.555), Vector2(1.534, 1.437), Vector2(0.874, 0.825), Vector2(1, 1)]
 }
+
+[sub_resource type="Animation" id="Animation_pe15t"]
+resource_name = "Idle"
 
 [sub_resource type="Animation" id="Animation_wqgqx"]
 length = 0.001
