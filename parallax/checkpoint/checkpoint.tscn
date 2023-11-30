@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvq2apao3o7lc"]
+[gd_scene load_steps=14 format=3 uid="uid://bvq2apao3o7lc"]
 
 [ext_resource type="Texture2D" uid="uid://cmjcqk8gynkq8" path="res://parallax/checkpoint/Checkpoint_Pole.png" id="1_6an76"]
 [ext_resource type="Script" path="res://parallax/checkpoint/checkpoint.gd" id="1_hwsct"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cs05fmw2e144u" path="res://parallax/checkpoint/Checkpoint_04.png" id="5_frwam"]
 [ext_resource type="Texture2D" uid="uid://3dxkrygxr5yw" path="res://parallax/checkpoint/Checkpoint_05.png" id="6_ie2gc"]
 [ext_resource type="Texture2D" uid="uid://sw5kkj7b2js8" path="res://parallax/checkpoint/Checkpoint_06.png" id="7_yricu"]
+[ext_resource type="AudioStream" uid="uid://b16ilbuydwhfp" path="res://Audio/Checkpoint.mp3" id="10_f4s28"]
 
 [sub_resource type="Gradient" id="Gradient_e78yl"]
 offsets = PackedFloat32Array(0, 0.791246, 1)
@@ -83,3 +84,7 @@ collision_mask = 32768
 position = Vector2(2, 5)
 rotation = 0.629105
 shape = SubResource("CircleShape2D_5h8sb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_f4s28")
+volume_db = -5.0
