@@ -481,6 +481,7 @@ func throw_rock(direction):
         #hips.position.y += 100
         
         ball.get_node("CollisionShape2D").disabled = true
+        ball.particles.emitting = false
         
     var dir = 1 if direction > 0 else -1 if direction < 0 else 0
         
