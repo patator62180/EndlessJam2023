@@ -42,6 +42,8 @@ square_checkpoint_chunks_bank = Array[PackedScene]([ExtResource("7_m6q3o")])
 chunks_root = NodePath("Chunks")
 chunks_pool_root = NodePath("ChunksPools")
 collision_polygon = NodePath("WorldPolygonBody/CollisionPolygon2D")
+chunks_count_trigger = 50
+average_chunk_width = 354
 
 [node name="ChunksPools" type="Node2D" parent="."]
 position = Vector2(-10240, -1216)

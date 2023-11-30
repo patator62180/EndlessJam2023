@@ -123,9 +123,10 @@ func build_chunk_pool_type(type: ChunkType, obstacle: bool, checkpoint: bool):
 func disable_nested_physics(parent: Node):
     for child in parent.get_children():
         var static_body = child as StaticBody2D
+        var area2D = child as Area2D
         var animation_player = child as AnimationPlayer
         
-        if static_body != null or animation_player != null:
+        if static_body != null or animation_player != null or area2D != null:
             parent.remove_child(child)
 
         disable_nested_physics(child)
