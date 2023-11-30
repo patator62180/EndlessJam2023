@@ -212,7 +212,6 @@ func append_chunk_def():
 func spawn_chunk(index: int):
     var chunk: Chunk = chunk_defs[index].pool.pop_front()
 
-
     if len(points) == 0:
         points.append(start_chunk.position + start_chunk.get_segment().a)
 
@@ -310,7 +309,7 @@ func remove_extra_points(new_point: Vector2):
 
 
 func populate_relative(frog: Node2D):
-    var x_distance = frog.global_position.distance_to(start_chunk.global_position)
+    var x_distance = abs(frog.global_position.x - start_chunk.global_position.x)
     var chunks_distance = ceil(x_distance / average_chunk_width)
     var frog_chunk = floor(x_distance / average_chunk_width) * trigger_scale
 
